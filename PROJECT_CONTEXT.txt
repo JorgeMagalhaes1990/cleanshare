@@ -1,0 +1,166 @@
+# CleanShare - Project Context
+
+## What is CleanShare?
+
+CleanShare is a peer-to-peer marketplace where people can safely rent cleaning equipment from other people.
+
+The platform connects equipment owners with people who need professional cleaning equipment for a short period of time.
+
+---
+
+## Mission
+
+Help people generate extra income from cleaning equipment that spends most of its time unused.
+
+At the same time, allow other people to access professional equipment without having to buy it.
+
+---
+
+## Target Users
+
+Primary users:
+
+- Owners of professional cleaning equipment worth between €200 and €2,500.
+- Individuals.
+- Small businesses.
+- Cleaning professionals.
+
+Examples:
+
+- Pressure washers
+- Carpet cleaners
+- Upholstery cleaners
+- Floor scrubbers
+- Steam cleaners
+- Wet & dry vacuums
+- Window cleaning systems
+- Industrial vacuum cleaners
+
+---
+
+## Main Value Proposition
+
+The biggest challenge is NOT renting equipment.
+
+The biggest challenge is making equipment owners feel completely safe.
+
+CleanShare sells confidence.
+
+Everything on the website should reinforce:
+
+- Security
+- Trust
+- Simplicity
+- Professionalism
+
+---
+
+## Pillars
+
+### Security
+
+Owners must feel their equipment is protected.
+
+Examples:
+
+- Security deposit
+- Identity verification
+- Digital contracts
+- Insurance
+- Secure payments
+
+---
+
+### Trust
+
+Every interaction must increase trust.
+
+Avoid anything that looks cheap or amateur.
+
+The design should feel premium.
+
+---
+
+### Simplicity
+
+The platform must look extremely easy to use.
+
+Everything should require as few clicks as possible.
+
+---
+
+## Landing Page Goal
+
+The purpose of this landing page is NOT to rent equipment.
+
+The objective is to convince equipment owners to register and discover how much they can earn.
+
+Every section should support this objective.
+
+---
+
+## Tone of Voice
+
+Professional.
+
+Simple.
+
+Modern.
+
+Friendly.
+
+Confident.
+
+Never exaggerated.
+
+Never flashy.
+
+---
+
+## Design
+
+The design reference is stored in:
+
+reference/mockup.png
+
+Never redesign the interface.
+
+Always reproduce the reference as closely as possible.
+
+---
+
+## Technical Stack
+
+Use only:
+
+- HTML
+- CSS
+- Vanilla JavaScript
+
+Do not use:
+
+- Bootstrap
+- Tailwind
+- React
+
+unless explicitly requested.
+
+---
+
+## Development Rules
+
+Only modify the requested section.
+
+Never redesign existing sections.
+
+Always preserve the existing visual identity.
+
+The goal is a premium landing page that looks trustworthy and converts visitors into registered equipment owners.
+
+## Future Vision
+
+CleanShare should become the leading peer-to-peer marketplace for renting professional cleaning equipment in Portugal.
+
+The website must communicate the same level of trust, quality and professionalism as successful technology companies.
+
+Every design and development decision should support that vision.

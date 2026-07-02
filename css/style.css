@@ -1,0 +1,571 @@
+/* ===================================================== */
+/* CLEANSHARE - STYLE.CSS */
+/* PARTE 1 */
+/* Reset + Variáveis + Layout Base + Navbar + Hero */
+/* ===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#16B364;
+    --primary-dark:#10914f;
+
+    --text:#1D2939;
+    --text-light:#667085;
+
+    --background:#FFFFFF;
+    --background-soft:#F7FBF8;
+
+    --border:#E4E7EC;
+
+    --shadow:0 20px 45px rgba(16,24,40,.08);
+
+    --radius:22px;
+
+    --container:1280px;
+
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.5;
+
+}
+
+.container{
+
+    width:min(var(--container),92%);
+    margin:auto;
+
+}
+
+/* ===================================================== */
+/* NAVBAR */
+/* ===================================================== */
+
+.navbar{
+
+    padding:28px 0;
+
+}
+
+.navbar__container{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+
+}
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:var(--text);
+
+}
+
+.logo__icon{
+
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    background:var(--primary);
+    color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+.logo__text{
+
+    font-size:1.55rem;
+    font-weight:700;
+
+}
+
+.navbar__menu{
+
+    list-style:none;
+
+    display:flex;
+    gap:34px;
+
+}
+
+.navbar__menu a{
+
+    text-decoration:none;
+    color:var(--text);
+    font-weight:500;
+
+}
+
+.button{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    padding:16px 30px;
+
+    border-radius:16px;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.button--primary{
+
+    background:var(--primary);
+    color:#fff;
+
+}
+
+.button--primary:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.button--secondary{
+
+    border:1px solid var(--border);
+    color:var(--text);
+
+}
+
+/* ===================================================== */
+/* HERO */
+/* ===================================================== */
+
+.hero{
+
+    background:
+    radial-gradient(circle at left top,#EAFBF0 0%,#FFFFFF 60%);
+
+}
+
+.hero__container{
+
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+
+    gap:70px;
+
+    align-items:center;
+
+    padding:40px 0 80px;
+
+}
+
+.hero__badge{
+
+    display:inline-block;
+
+    background:#EEF8F2;
+
+    color:var(--primary);
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    font-size:.9rem;
+
+    margin-bottom:22px;
+
+}
+
+.hero__title{
+
+    font-size:4rem;
+    line-height:1.05;
+    font-weight:800;
+
+    max-width:620px;
+
+}
+
+.hero__title span{
+
+    color:var(--primary);
+
+}
+
+.hero__subtitle{
+
+    margin-top:24px;
+
+    max-width:560px;
+
+    font-size:1.2rem;
+
+    color:var(--text-light);
+
+}
+
+.hero__actions{
+
+    margin-top:36px;
+
+}
+
+.hero__trust{
+
+    display:flex;
+    gap:20px;
+
+    margin-top:48px;
+
+}
+
+.trust-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:22px;
+
+    box-shadow:var(--shadow);
+
+    flex:1;
+
+}
+
+.hero__image-placeholder{
+
+    height:560px;
+
+    background:#ECF8F0;
+
+    border-radius:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--text-light);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* CONTINUA NA PARTE 2 */
+/* ===================================================== */
+/* CLEANSHARE - STYLE.CSS */
+/* PARTE 2 */
+/* SIMULADOR */
+/* ===================================================== */
+
+.simulator{
+    padding:90px 0;
+    background:#fff;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:48px;
+}
+
+.section-heading h2{
+    font-size:2.6rem;
+    font-weight:800;
+    color:var(--text);
+    margin-bottom:14px;
+}
+
+.section-heading p{
+    color:var(--text-light);
+    font-size:1.05rem;
+}
+
+.simulator__card{
+    max-width:980px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:28px;
+    padding:36px;
+    box-shadow:var(--shadow);
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:24px;
+    align-items:end;
+}
+
+.simulator__field{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.simulator__field label{
+    font-weight:600;
+}
+
+.simulator__field select{
+    height:56px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:0 18px;
+    font-size:1rem;
+    background:#fff;
+}
+
+.days-selector{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+.days-selector button{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:14px;
+    background:var(--background-soft);
+    font-size:1.6rem;
+    cursor:pointer;
+}
+
+.days-selector span{
+    min-width:56px;
+    text-align:center;
+    font-size:1.8rem;
+    font-weight:700;
+}
+
+.simulator__result{
+    background:#EEF8F2;
+    border-radius:20px;
+    padding:22px;
+    text-align:center;
+}
+
+.simulator__result span{
+    display:block;
+    color:var(--text-light);
+    margin-bottom:8px;
+}
+
+.simulator__result strong{
+    display:block;
+    font-size:2.2rem;
+    color:var(--primary);
+    margin-bottom:8px;
+}
+
+.simulator__result small{
+    color:var(--text-light);
+    line-height:1.4;
+}
+
+/* CONTINUA NA PARTE 3 */
+/* ===================================================== */
+/* CLEANSHARE - STYLE.CSS */
+/* PARTE 3 */
+/* EQUIPAMENTOS */
+/* ===================================================== */
+
+.equipment{
+    padding:90px 0;
+    background:#fff;
+}
+
+.equipment__grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+    margin-top:48px;
+}
+
+.equipment-card{
+    background:#fff;
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    padding:22px;
+    transition:.25s ease;
+    border:1px solid #f2f4f7;
+}
+
+.equipment-card:hover{
+    transform:translateY(-6px);
+}
+
+.equipment-card__image{
+    height:180px;
+    border-radius:18px;
+    background:#EEF8F2;
+    margin-bottom:20px;
+}
+
+.equipment-card h3{
+    font-size:1.15rem;
+    margin-bottom:10px;
+    color:var(--text);
+}
+
+.equipment-card p{
+    color:var(--text-light);
+}
+
+.equipment-card strong{
+    color:var(--primary);
+}
+
+/* ===================================================== */
+/* RESPONSIVO */
+/* ===================================================== */
+
+@media(max-width:1100px){
+
+.equipment__grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.equipment__grid{
+    grid-template-columns:1fr;
+}
+
+.simulator__card{
+    grid-template-columns:1fr;
+}
+
+.hero__container{
+    grid-template-columns:1fr;
+}
+
+.navbar__menu{
+    display:none;
+}
+
+.hero__title{
+    font-size:2.8rem;
+}
+
+.hero__trust{
+    flex-direction:column;
+}
+
+.hero__image-placeholder{
+    height:380px;
+}
+
+}
+
+/* CONTINUA NA PARTE 4 */
+/* ===================================================== */
+/* CLEANSHARE - STYLE.CSS */
+/* PARTE 4 */
+/* CTA FINAL + FOOTER */
+/* ===================================================== */
+
+.cta-final{
+    padding:80px 0;
+    background:var(--primary);
+    color:#fff;
+}
+
+.cta-final__grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
+
+.cta-final__item{
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:24px;
+}
+
+.cta-final__item h3{
+    margin-bottom:12px;
+    font-size:1.1rem;
+}
+
+.cta-final__item p{
+    line-height:1.6;
+    opacity:.92;
+}
+
+.footer{
+    background:#0f1720;
+    color:#fff;
+    padding:50px 0;
+}
+
+.footer__container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+}
+
+.footer__brand h2{
+    margin-bottom:8px;
+}
+
+.footer__brand p{
+    color:#c7cdd4;
+}
+
+.footer__nav{
+    display:flex;
+    gap:24px;
+}
+
+.footer__nav a{
+    color:#fff;
+    text-decoration:none;
+}
+
+@media(max-width:900px){
+
+.cta-final__grid{
+    grid-template-columns:1fr;
+}
+
+.footer__container{
+    flex-direction:column;
+    text-align:center;
+}
+
+.footer__nav{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+
+/* ========================= */
+/* FIM DO STYLE.CSS */
+/* ========================= */

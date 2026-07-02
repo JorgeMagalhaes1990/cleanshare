@@ -1,0 +1,51 @@
+# CleanShare Design Rules
+
+## Objective
+
+The objective of this project is NOT to create a new design.
+
+The objective is to reproduce the landing page stored in:
+
+reference/mockup.png
+
+as closely as possible.
+
+Pixel-perfect HTML/CSS is preferred.
+
+---
+
+## General Rules
+
+- Never redesign the page.
+- Never change colours unless requested.
+- Never change typography unless requested.
+- Never change spacing unless requested.
+- Never create new sections.
+- Never remove sections.
+- Never introduce new UI ideas.
+- Never use Bootstrap.
+- Never use Tailwind.
+- Never use React.
+- Use only HTML, CSS and Vanilla JavaScript.
+
+---
+
+## Development Rules
+
+Whenever asked to modify a section:
+
+- Modify ONLY that section.
+- Do not touch the remaining page.
+- Keep the overall design identical to the reference.
+
+---
+
+## Reference
+
+Always compare your implementation against:
+
+reference/mockup.png
+
+before making changes.
+
+The goal is visual fidelity.
