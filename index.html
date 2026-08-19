@@ -5,31 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CleanShare</title>
 <meta name="description" content="Rentabiliza os teus equipamentos de limpeza de forma segura e sem complicações.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23087A48'/%3E%3Cpath d='M43 20a17 17 0 1 0 0 24M43 20h9M43 44h9' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="topo">
+
+<a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
 
 <header class="hero">
 
-<nav class="navbar">
+<nav class="navbar" aria-label="Navegação principal">
 <div class="container navbar__container">
 
-<a class="logo" href="#">
-<div class="logo__icon">CS</div>
+<a class="logo" href="#topo" aria-label="CleanShare — início">
+<svg class="logo__icon" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.5"></circle><path d="M27 14.5a9 9 0 1 0 0 13"></path><path d="M27 14.5h6M27 27.5h6"></path></svg>
 <span class="logo__text">CleanShare</span>
 </a>
 
-<ul class="navbar__menu">
-<li><a href="#">Como funciona</a></li>
-<li><a href="#">Segurança</a></li>
-<li><a href="#">Equipamentos</a></li>
-<li><a href="#">Perguntas</a></li>
+<button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menu">
+<span></span><span></span><span></span>
+</button>
+
+<ul id="primary-navigation" class="navbar__menu">
+<li><a href="#simulador">Como funciona</a></li>
+<li><a href="#seguranca">Segurança</a></li>
+<li><a href="#equipamentos">Equipamentos</a></li>
+<li><a href="#perguntas">Perguntas</a></li>
+<li class="navbar__mobile-cta"><a href="#simulador">Simular rendimento</a></li>
 </ul>
 
-<a class="button button--secondary" href="#">Quero saber mais</a>
+<a class="button button--secondary navbar__cta" href="#simulador">Quero saber mais</a>
 
 </div>
 </nav>
@@ -40,35 +48,32 @@
 
 <div class="hero__content">
 
-<span class="hero__badge">
-Plataforma de aluguer entre particulares
-</span>
+<span class="hero__eyebrow">ALUGA OS TEUS EQUIPAMENTOS</span>
 
 <h1 class="hero__title">
-Aluga os teus
-<span>equipamentos de limpeza.</span>
+Descobre quanto <span>podes ganhar</span> alugando os teus equipamentos.
 </h1>
 
 <p class="hero__subtitle">
-Rentabiliza os teus equipamentos de limpeza de forma segura e sem complicações.
+Transforma equipamentos que usas pouco em rendimento extra, de forma simples, segura e sem complicações.
 </p>
 
 <div class="hero__actions">
 <a href="#simulador" class="button button--primary">
-Simula já →
+Simula já <span aria-hidden="true">&#8594;</span>
 </a>
 </div>
 
 <div class="hero__trust">
 
 <article class="trust-card">
-<h3>Segurança e proteção</h3>
-<p>A proteção do teu equipamento é a nossa prioridade.</p>
+<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.4 11.5-11 14-6.6-2.5-11-7-11-14V7l11-4z"></path><path d="M11 15l3.5 3.5L21 12"></path></svg>
+<div><h3>Seguro e protegido</h3><p>A tua proteção é a nossa prioridade.</p></div>
 </article>
 
 <article class="trust-card">
-<h3>Comunidade de confiança</h3>
-<p>Utilizadores verificados.</p>
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="10" r="5"></circle><path d="M3 27v-3c0-4 3.5-7 9-7s9 3 9 7v3H3zM23 9c3 0 5 2 5 5s-2 5-5 5M25 20c3 .7 4 2.7 4 6"></path></svg>
+<div><h3>Comunidade de confiança</h3><p>Milhares de utilizadores confiáveis.</p></div>
 </article>
 
 </div>
@@ -77,9 +82,8 @@ Simula já →
 
 <div class="hero__image">
 
-<div class="hero__image-placeholder">
-<!-- Substituir posteriormente por fotografia real -->
-<p>Lavadora de Alta Pressão</p>
+<div class="hero__visual" role="img" aria-label="Equipamento profissional de limpeza num ambiente moderno">
+<img src="reference/mockup.png" alt="">
 </div>
 
 </div>
@@ -95,22 +99,26 @@ Simula já →
 <!-- SIMULADOR -->
 <!-- ===================================================== -->
 
-<main>
+<main id="conteudo">
 
 <section id="simulador" class="simulator">
 
 <div class="container">
 
-<div class="section-heading">
-<h2>Descobre quanto podes ganhar por mês</h2>
-<p>Seleciona apenas o equipamento e os dias disponíveis por mês.</p>
-</div>
-
 <div class="simulator__card">
 
-<div class="simulator__field">
+<div class="simulator__intro">
+<span class="simulator__eyebrow">SIMULADOR DE RECEITA</span>
+<h2>Vê quanto podes<br>ganhar <span>por mês</span></h2>
+<p>É rápido, simples e sem compromisso.</p>
+<div class="simulator__illustration" aria-hidden="true">€</div>
+</div>
 
-<label for="equipment">Equipamento</label>
+<div class="simulator__controls">
+
+<div class="simulator__field simulator__field--equipment">
+
+<label for="equipment">Escolhe o equipamento</label>
 
 <select id="equipment" name="equipment">
 <option>Lavadora de Alta Pressão</option>
@@ -125,18 +133,24 @@ Simula já →
 
 </div>
 
-<div class="simulator__field">
+<div class="simulator__lower-row">
 
-<label>Dias disponíveis por mês</label>
+<div class="simulator__field simulator__field--days">
 
-<div class="days-selector">
+<span id="daysLabel" class="simulator__label">Dias disponíveis por mês</span>
 
-<button id="minusDays" type="button">−</button>
+<div class="simulator__days-row">
+<div class="days-selector" role="group" aria-labelledby="daysLabel">
 
-<span id="daysValue">15</span>
+<button id="minusDays" type="button" aria-label="Diminuir dias">−</button>
 
-<button id="plusDays" type="button">+</button>
+<span id="daysValue" aria-live="polite">15</span>
 
+<button id="plusDays" type="button" aria-label="Aumentar dias">+</button>
+
+</div>
+
+<span class="simulator__range">1 a 30 dias</span>
 </div>
 
 </div>
@@ -145,13 +159,19 @@ Simula já →
 
 <span>Receita mensal estimada</span>
 
-<strong id="monthlyIncome">
+<strong id="monthlyIncome" aria-live="polite">
 225 €
 </strong>
 
-<small>
-* Valores médios diários com base em estimativas da plataforma.
-</small>
+<small>por mês</small>
+
+<a class="simulator__next" href="#equipamentos">Ver equipamentos elegíveis <span aria-hidden="true">→</span></a>
+
+</div>
+
+</div>
+
+<p class="simulator__note"><span aria-hidden="true">i</span> Cálculo baseado num preço médio por dia.</p>
 
 </div>
 
@@ -170,57 +190,58 @@ Simula já →
 
 <div class="container">
 
-<div class="section-heading">
-<h2>Equipamentos elegíveis</h2>
-<p>Descobre alguns dos equipamentos que podes rentabilizar através da CleanShare.</p>
+<div class="section-heading section-heading--left">
+<span class="section-heading__eyebrow">EQUIPAMENTOS ELEGÍVEIS</span>
+<h2>Aluga os equipamentos que já tens.</h2>
+<p>Estes são alguns dos equipamentos que podes rentabilizar através da CleanShare.</p>
 </div>
 
 <div class="equipment__grid">
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--pressure" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Lavadora de Alta Pressão</h3>
 <p>Desde <strong>15 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--upholstery" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Máquina de Estofos</h3>
 <p>Desde <strong>20 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--industrial" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Aspirador Industrial</h3>
 <p>Desde <strong>18 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--floor" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Lavadora de Pavimentos</h3>
 <p>Desde <strong>35 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--steam" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Gerador de Vapor</h3>
 <p>Desde <strong>30 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--extractor" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Extratora</h3>
 <p>Desde <strong>25 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--compact" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Lavadora Compacta</h3>
 <p>Desde <strong>12 €/dia</strong></p>
 </article>
 
 <article class="equipment-card">
-<div class="equipment-card__image"></div>
+<div class="equipment-card__image equipment-card__image--polisher" aria-hidden="true"><img src="reference/mockup.png" alt=""></div>
 <h3>Polidora</h3>
 <p>Desde <strong>28 €/dia</strong></p>
 </article>
@@ -231,37 +252,83 @@ Simula já →
 
 </section>
 
+<!-- ===================================================== -->
+<!-- PERGUNTAS FREQUENTES -->
+<!-- ===================================================== -->
+
+<section id="perguntas" class="faq">
+<div class="container faq__container">
+
+<div class="section-heading section-heading--left">
+<span class="section-heading__eyebrow">PERGUNTAS FREQUENTES</span>
+<h2>O essencial, sem complicações.</h2>
+<p>Respostas rápidas para começares a rentabilizar o teu equipamento com confiança.</p>
+</div>
+
+<div class="faq__list">
+<details>
+<summary>Como é calculada a receita estimada?</summary>
+<p>Multiplicamos os dias disponíveis pelo valor médio diário do equipamento selecionado. É uma estimativa simples para perceberes o seu potencial.</p>
+</details>
+<details>
+<summary>Tenho de disponibilizar o equipamento todos os dias?</summary>
+<p>Não. És tu que defines os dias em que o equipamento está disponível e ajustas essa disponibilidade quando precisares.</p>
+</details>
+<details>
+<summary>Como é protegido o meu equipamento?</summary>
+<p>A experiência foi pensada em torno de verificação de identidade, caução, contrato digital e pagamentos feitos através da plataforma.</p>
+</details>
+<details>
+<summary>Quem pode anunciar na CleanShare?</summary>
+<p>Particulares, pequenos negócios e profissionais de limpeza com equipamento elegível que passe grande parte do tempo sem utilização.</p>
+</details>
+</div>
+
+</div>
+</section>
+
 <!-- CONTINUA NA PARTE 4 -->
 <!-- ===================================================== -->
 <!-- BARRA FINAL -->
 <!-- ===================================================== -->
 
-<section class="cta-final">
+<section id="seguranca" class="cta-final">
 
 <div class="container">
+
+<div class="cta-final__heading">
+<span>SEGURANÇA EM PRIMEIRO LUGAR</span>
+<h2>Tu decides. O teu equipamento continua protegido.</h2>
+</div>
 
 <div class="cta-final__grid">
 
 <article class="cta-final__item">
-<h3>Segurança e proteção</h3>
-<p>A proteção do teu equipamento é a nossa prioridade.</p>
+<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l16 6v12c0 10-6.4 17-16 21-9.6-4-16-11-16-21V10l16-6z"></path><path d="M16 23l5 5 11-12"></path></svg>
+<div><h3>Proteção para ti e para o teu equipamento</h3>
+<p>Cobertura contra danos, caução e verificação de utilizadores.</p></div>
 </article>
 
 <article class="cta-final__item">
-<h3>Proteção à medida</h3>
-<p>Caução e seguro personalizado.</p>
+<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="5"></rect><path d="M15 5v10M33 5v10M7 19h34M15 27h.1M24 27h.1M33 27h.1M15 34h.1M24 34h.1"></path></svg>
+<div><h3>Tu decides quando e a que preço</h3>
+<p>Define os dias disponíveis e o valor diário do teu equipamento.</p></div>
 </article>
 
 <article class="cta-final__item">
-<h3>Contrato de locação automático</h3>
-<p>Contrato gerado automaticamente pela plataforma.</p>
+<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"></circle><path d="M30 15c-2-2-8-2-10 1-3 5 8 5 8 10 0 4-7 5-11 2M24 10v28M16 20h14M16 28h13"></path></svg>
+<div><h3>Rendimento extra, sem complicações</h3>
+<p>Ganha mais com o que já tens, sem esforço adicional.</p></div>
 </article>
 
-<article class="cta-final__item">
-<h3>Pagamentos seguros</h3>
-<p>Todos os pagamentos são efetuados através da plataforma.</p>
-</article>
+</div>
 
+<div class="cta-final__action">
+<div>
+<h2>Quanto pode render o teu equipamento?</h2>
+<p>Faz uma simulação gratuita em menos de um minuto.</p>
+</div>
+<a class="button button--light" href="#simulador">Simular rendimento <span aria-hidden="true">→</span></a>
 </div>
 
 </div>
@@ -281,11 +348,12 @@ Simula já →
 <p>Aluga os teus equipamentos de limpeza.</p>
 </div>
 
-<nav class="footer__nav">
-<a href="#">Como funciona</a>
-<a href="#">Segurança</a>
-<a href="#">Perguntas</a>
-<a href="#">Contacto</a>
+<nav class="footer__nav" aria-label="Navegação do rodapé">
+<a href="#simulador">Como funciona</a>
+<a href="#seguranca">Segurança</a>
+<a href="#equipamentos">Equipamentos</a>
+<a href="#perguntas">Perguntas</a>
+<a href="#topo">Início</a>
 </nav>
 
 </div>

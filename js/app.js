@@ -53,5 +53,47 @@ if (equipment) {
 updateIncome();
 
 /* ========================= */
+/* NAVEGAÇÃO MOBILE */
+/* ========================= */
+
+const menuToggle = document.querySelector(".navbar__toggle");
+const navigation = document.getElementById("primary-navigation");
+
+function closeMenu() {
+    if (!menuToggle || !navigation) return;
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+    navigation.classList.remove("is-open");
+}
+
+if (menuToggle && navigation) {
+    menuToggle.addEventListener("click", () => {
+        const willOpen = menuToggle.getAttribute("aria-expanded") !== "true";
+        menuToggle.setAttribute("aria-expanded", String(willOpen));
+        menuToggle.setAttribute("aria-label", willOpen ? "Fechar menu" : "Abrir menu");
+        navigation.classList.toggle("is-open", willOpen);
+    });
+
+    navigation.addEventListener("click", (event) => {
+        if (event.target.closest("a")) closeMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest(".navbar__container")) closeMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeMenu();
+            menuToggle.focus();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 960) closeMenu();
+    });
+}
+
+/* ========================= */
 /* FIM DO APP.JS */
 /* ========================= */
