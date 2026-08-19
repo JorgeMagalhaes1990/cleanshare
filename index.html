@@ -35,9 +35,21 @@
 <li><a href="#equipamentos">Equipamentos</a></li>
 <li><a href="#perguntas">Perguntas</a></li>
 <li class="navbar__mobile-cta"><a href="#simulador">Simular rendimento</a></li>
+<li class="navbar__mobile-auth" data-auth-guest><button class="navbar__auth-link" type="button" data-auth-open>Entrar / Criar conta</button></li>
+<li class="navbar__mobile-session" data-authenticated hidden>
+<span data-session-label>Sessão ativa</span>
+<button type="button" data-auth-logout>Terminar sessão</button>
+</li>
 </ul>
 
+<div class="navbar__actions">
 <a class="button button--secondary navbar__cta" href="#simulador">Quero saber mais</a>
+<button class="button navbar__auth-button" type="button" data-auth-open data-auth-guest>Entrar / Criar conta</button>
+<div class="navbar__session" data-authenticated hidden>
+<span class="navbar__session-label" data-session-label>Sessão ativa</span>
+<button class="navbar__logout" type="button" data-auth-logout>Terminar sessão</button>
+</div>
+</div>
 
 </div>
 </nav>
@@ -360,7 +372,67 @@ Simula já <span aria-hidden="true">&#8594;</span>
 
 </footer>
 
+<dialog id="authDialog" class="auth-dialog" aria-labelledby="authTitle">
+<div class="auth-dialog__content">
+
+<header class="auth-dialog__header">
+<div>
+<span class="auth-dialog__eyebrow">A TUA CONTA CLEANSHARE</span>
+<h2 id="authTitle">Entra ou cria a tua conta</h2>
+</div>
+<button class="auth-dialog__close" type="button" aria-label="Fechar" data-auth-close>×</button>
+</header>
+
+<p class="auth-dialog__intro">Guarda os teus equipamentos e acompanha tudo num único lugar.</p>
+
+<div class="auth-tabs" role="tablist" aria-label="Autenticação">
+<button id="registerTab" class="auth-tab" type="button" role="tab" aria-selected="true" aria-controls="registerPanel" data-auth-tab="register">Criar conta</button>
+<button id="loginTab" class="auth-tab" type="button" role="tab" aria-selected="false" aria-controls="loginPanel" tabindex="-1" data-auth-tab="login">Iniciar sessão</button>
+</div>
+
+<div class="auth-config" data-auth-config hidden role="status">
+<strong>Autenticação ainda não configurada</strong>
+<p>Adiciona a chave publicável do Supabase para ativar o registo e o início de sessão.</p>
+</div>
+
+<p class="auth-message" data-auth-message role="status" aria-live="polite"></p>
+
+<form id="registerPanel" class="auth-form" data-auth-form="register" role="tabpanel" aria-labelledby="registerTab">
+<div class="auth-field">
+<label for="registerName">Nome completo</label>
+<input id="registerName" name="full_name" type="text" autocomplete="name" required>
+</div>
+<div class="auth-field">
+<label for="registerEmail">Email</label>
+<input id="registerEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
+</div>
+<div class="auth-field">
+<label for="registerPassword">Palavra-passe</label>
+<input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="registerPasswordHint">
+<small id="registerPasswordHint">Usa pelo menos 8 caracteres.</small>
+</div>
+<button class="button button--primary auth-submit" type="submit" data-auth-submit>Criar conta</button>
+<p class="auth-switch">Já tens conta? <button type="button" data-auth-switch="login">Iniciar sessão</button></p>
+</form>
+
+<form id="loginPanel" class="auth-form" data-auth-form="login" role="tabpanel" aria-labelledby="loginTab" hidden>
+<div class="auth-field">
+<label for="loginEmail">Email</label>
+<input id="loginEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
+</div>
+<div class="auth-field">
+<label for="loginPassword">Palavra-passe</label>
+<input id="loginPassword" name="password" type="password" autocomplete="current-password" minlength="8" required>
+</div>
+<button class="button button--primary auth-submit" type="submit" data-auth-submit>Iniciar sessão</button>
+<p class="auth-switch">Ainda não tens conta? <button type="button" data-auth-switch="register">Criar conta</button></p>
+</form>
+
+</div>
+</dialog>
+
 <script src="js/app.js"></script>
+<script type="module" src="js/auth.js"></script>
 
 </body>
 </html>
