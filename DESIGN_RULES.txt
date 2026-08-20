@@ -2,31 +2,37 @@
 
 ## Objective
 
-The objective of this project is NOT to create a new design.
+The objective is to preserve and extend the established CleanShare visual system.
 
-The objective is to reproduce the landing page stored in:
+The primary visual reference is:
 
-reference/mockup.png
+`reference/mockup.png`
 
-as closely as possible.
-
-Pixel-perfect HTML/CSS is preferred.
+The mockup is the authority for visual identity, typography, colour, spacing, component character and overall layout direction. It is not the authority for marketplace positioning or catalog scope.
 
 ---
 
 ## General Rules
 
-- Never redesign the page.
-- Never change colours unless requested.
-- Never change typography unless requested.
-- Never change spacing unless requested.
-- Never create new sections.
-- Never remove sections.
-- Never introduce new UI ideas.
-- Never use Bootstrap.
-- Never use Tailwind.
-- Never use React.
-- Use only HTML, CSS and Vanilla JavaScript.
+- Do not redesign the page unless an explicit request is approved.
+- Do not change colours, typography or spacing unless the requested scope requires it.
+- Do not create or remove sections unless an explicit request is approved.
+- Do not introduce unrelated UI ideas.
+- Do not use Bootstrap, Tailwind or React unless explicitly requested and approved.
+- Use HTML, CSS and Vanilla JavaScript within the current stack.
+- Preserve responsive behaviour, accessibility and the existing visual hierarchy.
+
+---
+
+## Content Rules
+
+- Never present CleanShare as exclusive to cleaning equipment.
+- Present CleanShare as a generalist but curated P2P marketplace for high-value, occasional-use equipment.
+- Use the four approved initial categories: Projetos em casa, Limpeza profunda, Jardim e terreno, and Eventos e lazer.
+- Use only the products approved for those categories in `PROJECT_CONTEXT.txt` and the latest Blueprint.
+- Treat private individuals as the initial source of supply.
+- Treat B2B and industrial equipment as a future phase with its own rules, not as part of the initial public offer.
+- When content and a visual reference disagree about catalog scope, follow the latest Blueprint and `PROJECT_CONTEXT.txt` for content while preserving the reference's visual language.
 
 ---
 
@@ -34,18 +40,20 @@ Pixel-perfect HTML/CSS is preferred.
 
 Whenever asked to modify a section:
 
-- Modify ONLY that section.
-- Do not touch the remaining page.
-- Keep the overall design identical to the reference.
+- Modify only the approved scope.
+- Do not touch unrelated page areas or behaviour.
+- Keep the overall design consistent with `reference/mockup.png`.
+- Reuse existing components and tokens where practical.
+- Verify desktop and mobile presentation after visual changes.
+
+Creating, removing or materially restructuring sections is allowed only when the user has explicitly requested and approved that change.
 
 ---
 
-## Reference
+## Reference and Validation
 
-Always compare your implementation against:
+Compare visual implementation against `reference/mockup.png` before and after changes.
 
-reference/mockup.png
+Also verify that public category content remains consistent with the latest Blueprint, `PROJECT_CONTEXT.txt` and the current valuation matrix/migrations.
 
-before making changes.
-
-The goal is visual fidelity.
+The goal is visual fidelity combined with current, strategically accurate content.

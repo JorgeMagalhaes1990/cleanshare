@@ -2,56 +2,88 @@
 
 ## What is CleanShare?
 
-CleanShare is a peer-to-peer marketplace where people can safely rent cleaning equipment from other people.
+CleanShare is a curated, generalist peer-to-peer marketplace for renting high-value equipment that is only needed occasionally.
 
-The platform connects equipment owners with people who need professional cleaning equipment for a short period of time.
+The platform connects private equipment owners with people who need a specific item for a short period. It is not exclusive to cleaning equipment: the initial catalog covers home projects, deep cleaning, garden and land maintenance, and events and leisure.
 
 ---
 
 ## Mission
 
-Help people generate extra income from cleaning equipment that spends most of its time unused.
+Help people generate extra income from useful equipment that spends most of its time unused.
 
-At the same time, allow other people to access professional equipment without having to buy it.
+At the same time, give other people safe, convenient access to equipment without requiring a purchase for a one-off or infrequent task.
 
 ---
 
-## Target Users
+## Marketplace Focus
 
-Primary users:
+CleanShare is generalist but curated. It should not try to list every possible object.
 
-- Owners of professional cleaning equipment worth between €200 and €2,500.
-- Individuals.
-- Small businesses.
-- Cleaning professionals.
+Private individuals are the initial source of supply. The first phase is designed to validate both owner supply and renter demand within a focused catalog.
 
-Examples:
+Equipment is preferably eligible when it meets all of these principles:
 
-- Pressure washers
-- Carpet cleaners
-- Upholstery cleaners
-- Floor scrubbers
-- Steam cleaners
-- Wet & dry vacuums
-- Window cleaning systems
-- Industrial vacuum cleaners
+- Acquisition value above €300.
+- Occasional rather than continuous use.
+- Simple transport by an ordinary user or vehicle.
+- Condition and operation that can be verified through a practical inspection.
+- Low or moderate operational and liability risk.
+
+These principles guide curation; the valuation matrix and current database migrations are the operational source for category-level decisions.
+
+---
+
+## Initial Categories
+
+### Projetos em casa
+
+- Berbequins e aparafusadoras profissionais.
+- Lixadoras.
+- Serras tico-tico e circulares.
+- Escadas extensíveis e articuladas.
+
+### Limpeza profunda
+
+- Lavadoras de alta pressão.
+- Extratoras de estofos e alcatifas.
+- Máquinas de limpeza a vapor.
+
+### Jardim e terreno
+
+- Roçadoras.
+- Corta-relvas.
+- Motoenxadas.
+
+### Eventos e lazer
+
+- Projetores.
+- Colunas de som potentes.
+- Tendas grandes.
+- Kits de campismo.
+
+---
+
+## B2B and Industrial Scope
+
+B2B and industrial equipment belong to a later expansion phase, not the initial marketplace offer.
+
+That phase requires its own eligibility, risk, logistics, inspection, support and contractual rules. Public content must not imply that B2B or industrial supply is already part of the launch scope.
 
 ---
 
 ## Main Value Proposition
 
-The biggest challenge is NOT renting equipment.
-
-The biggest challenge is making equipment owners feel completely safe.
+The biggest challenge is not the rental itself. The biggest challenge is making both parties feel safe throughout the transaction.
 
 CleanShare sells confidence.
 
 Everything on the website should reinforce:
 
-- Security
-- Trust
-- Simplicity
-- Professionalism
+- Security.
+- Trust.
+- Simplicity.
+- Professionalism.
 
 ---
 
@@ -59,43 +91,36 @@ Everything on the website should reinforce:
 
 ### Security
 
-Owners must feel their equipment is protected.
+Owners must feel that their equipment and payments are protected, and renters must understand the terms of the operation.
 
 Examples:
 
-- Security deposit
-- Identity verification
-- Digital contracts
-- Insurance
-- Secure payments
-
----
+- Security deposits.
+- Identity verification.
+- Digital contracts.
+- Insurance when applicable.
+- Secure payments.
+- Confirmed handover and return.
 
 ### Trust
 
-Every interaction must increase trust.
-
-Avoid anything that looks cheap or amateur.
-
-The design should feel premium.
-
----
+Every interaction must increase trust. Avoid anything that looks cheap, amateur or exaggerated. The experience should feel premium and credible.
 
 ### Simplicity
 
-The platform must look extremely easy to use.
-
-Everything should require as few clicks as possible.
+The platform must look easy to use. Core actions should require as few steps as possible, while safety conditions remain clear.
 
 ---
 
 ## Landing Page Goal
 
-The purpose of this landing page is NOT to rent equipment.
+The landing page has three connected goals:
 
-The objective is to convince equipment owners to register and discover how much they can earn.
+1. Recruit private equipment owners for the initial supply.
+2. Explain how CleanShare intermediates and protects an operation from request to return and payment.
+3. Validate demand and supply for the approved initial categories.
 
-Every section should support this objective.
+The landing page is not limited to completing a rental. Every section should help visitors understand the value of joining the marketplace and the safeguards around each transaction.
 
 ---
 
@@ -119,48 +144,37 @@ Never flashy.
 
 ## Design
 
-The design reference is stored in:
+The visual reference is stored in:
 
-reference/mockup.png
+`reference/mockup.png`
 
-Never redesign the interface.
-
-Always reproduce the reference as closely as possible.
+It is the authority for visual identity and layout direction, not for the scope of the catalog. Preserve the established design unless an explicit approved request changes it.
 
 ---
 
 ## Technical Stack
 
-Use only:
+Use:
 
-- HTML
-- CSS
-- Vanilla JavaScript
+- HTML.
+- CSS.
+- Vanilla JavaScript.
+- Supabase for authentication and data.
 
-Do not use:
-
-- Bootstrap
-- Tailwind
-- React
-
-unless explicitly requested.
+Do not introduce Bootstrap, Tailwind or React unless explicitly requested and approved.
 
 ---
 
 ## Development Rules
 
-Only modify the requested section.
+Only modify the requested scope. Preserve the existing visual identity and all unrelated functionality.
 
-Never redesign existing sections.
+When positioning or catalog scope changes, verify consistency across the latest Blueprint, this file, `DESIGN_RULES.txt`, the valuation matrix, database migrations and public landing-page content.
 
-Always preserve the existing visual identity.
-
-The goal is a premium landing page that looks trustworthy and converts visitors into registered equipment owners.
+---
 
 ## Future Vision
 
-CleanShare should become the leading peer-to-peer marketplace for renting professional cleaning equipment in Portugal.
+CleanShare should become Portugal's trusted peer-to-peer marketplace for equipment that people need occasionally but do not need to own.
 
-The website must communicate the same level of trust, quality and professionalism as successful technology companies.
-
-Every design and development decision should support that vision.
+The marketplace can expand into additional curated categories and later into B2B or industrial use cases, while maintaining the same standards of trust, safety, simplicity and professional quality.

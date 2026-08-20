@@ -1,37 +1,45 @@
-1.
-Read DESIGN_RULES.md
+# CleanShare AI Workflow
 
-2.
-Read PROJECT_CONTEXT.md
+## Central Source Order
 
-3.
-Use reference/mockup.png
+When sources differ, use this precedence:
 
-4.
-Analyse
+1. The latest `CleanShare_Blueprint_v*.docx`.
+2. `PROJECT_CONTEXT.txt`.
+3. `DESIGN_RULES.txt`.
+4. The `valuation_matrix` and files in `supabase/migrations/`.
 
-5.
-Plan
+Use `reference/mockup.png` as the visual authority, not as the authority for catalog scope.
 
-6.
-Implement
+## Implementation Workflow
 
-7.
-Review
+1. Read `AI_WORKFLOW.txt`.
+2. Read the latest CleanShare Blueprint.
+3. Read `PROJECT_CONTEXT.txt`.
+4. Read `DESIGN_RULES.txt`.
+5. Review the relevant valuation matrix and migrations when catalog, eligibility or product positioning is involved.
+6. Compare the requested visual scope with `reference/mockup.png` and the current implementation.
+7. Analyse the request and identify affected files, content and dependencies.
+8. Produce an implementation plan.
+9. Wait for explicit user approval before implementation.
+10. Implement only the approved scope.
+11. Review responsive behaviour, accessibility and existing functionality.
+12. Report modified files, relevant selectors and validation results.
 
-Never redesign.
+## Positioning Consistency Check
 
-Always preserve visual fidelity.
+Whenever marketplace positioning, categories, eligibility or product scope changes, verify consistency between:
 
-## Approval Workflow
+- The latest Blueprint.
+- `PROJECT_CONTEXT.txt`.
+- `DESIGN_RULES.txt`.
+- The `valuation_matrix` and current migrations.
+- Public landing-page content.
 
-Every implementation request must follow this order:
+Do not implement a positioning change while these sources contradict one another. Resolve or explicitly document the discrepancy first.
 
-1. Read AI_WORKFLOW.md
-2. Read DESIGN_RULES.md
-3. Read PROJECT_CONTEXT.md
-4. Compare with reference/mockup.png
-5. Produce an implementation plan
-6. Wait for explicit approval
-7. Implement only the approved scope
-8. Report modified files and selectors
+## Approval Rule
+
+Never begin implementation before explicit approval.
+
+Preserve visual fidelity and unrelated functionality. Creating, removing or materially restructuring sections requires an explicit approved request.
