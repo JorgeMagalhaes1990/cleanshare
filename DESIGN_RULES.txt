@@ -30,8 +30,12 @@ The mockup is the authority for visual identity, typography, colour, spacing, co
 - Present CleanShare as a generalist but curated P2P marketplace for high-value, occasional-use equipment.
 - Use the four approved initial categories: Projetos em casa, Limpeza profunda, Jardim e terreno, and Eventos e lazer.
 - Use only the products approved for those categories in `PROJECT_CONTEXT.txt` and the latest Blueprint.
+- The approved Eventos e lazer products are Projetores, Colunas de som potentes, Tendas grandes, Kits de campismo com sacos-cama, Suportes de bicicletas para automóvel, Malas de tejadilho, Barras de tejadilho, and Tendas de tejadilho.
 - Treat private individuals as the initial source of supply.
 - Treat B2B and industrial equipment as a future phase with its own rules, not as part of the initial public offer.
+- Never present CleanShare as a vehicle-rental marketplace. Automotive products are removable accessories normally stored in homes or garages and rented without a vehicle.
+- Show automotive accessories detached from vehicles in domestic storage or garage contexts. Do not show vehicles in catalog or hero imagery when communicating this offer.
+- Keep public safety wording concise: compatibility, load limits and secure mounting must be validated before use. Sleeping bags must be hygienically prepared between rentals.
 - When content and a visual reference disagree about catalog scope, follow the latest Blueprint and `PROJECT_CONTEXT.txt` for content while preserving the reference's visual language.
 
 ---

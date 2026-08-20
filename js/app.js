@@ -3,14 +3,24 @@
 /* ===================================================== */
 
 const equipmentRates = {
-    "Lavadora de Alta Pressão": 15,
-    "Máquina de Limpeza de Estofos": 20,
-    "Aspirador Industrial": 18,
-    "Lavadora de Pavimentos": 35,
-    "Gerador de Vapor": 30,
-    "Extratora": 25,
-    "Polidora": 28,
-    "Lavadora Compacta": 12
+    "Berbequins e aparafusadoras profissionais": 18,
+    "Lixadoras": 20,
+    "Serras tico-tico e circulares": 22,
+    "Escadas extensíveis e articuladas": 15,
+    "Lavadoras de alta pressão": 20,
+    "Extratoras de estofos e alcatifas": 25,
+    "Máquinas de limpeza a vapor": 25,
+    "Roçadoras": 25,
+    "Corta-relvas": 25,
+    "Motoenxadas": 40,
+    "Projetores": 30,
+    "Colunas de som potentes": 35,
+    "Tendas grandes": 30,
+    "Kits de campismo com sacos-cama": 25,
+    "Suportes de bicicletas para automóvel": 25,
+    "Malas de tejadilho": 25,
+    "Barras de tejadilho": 15,
+    "Tendas de tejadilho": 75
 };
 
 const equipment = document.getElementById("equipment");
