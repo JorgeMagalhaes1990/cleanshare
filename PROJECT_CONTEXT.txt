@@ -171,6 +171,16 @@ It is the authority for visual identity and layout direction, not for the scope 
 
 ---
 
+## User Area
+
+The personal area is called “Minha CleanShare”. One account can act as both equipment owner and renter; these are roles within the same profile, not separate account types.
+
+The main navigation covers the overview, operations, owned equipment, favourites and requests, messages, payments, documents, profile and security, and help. The experience is organised around operations, pending actions and a clear explanation of who must do what next.
+
+The first visual MVP uses data explicitly labelled as demonstration data. It must not imply that identity verification, payments, deposits, contracts, insurance or other legal and financial actions have been executed when the real integrations are not connected. User autonomy is limited to safe interface previews and navigation; consequential actions require the future data, verification and transaction services.
+
+---
+
 ## Technical Stack
 
 Use:

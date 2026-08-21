@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha CleanShare — Área pessoal</title>
+<meta name="description" content="Área pessoal de demonstração da CleanShare para acompanhar operações, próximas ações e atividade como proprietário ou arrendatário.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23087A48'/%3E%3Cpath d='M43 20a17 17 0 1 0 0 24M43 20h9M43 44h9' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/account.css">
+</head>
+<body>
+
+<a class="skip-link" href="#account-content">Saltar para o conteúdo</a>
+
+<div class="demo-notice" role="status">
+<div class="account-container demo-notice__inner">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 10v6M12 7h.01"></path></svg>
+<p><strong>Modo de demonstração.</strong> Os dados, valores e estados apresentados são exemplos e não correspondem a operações reais.</p>
+</div>
+</div>
+
+<header class="account-header">
+<div class="account-container account-header__inner">
+<div class="account-header__identity">
+<a class="account-logo" href="index.html" aria-label="CleanShare — voltar à página inicial">
+<svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.5"></circle><path d="M27 14.5a9 9 0 1 0 0 13"></path><path d="M27 14.5h6M27 27.5h6"></path></svg>
+<span>CleanShare</span>
+</a>
+<span class="account-header__divider" aria-hidden="true"></span>
+<strong class="account-header__title">Minha CleanShare</strong>
+</div>
+
+<div class="account-header__actions">
+<button class="icon-button notification-button" type="button" aria-label="Notificações: 3 por consultar" data-demo-action data-demo-message="As notificações estarão disponíveis quando a área estiver ligada aos dados reais.">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg>
+<span aria-hidden="true">3</span>
+</button>
+<div class="account-user">
+<span class="account-user__avatar" data-account-initials>JM</span>
+<span class="account-user__name" data-account-name>Jorge</span>
+</div>
+<a class="account-exit" href="index.html">Terminar demonstração</a>
+</div>
+</div>
+</header>
+
+<div class="account-container account-shell">
+<aside class="account-sidebar" aria-label="Navegação da área pessoal">
+<nav class="account-nav">
+<a class="account-nav__item is-active" href="#visao-geral" aria-current="page">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"></path></svg>
+<span>Visão geral</span>
+</a>
+<a class="account-nav__item" href="#operacoes-recentes">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v4H7zM5 5H3v16h18V5h-2M8 12h8M8 16h5"></path></svg>
+<span>Operações</span><span class="nav-badge">3</span>
+</a>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM7 8V5h10v3M4 13h16"></path></svg>
+<span>Os meus equipamentos</span>
+</button>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.5-8-10a4 4 0 0 1 7-2.6L12 8.5l1-1.1A4 4 0 0 1 20 10c0 5.5-8 10-8 10z"></path></svg>
+<span>Favoritos e pedidos</span>
+</button>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H8l-4 4zM8 9h8M8 13h5"></path></svg>
+<span>Mensagens</span><span class="nav-badge">2</span>
+</button>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>
+<span>Pagamentos</span>
+</button>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM15 3v5h4M9 13h6M9 17h5"></path></svg>
+<span>Documentos</span>
+</button>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-5 3-8 8-8s8 3 8 8M18 4l2 2"></path></svg>
+<span>Perfil e segurança</span>
+</button>
+<button class="account-nav__item" type="button" data-demo-action>
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.8 9a2.4 2.4 0 1 1 3.2 2.3c-.7.3-1 1-1 1.7M12 17h.01"></path></svg>
+<span>Ajuda</span>
+</button>
+</nav>
+</aside>
+
+<main id="account-content" class="account-main">
+<section id="visao-geral" class="account-intro" aria-labelledby="account-title">
+<div>
+<span class="account-eyebrow">VISÃO GERAL</span>
+<h1 id="account-title">Bom dia, <span data-account-name>Jorge</span></h1>
+<p>Aqui está o que precisa da sua atenção hoje.</p>
+</div>
+
+<div class="role-filter" role="group" aria-label="Filtrar a área por papel">
+<button type="button" class="is-active" aria-pressed="true" data-role-filter="all">Todos</button>
+<button type="button" aria-pressed="false" data-role-filter="owner">Como proprietário</button>
+<button type="button" aria-pressed="false" data-role-filter="renter">Como arrendatário</button>
+</div>
+</section>
+
+<div class="dashboard-grid">
+<section class="account-card pending-card" aria-labelledby="pending-title">
+<header class="card-heading">
+<div>
+<span class="card-kicker">PRÓXIMAS AÇÕES</span>
+<h2 id="pending-title">Ações pendentes</h2>
+</div>
+<span class="count-badge" data-pending-count>3</span>
+</header>
+
+<div class="pending-list">
+<article class="pending-item" data-role="owner">
+<span class="priority priority--high">Hoje</span>
+<div class="pending-item__content">
+<span class="role-label">Como proprietário</span>
+<h3>Confirmar horário de recolha</h3>
+<p>Extratora Karcher Puzzi 10/1</p>
+</div>
+<button class="button button--primary button--small" type="button" data-demo-action>Confirmar</button>
+</article>
+
+<article class="pending-item" data-role="renter">
+<span class="priority priority--medium">Antes das 18:00</span>
+<div class="pending-item__content">
+<span class="role-label">Como arrendatário</span>
+<h3>Adicionar fotografias da entrega</h3>
+<p>Mala de tejadilho Thule Motion 3</p>
+</div>
+<button class="button button--secondary button--small" type="button" data-demo-action>Adicionar</button>
+</article>
+
+<article class="pending-item" data-role="account">
+<span class="priority priority--account">Conta</span>
+<div class="pending-item__content">
+<span class="role-label">Perfil e segurança</span>
+<h3>Concluir autenticação CMD</h3>
+<p>Obrigatório antes de realizar novas operações.</p>
+</div>
+<button class="button button--secondary button--small" type="button" data-demo-action>Concluir</button>
+</article>
+</div>
+<p class="empty-filter" data-pending-empty hidden>Não existem ações pendentes para este papel.</p>
+</section>
+
+<section class="account-card next-operation" aria-labelledby="next-operation-title">
+<header class="next-operation__topline">
+<span class="status status--attention" data-next-status>Recolha amanhã</span>
+<span class="demo-tag">DEMONSTRAÇÃO</span>
+</header>
+<p class="operation-id" data-next-id>Operação #CS-2026-0148</p>
+<h2 id="next-operation-title" data-next-equipment>Extratora Karcher Puzzi 10/1</h2>
+<p class="role-label" data-next-role>Está como proprietário</p>
+
+<div class="counterparty">
+<span class="counterparty__avatar" data-next-counterparty-initials>MS</span>
+<div>
+<small data-next-counterparty-label>Arrendatário</small>
+<strong data-next-counterparty>Marta Silva</strong>
+<span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m4 9 3 3 7-7"></path></svg> Identidade verificada</span>
+</div>
+</div>
+
+<dl class="operation-summary">
+<div><dt>Datas</dt><dd data-next-dates>22–24 agosto 2026</dd></div>
+<div><dt>Local</dt><dd data-next-location>Matosinhos</dd></div>
+<div><dt>Valor</dt><dd data-next-value>75,00 € + caução 150,00 €</dd></div>
+</dl>
+
+<button class="button button--primary button--wide" type="button" data-open-operation="CS-2026-0148">Abrir operação</button>
+</section>
+
+<section class="account-card readiness-card" aria-labelledby="readiness-title">
+<header class="card-heading">
+<div>
+<span class="card-kicker">PERFIL E SEGURANÇA</span>
+<h2 id="readiness-title">Conta preparada</h2>
+</div>
+<strong class="readiness-card__score">4 de 5</strong>
+</header>
+<div class="progress" role="progressbar" aria-label="Preparação da conta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+<span style="width:80%"></span>
+</div>
+<p class="progress-label">80% dos requisitos concluídos</p>
+<ul class="check-list">
+<li class="is-complete"><span aria-hidden="true">✓</span>Email confirmado</li>
+<li class="is-complete"><span aria-hidden="true">✓</span>Telefone confirmado</li>
+<li class="is-complete"><span aria-hidden="true">✓</span>Método de pagamento</li>
+<li class="is-complete"><span aria-hidden="true">✓</span>Conta bancária</li>
+<li><span aria-hidden="true">!</span>Autenticação CMD pendente</li>
+</ul>
+<button class="button button--secondary button--wide" type="button" data-demo-action>Concluir autenticação</button>
+</section>
+
+<section class="account-card finance-card" aria-labelledby="finance-title">
+<header class="card-heading">
+<div>
+<span class="card-kicker">ATIVIDADE</span>
+<h2 id="finance-title" data-finance-title>Saldo da atividade</h2>
+</div>
+<span class="demo-tag">VALORES DE DEMONSTRAÇÃO</span>
+</header>
+<div class="finance-metrics">
+<div class="finance-metric">
+<span data-finance-label="0">A receber</span>
+<strong data-finance-value="0">125 €</strong>
+</div>
+<div class="finance-metric">
+<span data-finance-label="1">Cauções em curso</span>
+<strong data-finance-value="1">450 €</strong>
+</div>
+<div class="finance-metric">
+<span data-finance-label="2">Operações do mês</span>
+<strong data-finance-value="2">4</strong>
+</div>
+</div>
+</section>
+</div>
+
+<section id="operacoes-recentes" class="account-card operations-card" aria-labelledby="operations-title">
+<header class="card-heading operations-card__heading">
+<div>
+<span class="card-kicker">HISTÓRICO RECENTE</span>
+<h2 id="operations-title">Operações recentes</h2>
+</div>
+<span class="demo-tag">DADOS DE DEMONSTRAÇÃO</span>
+</header>
+
+<div class="operations-table-wrap">
+<table class="operations-table">
+<thead>
+<tr>
+<th scope="col">Operação / equipamento</th>
+<th scope="col">Papel</th>
+<th scope="col">Datas</th>
+<th scope="col">Contraparte</th>
+<th scope="col">Valor</th>
+<th scope="col">Estado</th>
+<th scope="col"><span class="visually-hidden">Ação</span></th>
+</tr>
+</thead>
+<tbody>
+<tr data-role="owner">
+<td data-label="Operação"><strong>#CS-2026-0151</strong><span>Lavadora de alta pressão Kärcher</span></td>
+<td data-label="Papel"><span class="table-role">Proprietário</span></td>
+<td data-label="Datas">27–28 ago.</td>
+<td data-label="Contraparte">João Costa</td>
+<td data-label="Valor"><strong>40,00 €</strong></td>
+<td data-label="Estado"><span class="status status--new">Pedido recebido</span></td>
+<td data-label="Ação"><button class="text-button" type="button" data-open-operation="CS-2026-0151">Ver operação</button></td>
+</tr>
+<tr data-role="owner">
+<td data-label="Operação"><strong>#CS-2026-0148</strong><span>Extratora Karcher Puzzi 10/1</span></td>
+<td data-label="Papel"><span class="table-role">Proprietário</span></td>
+<td data-label="Datas">22–24 ago.</td>
+<td data-label="Contraparte">Marta Silva</td>
+<td data-label="Valor"><strong>75,00 €</strong></td>
+<td data-label="Estado"><span class="status status--attention">Recolha amanhã</span></td>
+<td data-label="Ação"><button class="text-button" type="button" data-open-operation="CS-2026-0148">Ver operação</button></td>
+</tr>
+<tr data-role="renter">
+<td data-label="Operação"><strong>#CS-2026-0149</strong><span>Mala de tejadilho Thule Motion 3</span></td>
+<td data-label="Papel"><span class="table-role">Arrendatário</span></td>
+<td data-label="Datas">21–24 ago.</td>
+<td data-label="Contraparte">Ricardo Melo</td>
+<td data-label="Valor"><strong>100,00 €</strong></td>
+<td data-label="Estado"><span class="status status--active">Em utilização</span></td>
+<td data-label="Ação"><button class="text-button" type="button" data-open-operation="CS-2026-0149">Ver operação</button></td>
+</tr>
+<tr data-role="renter">
+<td data-label="Operação"><strong>#CS-2026-0146</strong><span>Projetor Epson Full HD</span></td>
+<td data-label="Papel"><span class="table-role">Arrendatário</span></td>
+<td data-label="Datas">15 ago.</td>
+<td data-label="Contraparte">Inês Rocha</td>
+<td data-label="Valor"><strong>30,00 €</strong></td>
+<td data-label="Estado"><span class="status status--complete">Concluída</span></td>
+<td data-label="Ação"><button class="text-button" type="button" data-open-operation="CS-2026-0146">Ver operação</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="empty-filter" data-operations-empty hidden>Não existem operações recentes para este papel.</p>
+</section>
+
+<section id="operation-center" class="operation-center" aria-labelledby="operation-center-title" tabindex="-1" hidden>
+<header class="operation-center__header">
+<div>
+<span class="demo-tag">OPERAÇÃO DE DEMONSTRAÇÃO</span>
+<p class="operation-id" data-detail-id>Operação #CS-2026-0148</p>
+<h2 id="operation-center-title" data-detail-equipment>Extratora Karcher Puzzi 10/1</h2>
+</div>
+<div class="operation-center__header-actions">
+<span class="status status--attention" data-detail-status>Recolha amanhã</span>
+<button class="icon-button" type="button" aria-label="Fechar centro da operação" data-close-operation>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+</button>
+</div>
+</header>
+
+<section class="timeline-section" aria-labelledby="timeline-title">
+<h3 id="timeline-title">Progresso da operação</h3>
+<ol class="operation-timeline" data-timeline>
+<li class="is-complete"><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><strong>Pedido</strong><small>Concluído</small></li>
+<li class="is-complete"><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><strong>Aceitação</strong><small>Concluído</small></li>
+<li class="is-complete"><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><strong>Pagamento</strong><small>Concluído</small></li>
+<li class="is-complete"><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><strong>Contrato</strong><small>Concluído</small></li>
+<li class="is-current"><span>5</span><strong>Recolha</strong><small>Etapa atual</small></li>
+<li><span>6</span><strong>Utilização</strong><small>Próximo</small></li>
+<li><span>7</span><strong>Devolução</strong><small>Por iniciar</small></li>
+<li><span>8</span><strong>Verificação</strong><small>Por iniciar</small></li>
+<li><span>9</span><strong>Conclusão</strong><small>Por iniciar</small></li>
+</ol>
+</section>
+
+<div class="operation-center__grid">
+<section class="next-action-panel" aria-labelledby="next-action-title">
+<span class="card-kicker">PRÓXIMA AÇÃO</span>
+<h3 id="next-action-title" data-detail-action>Combinar horário de recolha</h3>
+<p data-detail-action-copy>Fale com Marta e confirme o horário antes da recolha de amanhã.</p>
+<div class="button-row">
+<button class="button button--secondary" type="button" data-demo-action>Enviar mensagem</button>
+<button class="button button--primary" type="button" data-demo-action>Confirmar horário</button>
+</div>
+</section>
+
+<section class="detail-panel" aria-labelledby="essential-title">
+<h3 id="essential-title">Informação essencial</h3>
+<dl class="detail-list">
+<div><dt>Datas</dt><dd data-detail-dates>22–24 agosto 2026</dd></div>
+<div><dt>Local</dt><dd data-detail-location>Matosinhos</dd></div>
+<div><dt>Contraparte</dt><dd data-detail-counterparty>Marta Silva</dd></div>
+<div><dt>Total</dt><dd data-detail-total>75,00 €</dd></div>
+<div><dt>Caução</dt><dd data-detail-deposit>150,00 €</dd></div>
+<div><dt>Seguro</dt><dd data-detail-insurance>Incluído no período acordado</dd></div>
+</dl>
+</section>
+
+<section class="detail-panel protection-panel" aria-labelledby="protection-title">
+<h3 id="protection-title">Documentos e proteção</h3>
+<ul class="protection-list">
+<li><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><div><strong>Contrato disponível</strong><small>Exemplo de documento da operação</small></div></li>
+<li><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><div><strong>Identidade das partes verificada</strong><small>Estado demonstrativo</small></div></li>
+<li><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><div><strong>Seguro ativo</strong><small>Proteção ilustrativa para o período</small></div></li>
+<li><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7"></path></svg></span><div><strong>Caução autorizada</strong><small>Sem movimento financeiro real</small></div></li>
+</ul>
+</section>
+
+<section class="detail-panel communication-panel" aria-labelledby="communication-title">
+<h3 id="communication-title">Comunicação</h3>
+<div class="message-preview">
+<span class="counterparty__avatar" data-detail-counterparty-initials>MS</span>
+<div>
+<strong data-detail-counterparty-name>Marta Silva</strong>
+<p data-detail-message>“Olá Jorge, consigo estar em Matosinhos amanhã às 10:30. Confirma?”</p>
+<small>Há 28 minutos · demonstração</small>
+</div>
+</div>
+<button class="text-button" type="button" data-demo-action>Abrir mensagens <span aria-hidden="true">→</span></button>
+</section>
+</div>
+</section>
+</main>
+</div>
+
+<div class="toast" role="status" aria-live="polite" aria-atomic="true" data-toast hidden>
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 10v6M12 7h.01"></path></svg>
+<p data-toast-message>Funcionalidade disponível quando a operação estiver ligada aos dados reais.</p>
+<button type="button" aria-label="Fechar notificação" data-toast-close>×</button>
+</div>
+
+<script type="module" src="js/account.js"></script>
+</body>
+</html>

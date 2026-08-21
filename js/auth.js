@@ -13,6 +13,7 @@ const message = document.querySelector("[data-auth-message]");
 const configurationNotice = document.querySelector("[data-auth-config]");
 const guestElements = document.querySelectorAll("[data-auth-guest]");
 const authenticatedElements = document.querySelectorAll("[data-authenticated]");
+const accountLinks = document.querySelectorAll("[data-account-link]");
 const sessionLabels = document.querySelectorAll("[data-session-label]");
 const logoutButtons = document.querySelectorAll("[data-auth-logout]");
 const submitButtons = document.querySelectorAll("[data-auth-submit]");
@@ -141,6 +142,9 @@ function updateSession(session) {
         element.hidden = signedIn;
     });
     authenticatedElements.forEach((element) => {
+        element.hidden = !signedIn;
+    });
+    accountLinks.forEach((element) => {
         element.hidden = !signedIn;
     });
     sessionLabels.forEach((element) => {

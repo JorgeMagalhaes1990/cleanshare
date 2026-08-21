@@ -54,6 +54,18 @@ Creating, removing or materially restructuring sections is allowed only when the
 
 ---
 
+## Personal Area UI
+
+- Call the experience “Minha CleanShare” and keep one account for both owner and renter roles.
+- Organise the interface around operations, pending actions and the next required step rather than a dense administrative dashboard.
+- Reuse the CleanShare visual system: Inter, generous white space, restrained green surfaces, discreet borders, rounded corners and strong text contrast.
+- Keep navigation compact, accessible and responsive. On small screens, navigation may scroll horizontally inside its own region but must never cause page-level horizontal overflow.
+- Communicate state with text as well as colour, preserve visible keyboard focus and provide accessible live feedback for interface actions.
+- Clearly label demonstration data, example values and unavailable integrations. Never make demo interactions look like real payments, deposits, contracts, insurance or identity-verification events.
+- Keep financial, legal and identity actions non-consequential until their approved services and real data are connected.
+
+---
+
 ## Reference and Validation
 
 Compare visual implementation against `reference/mockup.png` before and after changes.
