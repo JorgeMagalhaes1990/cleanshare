@@ -2,6 +2,13 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
 
 const SUPABASE_CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 const PLACEHOLDER_KEY = "__SUPABASE_PUBLISHABLE_KEY__";
+const queryParameters = new URLSearchParams(window.location.search);
+const requestedAuthMode = ["login", "register"].includes(queryParameters.get("auth"))
+    ? queryParameters.get("auth")
+    : null;
+const safeReturnTo = queryParameters.get("returnTo") === "area-utilizador.html"
+    ? "area-utilizador.html"
+    : null;
 
 const dialog = document.getElementById("authDialog");
 const openButtons = document.querySelectorAll("[data-auth-open]");
@@ -101,11 +108,11 @@ function selectMode(mode, focusTab = false) {
     if (configurationReady) setMessage();
 }
 
-function openDialog(event) {
+function openDialog(event = null, mode = "register") {
     if (!dialog) return;
-    lastTrigger = event.currentTarget;
+    lastTrigger = event?.currentTarget || null;
     closeMobileMenu();
-    selectMode("register");
+    selectMode(mode);
 
     if (!configurationReady) {
         setMessage("A autenticação ficará disponível assim que a configuração for concluída.", "config");
@@ -118,6 +125,12 @@ function openDialog(event) {
     }
 
     document.body.classList.add("auth-modal-open");
+}
+
+function redirectToSafeTarget() {
+    if (!safeReturnTo) return false;
+    window.location.assign(safeReturnTo);
+    return true;
 }
 
 function closeDialog() {
@@ -189,7 +202,7 @@ async function initializeSupabase() {
 }
 
 openButtons.forEach((button) => {
-    button.addEventListener("click", openDialog);
+    button.addEventListener("click", (event) => openDialog(event, "register"));
 });
 
 closeButton?.addEventListener("click", closeDialog);
@@ -248,7 +261,9 @@ forms.forEach((form) => {
                     password,
                     options: {
                         data: { full_name: fullName },
-                        emailRedirectTo: `${window.location.origin}/`
+                        emailRedirectTo: safeReturnTo
+                            ? `${window.location.origin}/index.html?auth=login&returnTo=area-utilizador.html`
+                            : `${window.location.origin}/`
                     }
                 });
 
@@ -257,6 +272,7 @@ forms.forEach((form) => {
 
                 if (data.session) {
                     setMessage("Conta criada e sessão iniciada com sucesso.", "success");
+                    if (safeReturnTo) window.setTimeout(redirectToSafeTarget, 450);
                 } else {
                     setMessage("Conta criada. Confirma o link enviado para o teu email.", "success");
                 }
@@ -265,7 +281,11 @@ forms.forEach((form) => {
                 if (error) throw error;
                 form.reset();
                 setMessage("Sessão iniciada com sucesso.", "success");
-                window.setTimeout(closeDialog, 700);
+                if (safeReturnTo) {
+                    window.setTimeout(redirectToSafeTarget, 450);
+                } else {
+                    window.setTimeout(closeDialog, 700);
+                }
             }
         } catch (error) {
             setMessage(friendlyError(error), "error");
@@ -294,3 +314,7 @@ logoutButtons.forEach((button) => {
 });
 
 initializeSupabase();
+
+if (requestedAuthMode) {
+    openDialog(null, requestedAuthMode);
+}

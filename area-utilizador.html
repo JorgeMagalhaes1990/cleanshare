@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minha CleanShare — Área pessoal</title>
-<meta name="description" content="Área pessoal de demonstração da CleanShare para acompanhar operações, próximas ações e atividade como proprietário ou arrendatário.">
+<meta name="description" content="Área pessoal CleanShare para gerir o perfil, acompanhar operações e utilizar a mesma conta como proprietário ou arrendatário.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23087A48'/%3E%3Cpath d='M43 20a17 17 0 1 0 0 24M43 20h9M43 44h9' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +15,17 @@
 
 <a class="skip-link" href="#account-content">Saltar para o conteúdo</a>
 
-<div class="demo-notice" role="status">
+<div class="demo-notice" role="status" data-demo-notice hidden>
 <div class="account-container demo-notice__inner">
 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 10v6M12 7h.01"></path></svg>
 <p><strong>Modo de demonstração.</strong> Os dados, valores e estados apresentados são exemplos e não correspondem a operações reais.</p>
+</div>
+</div>
+
+<div class="pilot-notice" role="status" data-pilot-notice hidden>
+<div class="account-container pilot-notice__inner">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.2 8 8 10 4.8-2 8-5 8-10V7z"></path><path d="M9 12h6M12 9v6"></path></svg>
+<p><strong>Acesso piloto</strong> — pode testar operações sem CMD. A autenticação será obrigatória antes do lançamento público.</p>
 </div>
 </div>
 
@@ -33,21 +40,56 @@
 <strong class="account-header__title">Minha CleanShare</strong>
 </div>
 
-<div class="account-header__actions">
-<button class="icon-button notification-button" type="button" aria-label="Notificações: 3 por consultar" data-demo-action data-demo-message="As notificações estarão disponíveis quando a área estiver ligada aos dados reais.">
+<div class="account-header__actions" data-user-controls hidden>
+<button class="icon-button notification-button" type="button" aria-label="Notificações: 3 por consultar" data-notification-button data-demo-action data-demo-message="As notificações estarão disponíveis quando a área estiver ligada aos dados reais.">
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg>
-<span aria-hidden="true">3</span>
+<span aria-hidden="true" data-notification-count>3</span>
 </button>
 <div class="account-user">
-<span class="account-user__avatar" data-account-initials>JM</span>
-<span class="account-user__name" data-account-name>Jorge</span>
+<span class="account-user__avatar" data-account-initials></span>
+<span class="account-user__name" data-account-name></span>
 </div>
-<a class="account-exit" href="index.html">Terminar demonstração</a>
+<a class="account-exit" href="index.html" data-demo-exit hidden>Terminar demonstração</a>
+<button class="account-exit" type="button" data-real-logout hidden>Terminar sessão</button>
 </div>
 </div>
 </header>
 
-<div class="account-container account-shell">
+<div id="access-content" class="access-content account-container">
+<section class="access-panel loading-panel" aria-labelledby="loading-title" data-account-loading>
+<span class="loading-spinner" aria-hidden="true"></span>
+<div>
+<h1 id="loading-title">A preparar a sua área</h1>
+<p>Estamos a confirmar a sessão e a carregar o perfil.</p>
+</div>
+</section>
+
+<section class="access-panel auth-gate" aria-labelledby="auth-gate-title" data-auth-gate hidden>
+<div class="access-panel__icon" aria-hidden="true">
+<svg viewBox="0 0 32 32"><rect x="7" y="14" width="18" height="14" rx="3"></rect><path d="M11 14V10a5 5 0 0 1 10 0v4M16 20v3"></path></svg>
+</div>
+<span class="account-eyebrow">ÁREA PESSOAL PROTEGIDA</span>
+<h1 id="auth-gate-title">Entre na sua conta para continuar.</h1>
+<p>A Minha CleanShare reúne o seu perfil, operações e próximas ações num espaço reservado.</p>
+<div class="access-panel__actions">
+<a class="button button--primary" href="index.html?auth=login&amp;returnTo=area-utilizador.html">Iniciar sessão</a>
+<a class="button button--secondary" href="index.html?auth=register&amp;returnTo=area-utilizador.html">Criar conta</a>
+</div>
+<a class="access-panel__back" href="index.html">Voltar à página inicial</a>
+</section>
+
+<section class="access-panel error-panel" aria-labelledby="profile-error-title" data-profile-error hidden>
+<div class="access-panel__icon access-panel__icon--error" aria-hidden="true">
+<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"></circle><path d="M16 9v8M16 22h.01"></path></svg>
+</div>
+<span class="account-eyebrow">NÃO FOI POSSÍVEL CARREGAR</span>
+<h1 id="profile-error-title">O seu perfil não está disponível.</h1>
+<p data-profile-error-message>Verifique a ligação e tente novamente. Nunca apresentaremos dados de demonstração nesta área real.</p>
+<button class="button button--primary" type="button" data-profile-retry>Tentar novamente</button>
+</section>
+</div>
+
+<div class="account-container account-shell" data-account-shell hidden>
 <aside class="account-sidebar" aria-label="Navegação da área pessoal">
 <nav class="account-nav">
 <a class="account-nav__item is-active" href="#visao-geral" aria-current="page">
@@ -56,7 +98,7 @@
 </a>
 <a class="account-nav__item" href="#operacoes-recentes">
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v4H7zM5 5H3v16h18V5h-2M8 12h8M8 16h5"></path></svg>
-<span>Operações</span><span class="nav-badge">3</span>
+<span>Operações</span><span class="nav-badge" data-operations-badge>3</span>
 </a>
 <button class="account-nav__item" type="button" data-demo-action>
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM7 8V5h10v3M4 13h16"></path></svg>
@@ -68,7 +110,7 @@
 </button>
 <button class="account-nav__item" type="button" data-demo-action>
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H8l-4 4zM8 9h8M8 13h5"></path></svg>
-<span>Mensagens</span><span class="nav-badge">2</span>
+<span>Mensagens</span><span class="nav-badge" data-demo-only>2</span>
 </button>
 <button class="account-nav__item" type="button" data-demo-action>
 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>
@@ -78,10 +120,10 @@
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM15 3v5h4M9 13h6M9 17h5"></path></svg>
 <span>Documentos</span>
 </button>
-<button class="account-nav__item" type="button" data-demo-action>
+<a class="account-nav__item" href="#perfil-seguranca" data-profile-nav>
 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-5 3-8 8-8s8 3 8 8M18 4l2 2"></path></svg>
 <span>Perfil e segurança</span>
-</button>
+</a>
 <button class="account-nav__item" type="button" data-demo-action>
 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.8 9a2.4 2.4 0 1 1 3.2 2.3c-.7.3-1 1-1 1.7M12 17h.01"></path></svg>
 <span>Ajuda</span>
@@ -93,7 +135,7 @@
 <section id="visao-geral" class="account-intro" aria-labelledby="account-title">
 <div>
 <span class="account-eyebrow">VISÃO GERAL</span>
-<h1 id="account-title">Bom dia, <span data-account-name>Jorge</span></h1>
+<h1 id="account-title">Bom dia, <span data-account-name></span></h1>
 <p>Aqui está o que precisa da sua atenção hoje.</p>
 </div>
 
@@ -114,7 +156,7 @@
 <span class="count-badge" data-pending-count>3</span>
 </header>
 
-<div class="pending-list">
+<div class="pending-list" data-demo-only>
 <article class="pending-item" data-role="owner">
 <span class="priority priority--high">Hoje</span>
 <div class="pending-item__content">
@@ -145,10 +187,32 @@
 <button class="button button--secondary button--small" type="button" data-demo-action>Concluir</button>
 </article>
 </div>
-<p class="empty-filter" data-pending-empty hidden>Não existem ações pendentes para este papel.</p>
+<p class="empty-filter" data-pending-empty data-demo-only hidden>Não existem ações pendentes para este papel.</p>
+
+<div class="pending-list" data-real-pending-list data-real-only hidden>
+<article class="pending-item" data-real-profile-action hidden>
+<span class="priority priority--account">Perfil</span>
+<div class="pending-item__content">
+<span class="role-label">Conta real</span>
+<h3>Completar o perfil</h3>
+<p>Preencha os dados em falta para preparar a conta.</p>
+</div>
+<a class="button button--primary button--small" href="#perfil-seguranca">Completar</a>
+</article>
+<article class="pending-item" data-real-email-action hidden>
+<span class="priority priority--medium">Email</span>
+<div class="pending-item__content">
+<span class="role-label">Segurança da conta</span>
+<h3>Confirmar o email</h3>
+<p>Abra a mensagem de confirmação enviada durante o registo.</p>
+</div>
+<a class="button button--secondary button--small" href="#perfil-seguranca">Ver estado</a>
+</article>
+</div>
+<p class="empty-state empty-state--compact" data-real-pending-empty data-real-only hidden>Não tem ações pendentes neste momento.</p>
 </section>
 
-<section class="account-card next-operation" aria-labelledby="next-operation-title">
+<section class="account-card next-operation" aria-labelledby="next-operation-title" data-demo-only>
 <header class="next-operation__topline">
 <span class="status status--attention" data-next-status>Recolha amanhã</span>
 <span class="demo-tag">DEMONSTRAÇÃO</span>
@@ -175,26 +239,51 @@
 <button class="button button--primary button--wide" type="button" data-open-operation="CS-2026-0148">Abrir operação</button>
 </section>
 
+<section class="account-card next-operation-empty" aria-labelledby="next-operation-empty-title" data-real-only hidden>
+<header class="next-operation__topline">
+<span class="status status--complete">Conta ativa</span>
+<span class="real-data-tag">DADOS REAIS</span>
+</header>
+<div class="empty-state__icon" aria-hidden="true">
+<svg viewBox="0 0 32 32"><path d="M5 9h22v17H5zM9 9V5h14v4M5 16h22"></path><path d="M13 20h6"></path></svg>
+</div>
+<h2 id="next-operation-empty-title">Ainda não existem operações.</h2>
+<p>Quando surgir uma reserva ou um pedido, a próxima etapa aparecerá aqui.</p>
+<span class="pilot-badge" data-operation-access-state>Piloto autorizado</span>
+</section>
+
 <section class="account-card readiness-card" aria-labelledby="readiness-title">
 <header class="card-heading">
 <div>
 <span class="card-kicker">PERFIL E SEGURANÇA</span>
 <h2 id="readiness-title">Conta preparada</h2>
 </div>
-<strong class="readiness-card__score">4 de 5</strong>
+<strong class="readiness-card__score" data-readiness-score>4 de 5</strong>
 </header>
-<div class="progress" role="progressbar" aria-label="Preparação da conta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
-<span style="width:80%"></span>
+<div class="progress" role="progressbar" aria-label="Preparação da conta" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" data-readiness-progress>
+<span style="width:80%" data-readiness-bar></span>
 </div>
-<p class="progress-label">80% dos requisitos concluídos</p>
-<ul class="check-list">
+<p class="progress-label" data-readiness-label>80% dos requisitos concluídos</p>
+<ul class="check-list" data-demo-only>
 <li class="is-complete"><span aria-hidden="true">✓</span>Email confirmado</li>
 <li class="is-complete"><span aria-hidden="true">✓</span>Telefone confirmado</li>
 <li class="is-complete"><span aria-hidden="true">✓</span>Método de pagamento</li>
 <li class="is-complete"><span aria-hidden="true">✓</span>Conta bancária</li>
 <li><span aria-hidden="true">!</span>Autenticação CMD pendente</li>
 </ul>
-<button class="button button--secondary button--wide" type="button" data-demo-action>Concluir autenticação</button>
+<ul class="check-list" data-real-readiness data-real-only hidden>
+<li data-requirement="email"><span aria-hidden="true">!</span>Email confirmado</li>
+<li data-requirement="name"><span aria-hidden="true">!</span>Nome completo</li>
+<li data-requirement="phone"><span aria-hidden="true">!</span>Telefone</li>
+<li data-requirement="location"><span aria-hidden="true">!</span>Localização</li>
+<li data-requirement="roles"><span aria-hidden="true">!</span>Pelo menos um papel</li>
+</ul>
+<div class="cmd-readiness" data-real-only hidden>
+<div><strong>Autenticação CMD</strong><span data-cmd-readiness>Não iniciada</span></div>
+<small data-cmd-pilot-copy>Não obrigatória durante o piloto.</small>
+</div>
+<button class="button button--secondary button--wide" type="button" data-demo-action data-demo-only>Concluir autenticação</button>
+<a class="button button--secondary button--wide" href="#perfil-seguranca" data-real-only hidden>Rever perfil</a>
 </section>
 
 <section class="account-card finance-card" aria-labelledby="finance-title">
@@ -203,7 +292,7 @@
 <span class="card-kicker">ATIVIDADE</span>
 <h2 id="finance-title" data-finance-title>Saldo da atividade</h2>
 </div>
-<span class="demo-tag">VALORES DE DEMONSTRAÇÃO</span>
+<span class="demo-tag" data-finance-badge>VALORES DE DEMONSTRAÇÃO</span>
 </header>
 <div class="finance-metrics">
 <div class="finance-metric">
@@ -228,10 +317,11 @@
 <span class="card-kicker">HISTÓRICO RECENTE</span>
 <h2 id="operations-title">Operações recentes</h2>
 </div>
-<span class="demo-tag">DADOS DE DEMONSTRAÇÃO</span>
+<span class="demo-tag" data-demo-only>DADOS DE DEMONSTRAÇÃO</span>
+<span class="real-data-tag" data-real-only hidden>DADOS REAIS</span>
 </header>
 
-<div class="operations-table-wrap">
+<div class="operations-table-wrap" data-demo-only>
 <table class="operations-table">
 <thead>
 <tr>
@@ -284,10 +374,106 @@
 </tbody>
 </table>
 </div>
-<p class="empty-filter" data-operations-empty hidden>Não existem operações recentes para este papel.</p>
+<p class="empty-filter" data-operations-empty data-demo-only hidden>Não existem operações recentes para este papel.</p>
+<div class="empty-state operations-empty-state" data-real-only hidden>
+<div class="empty-state__icon" aria-hidden="true">
+<svg viewBox="0 0 32 32"><path d="M6 7h20v20H6zM10 3v8M22 3v8M6 13h20"></path><path d="M11 19h10"></path></svg>
+</div>
+<h3>Sem operações recentes</h3>
+<p>Esta é a atividade real da sua conta. As primeiras operações aparecerão aqui quando forem criadas.</p>
+</div>
 </section>
 
-<section id="operation-center" class="operation-center" aria-labelledby="operation-center-title" tabindex="-1" hidden>
+<section id="perfil-seguranca" class="profile-security-grid" aria-labelledby="profile-section-title" data-real-only hidden>
+<section class="account-card profile-card">
+<header class="card-heading profile-card__heading">
+<div>
+<span class="card-kicker">DADOS DA CONTA</span>
+<h2 id="profile-section-title">Perfil e segurança</h2>
+<p>Complete apenas os dados necessários para participar no piloto.</p>
+</div>
+<span class="real-data-tag">PERFIL REAL</span>
+</header>
+
+<form class="profile-form" data-profile-form novalidate>
+<div class="form-grid">
+<div class="form-field form-field--wide">
+<label for="profileFullName">Nome completo</label>
+<input id="profileFullName" name="full_name" type="text" autocomplete="name" required data-profile-full-name>
+</div>
+<div class="form-field form-field--wide">
+<label for="profileEmail">Email</label>
+<input id="profileEmail" name="email" type="email" autocomplete="email" readonly aria-describedby="profileEmailHelp" data-profile-email>
+<small id="profileEmailHelp">O email pertence à autenticação e não é guardado no perfil público.</small>
+</div>
+<div class="form-field">
+<label for="profilePhone">Telefone <span>Opcional</span></label>
+<input id="profilePhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" data-profile-phone>
+</div>
+<div class="form-field">
+<label for="profileCity">Cidade</label>
+<input id="profileCity" name="city" type="text" autocomplete="address-level2" data-profile-city>
+</div>
+<div class="form-field">
+<label for="profilePostalCode">Código postal</label>
+<input id="profilePostalCode" name="postal_code" type="text" autocomplete="postal-code" inputmode="numeric" placeholder="1234-567" pattern="[0-9]{4}-[0-9]{3}" aria-describedby="postalCodeHelp" data-profile-postal-code>
+<small id="postalCodeHelp">Formato português: 1234-567.</small>
+</div>
+</div>
+
+<fieldset class="preference-group" data-roles-group>
+<legend>Como pretende utilizar a CleanShare?</legend>
+<p>Selecione pelo menos uma opção. Estas preferências personalizam a interface e não concedem autorização.</p>
+<label class="choice-card">
+<input type="checkbox" name="roles" value="owner" data-role-preference>
+<span><strong>Quero disponibilizar equipamentos</strong><small>Acompanhar pedidos e operações como proprietário.</small></span>
+</label>
+<label class="choice-card">
+<input type="checkbox" name="roles" value="renter" data-role-preference>
+<span><strong>Quero alugar equipamentos</strong><small>Guardar pedidos e operações como arrendatário.</small></span>
+</label>
+</fieldset>
+
+<fieldset class="preference-group">
+<legend>Preferências de notificações</legend>
+<label class="toggle-choice"><input type="checkbox" name="operation_updates" data-notification-preference="operation_updates" checked><span>Atualizações das operações</span></label>
+<label class="toggle-choice"><input type="checkbox" name="user_messages" data-notification-preference="user_messages" checked><span>Mensagens entre utilizadores</span></label>
+<label class="toggle-choice"><input type="checkbox" name="cleanshare_news" data-notification-preference="cleanshare_news"><span>Novidades da CleanShare</span></label>
+</fieldset>
+
+<p class="form-message" role="status" aria-live="polite" data-profile-message></p>
+<button class="button button--primary" type="submit" data-profile-save>Guardar alterações</button>
+</form>
+</section>
+
+<aside class="account-card security-card" aria-labelledby="security-title">
+<span class="card-kicker">ESTADO DA CONTA</span>
+<h2 id="security-title">Segurança</h2>
+<p class="security-card__intro">Estados reais da sua conta e limites temporários do piloto.</p>
+<ul class="security-status-list">
+<li>
+<span class="security-status-list__icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 5h14v10H3zM3 6l7 5 7-5"></path></svg></span>
+<div><strong>Email</strong><span data-security-email>Por confirmar</span></div>
+</li>
+<li>
+<span class="security-status-list__icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 2 4 5v4c0 4 2.4 6.5 6 8 3.6-1.5 6-4 6-8V5z"></path></svg></span>
+<div><strong>Autenticação CMD</strong><span data-security-cmd>Não iniciada</span></div>
+</li>
+<li>
+<span class="security-status-list__icon security-status-list__icon--pilot" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12"></path></svg></span>
+<div><strong>Acesso às operações</strong><span data-security-access>Piloto autorizado</span><small data-security-access-copy>A CMD não bloqueia operações durante o piloto.</small></div>
+</li>
+</ul>
+<div class="pilot-explanation">
+<strong>Exceção temporária e transparente</strong>
+<p>Esta autorização não equivale a identidade verificada e pode ser desativada numa única configuração antes do lançamento.</p>
+</div>
+<button class="button button--secondary button--wide" type="button" data-password-reset>Enviar email para alterar palavra-passe</button>
+<p class="form-message" role="status" aria-live="polite" data-security-message></p>
+</aside>
+</section>
+
+<section id="operation-center" class="operation-center" aria-labelledby="operation-center-title" tabindex="-1" data-demo-only hidden>
 <header class="operation-center__header">
 <div>
 <span class="demo-tag">OPERAÇÃO DE DEMONSTRAÇÃO</span>

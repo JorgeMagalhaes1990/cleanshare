@@ -63,6 +63,10 @@ Creating, removing or materially restructuring sections is allowed only when the
 - Communicate state with text as well as colour, preserve visible keyboard focus and provide accessible live feedback for interface actions.
 - Clearly label demonstration data, example values and unavailable integrations. Never make demo interactions look like real payments, deposits, contracts, insurance or identity-verification events.
 - Keep financial, legal and identity actions non-consequential until their approved services and real data are connected.
+- Treat `/area-utilizador.html` as the authenticated real-data experience and `?demo=1` as the only demonstration route. A loading, session or profile error in the real route must never reveal demo content.
+- Show the pilot exception prominently and in plain language while it is enabled. Use labels such as “Acesso piloto” or “Piloto autorizado”; never present pilot access as verified identity or change the displayed CMD status.
+- Keep the pilot exception controlled by one clearly named, reversible configuration so it can be disabled before public launch.
+- Treat owner/renter and notification values in user metadata as interface preferences only. Do not design them as authorization, entitlement or verification signals; future authorization must come from database rules and RLS.
 
 ---
 

@@ -177,7 +177,13 @@ The personal area is called “Minha CleanShare”. One account can act as both 
 
 The main navigation covers the overview, operations, owned equipment, favourites and requests, messages, payments, documents, profile and security, and help. The experience is organised around operations, pending actions and a clear explanation of who must do what next.
 
-The first visual MVP uses data explicitly labelled as demonstration data. It must not imply that identity verification, payments, deposits, contracts, insurance or other legal and financial actions have been executed when the real integrations are not connected. User autonomy is limited to safe interface previews and navigation; consequential actions require the future data, verification and transaction services.
+The normal route, `/area-utilizador.html`, is the real personal area. It requires a Supabase session, reads the authenticated user's own profile and must never fall back to fictitious content after a session or profile error. The route `/area-utilizador.html?demo=1` is the explicit demonstration mode and preserves labelled example operations, values and interactions.
+
+CMD remains the future identity-verification requirement for operating on CleanShare. During the controlled pilot only, a single reversible configuration may allow authenticated users to test operations without verified CMD. This exception must always be described as temporary “pilot access”, never as verified identity, and must not alter the real `verification_status` shown to the user.
+
+Owner and renter preferences may be stored in `auth.user_metadata` to personalise the interface. They are not authorization claims and must never replace database-backed permissions or RLS in future operational flows. The same limitation applies to notification preferences.
+
+The interface must not imply that payments, deposits, contracts, insurance or other legal and financial actions have been executed when the real integrations are not connected. User autonomy is limited to safe interface previews and supported profile updates; consequential actions require the future verification, transaction and database services.
 
 ---
 
