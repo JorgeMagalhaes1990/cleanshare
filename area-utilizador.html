@@ -100,14 +100,22 @@
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v4H7zM5 5H3v16h18V5h-2M8 12h8M8 16h5"></path></svg>
 <span>Operações</span><span class="nav-badge" data-operations-badge>3</span>
 </a>
-<button class="account-nav__item" type="button" data-demo-action>
+<button class="account-nav__item" type="button" data-demo-action data-demo-only>
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM7 8V5h10v3M4 13h16"></path></svg>
 <span>Os meus equipamentos</span>
 </button>
-<button class="account-nav__item" type="button" data-demo-action>
+<a class="account-nav__item" href="#meus-equipamentos" data-real-only hidden>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM7 8V5h10v3M4 13h16"></path></svg>
+<span>Os meus equipamentos</span>
+</a>
+<button class="account-nav__item" type="button" data-demo-action data-demo-only>
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.5-8-10a4 4 0 0 1 7-2.6L12 8.5l1-1.1A4 4 0 0 1 20 10c0 5.5-8 10-8 10z"></path></svg>
-<span>Favoritos e pedidos</span>
+<span>Explorar e pedir</span>
 </button>
+<a class="account-nav__item" href="#explorar-pedir" data-real-only hidden>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 1 0 4.9 12L21 21M4 11h14M11 4a11 11 0 0 1 0 14M11 4a11 11 0 0 0 0 14"></path></svg>
+<span>Explorar e pedir</span>
+</a>
 <button class="account-nav__item" type="button" data-demo-action>
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H8l-4 4zM8 9h8M8 13h5"></path></svg>
 <span>Mensagens</span><span class="nav-badge" data-demo-only>2</span>
@@ -208,6 +216,7 @@
 </div>
 <a class="button button--secondary button--small" href="#perfil-seguranca">Ver estado</a>
 </article>
+<div class="marketplace-pending-actions" data-marketplace-pending-actions></div>
 </div>
 <p class="empty-state empty-state--compact" data-real-pending-empty data-real-only hidden>Não tem ações pendentes neste momento.</p>
 </section>
@@ -239,7 +248,7 @@
 <button class="button button--primary button--wide" type="button" data-open-operation="CS-2026-0148">Abrir operação</button>
 </section>
 
-<section class="account-card next-operation-empty" aria-labelledby="next-operation-empty-title" data-real-only hidden>
+<section class="account-card next-operation-empty" aria-labelledby="next-operation-empty-title" data-real-next-empty data-real-only data-marketplace-controlled hidden>
 <header class="next-operation__topline">
 <span class="status status--complete">Conta ativa</span>
 <span class="real-data-tag">DADOS REAIS</span>
@@ -250,6 +259,37 @@
 <h2 id="next-operation-empty-title">Ainda não existem operações.</h2>
 <p>Quando surgir uma reserva ou um pedido, a próxima etapa aparecerá aqui.</p>
 <span class="pilot-badge" data-operation-access-state>Piloto autorizado</span>
+</section>
+
+<section class="account-card next-operation next-operation--real" aria-labelledby="real-next-operation-title" data-real-next-operation data-real-only data-marketplace-controlled hidden>
+<header class="next-operation__topline">
+<span class="status status--new" data-real-next-status>Pedido recebido</span>
+<span class="real-data-tag">OPERAÇÃO REAL · PILOTO</span>
+</header>
+<p class="operation-id" data-real-next-reference>Operação</p>
+<h2 id="real-next-operation-title" data-real-next-equipment></h2>
+<p class="role-label" data-real-next-role></p>
+<div class="counterparty">
+<span class="counterparty__avatar" data-real-next-initials>CS</span>
+<div>
+<small data-real-next-counterparty-label>Contraparte</small>
+<strong data-real-next-counterparty>Utilizador CleanShare</strong>
+<span>Participante desta operação piloto</span>
+</div>
+</div>
+<dl class="operation-summary">
+<div><dt>Datas</dt><dd data-real-next-dates></dd></div>
+<div><dt>Local</dt><dd data-real-next-location></dd></div>
+<div><dt>Valor indicativo</dt><dd data-real-next-value></dd></div>
+</dl>
+<div class="next-operation-progress" role="status" aria-live="polite" data-real-next-condition-progress hidden>
+<div>
+<span data-real-next-condition-phase>Recolha</span>
+<strong data-real-next-condition-count>0/2 confirmações</strong>
+</div>
+<p data-real-next-condition-message>Falta a sua confirmação.</p>
+</div>
+<button class="button button--primary button--wide" type="button" data-real-open-next>Abrir operação</button>
 </section>
 
 <section class="account-card readiness-card" aria-labelledby="readiness-title">
@@ -375,13 +415,121 @@
 </table>
 </div>
 <p class="empty-filter" data-operations-empty data-demo-only hidden>Não existem operações recentes para este papel.</p>
-<div class="empty-state operations-empty-state" data-real-only hidden>
+<div class="operations-table-wrap" data-real-operations-wrap data-real-only data-marketplace-controlled hidden>
+<table class="operations-table">
+<thead>
+<tr>
+<th scope="col">Operação / equipamento</th>
+<th scope="col">Papel</th>
+<th scope="col">Datas</th>
+<th scope="col">Contraparte</th>
+<th scope="col">Valor</th>
+<th scope="col">Estado</th>
+<th scope="col"><span class="visually-hidden">Ação</span></th>
+</tr>
+</thead>
+<tbody data-real-operations-body></tbody>
+</table>
+</div>
+<div class="empty-state operations-empty-state" data-real-operations-empty data-real-only data-marketplace-controlled hidden>
 <div class="empty-state__icon" aria-hidden="true">
 <svg viewBox="0 0 32 32"><path d="M6 7h20v20H6zM10 3v8M22 3v8M6 13h20"></path><path d="M11 19h10"></path></svg>
 </div>
 <h3>Sem operações recentes</h3>
 <p>Esta é a atividade real da sua conta. As primeiras operações aparecerão aqui quando forem criadas.</p>
 </div>
+<div class="inline-status" role="status" aria-live="polite" data-operations-status data-real-only data-marketplace-controlled hidden></div>
+</section>
+
+<div class="marketplace-system-message" role="status" aria-live="polite" data-marketplace-system-message data-real-only data-marketplace-controlled hidden>
+<strong>Fluxo operacional ainda não preparado na base de dados.</strong>
+<span>O perfil continua disponível. Aplique a migração do MVP 3 antes de testar operações reais.</span>
+<button class="text-button" type="button" data-marketplace-retry>Tentar novamente</button>
+</div>
+
+<section id="meus-equipamentos" class="account-card marketplace-section" aria-labelledby="my-equipment-title" data-real-only hidden>
+<header class="card-heading marketplace-section__heading">
+<div>
+<span class="card-kicker">COMO PROPRIETÁRIO</span>
+<h2 id="my-equipment-title">Os meus equipamentos</h2>
+<p>Crie um anúncio piloto, publique quando estiver pronto e pause a disponibilidade sempre que necessário.</p>
+</div>
+<button class="button button--primary" type="button" aria-expanded="false" aria-controls="equipment-form-panel" data-equipment-form-toggle>Adicionar equipamento</button>
+</header>
+<div class="role-required" data-owner-role-required hidden>
+<strong>Ative o papel de proprietário para continuar.</strong>
+<p>Esta preferência personaliza a área; a autorização efetiva continua protegida pelas regras da base de dados.</p>
+<a class="button button--secondary button--small" href="#perfil-seguranca">Rever perfil</a>
+</div>
+<div id="equipment-form-panel" class="equipment-form-panel" data-equipment-form-panel hidden>
+<form class="equipment-form" data-equipment-form novalidate>
+<div class="form-section-heading">
+<div><span class="card-kicker">NOVO EQUIPAMENTO</span><h3>Dados do anúncio</h3></div>
+<button class="icon-button" type="button" aria-label="Fechar formulário de equipamento" data-equipment-form-close>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+</button>
+</div>
+<div class="equipment-form-grid">
+<div class="form-field form-field--wide">
+<label for="equipmentType">Categoria e tipo de equipamento</label>
+<select id="equipmentType" name="equipment_type" required>
+<option value="">Selecione uma opção</option>
+<optgroup label="Projetos em casa">
+<option>Berbequins e aparafusadoras profissionais</option><option>Lixadoras</option><option>Serras tico-tico e circulares</option><option>Escadas extensíveis e articuladas</option>
+</optgroup>
+<optgroup label="Limpeza profunda">
+<option>Lavadoras de alta pressão</option><option>Extratoras de estofos e alcatifas</option><option>Máquinas de limpeza a vapor</option>
+</optgroup>
+<optgroup label="Jardim e terreno">
+<option>Roçadoras</option><option>Corta-relvas</option><option>Motoenxadas</option>
+</optgroup>
+<optgroup label="Eventos e lazer">
+<option>Projetores</option><option>Colunas de som potentes</option><option>Tendas grandes</option><option>Kits de campismo com sacos-cama</option><option>Suportes de bicicletas para automóvel</option><option>Malas de tejadilho</option><option>Barras de tejadilho</option><option>Tendas de tejadilho</option>
+</optgroup>
+</select>
+</div>
+<div class="form-field form-field--wide"><label for="equipmentTitle">Título do anúncio</label><input id="equipmentTitle" name="title" type="text" maxlength="100" required placeholder="Ex.: Extratora Kärcher Puzzi 10/1"></div>
+<div class="form-field"><label for="equipmentBrand">Marca</label><input id="equipmentBrand" name="brand" type="text" maxlength="60" required></div>
+<div class="form-field"><label for="equipmentModel">Modelo</label><input id="equipmentModel" name="model" type="text" maxlength="60" required></div>
+<div class="form-field"><label for="equipmentCondition">Estado</label><select id="equipmentCondition" name="condition" required><option value="excellent">Excelente</option><option value="good" selected>Bom</option><option value="fair">Razoável</option><option value="new">Novo</option></select></div>
+<div class="form-field"><label for="equipmentValue">Valor estimado <span>Opcional</span></label><div class="input-suffix"><input id="equipmentValue" name="estimated_value" type="number" min="0" step="0.01" inputmode="decimal"><span>€</span></div></div>
+<div class="image-upload-field form-field--wide">
+<label for="equipmentImage">Fotografia do equipamento</label>
+<div class="image-upload-layout">
+<label class="image-dropzone" for="equipmentImage"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7h22v19H5zM9 20l5-5 4 4 3-3 6 6M20 12h.01"></path></svg><span><strong>Escolher fotografia</strong><small>JPEG, PNG ou WebP · máximo 5 MB</small></span></label>
+<div class="image-preview" data-equipment-image-preview hidden><img alt="Pré-visualização da fotografia selecionada" data-equipment-preview-image><button type="button" class="text-button" data-equipment-image-remove>Remover</button></div>
+</div>
+<input id="equipmentImage" class="visually-hidden" name="image" type="file" accept="image/jpeg,image/png,image/webp" required data-equipment-image>
+<p class="field-error" data-equipment-image-error></p>
+</div>
+<div class="form-field"><label for="equipmentPrice">Preço por dia</label><div class="input-suffix"><input id="equipmentPrice" name="price_per_day" type="number" min="1" step="0.01" inputmode="decimal" required><span>€</span></div></div>
+<div class="form-field"><label for="equipmentDeposit">Caução indicativa</label><div class="input-suffix"><input id="equipmentDeposit" name="deposit_amount" type="number" min="0" step="0.01" inputmode="decimal" required><span>€</span></div><small>Não será bloqueada nem cobrada durante este piloto.</small></div>
+<div class="form-field"><label for="equipmentMinimumDays">Mínimo de dias</label><input id="equipmentMinimumDays" name="minimum_days" type="number" min="1" max="90" step="1" value="1" inputmode="numeric" required></div>
+<div class="form-field"><label for="equipmentMaximumDays">Máximo de dias</label><input id="equipmentMaximumDays" name="maximum_days" type="number" min="1" max="90" step="1" value="7" inputmode="numeric" required></div>
+<div class="form-field"><label for="equipmentCity">Cidade</label><input id="equipmentCity" name="city" type="text" maxlength="80" autocomplete="address-level2" required></div>
+<div class="form-field"><label for="equipmentPostalCode">Código postal</label><input id="equipmentPostalCode" name="postal_code" type="text" pattern="[0-9]{4}-[0-9]{3}" placeholder="1234-567" autocomplete="postal-code" required></div>
+<div class="form-field form-field--wide"><label for="equipmentDescription">Descrição</label><textarea id="equipmentDescription" name="description" rows="4" maxlength="1200" required placeholder="Estado, acessórios incluídos e instruções essenciais de utilização."></textarea></div>
+</div>
+<label class="confirmation-choice"><input type="checkbox" name="ownership_confirmed" required><span>Confirmo que sou proprietário do equipamento, que os dados são verdadeiros e que posso disponibilizá-lo nas condições indicadas.</span></label>
+<p class="form-message" role="status" aria-live="polite" data-equipment-form-message></p>
+<div class="form-actions"><button class="button button--secondary" type="submit" data-equipment-submit="draft">Guardar rascunho</button><button class="button button--primary" type="submit" data-equipment-submit="publish">Publicar no piloto</button></div>
+</form>
+</div>
+<div class="marketplace-list-heading"><h3>Equipamentos guardados</h3><button class="text-button" type="button" data-equipment-reload>Atualizar</button></div>
+<div class="owner-equipment-grid" data-owner-equipment-list></div>
+<div class="empty-state empty-state--compact" data-owner-equipment-empty hidden><p>Ainda não adicionou equipamentos. Pode começar por guardar um rascunho.</p></div>
+<p class="form-message" role="status" aria-live="polite" data-owner-equipment-status></p>
+</section>
+
+<section id="explorar-pedir" class="account-card marketplace-section" aria-labelledby="explore-title" data-real-only hidden>
+<header class="card-heading marketplace-section__heading">
+<div><span class="card-kicker">COMO ARRENDATÁRIO</span><h2 id="explore-title">Explorar e pedir</h2><p>Anúncios piloto de outros utilizadores, sem contactos privados e com valores calculados na base de dados.</p></div>
+<button class="button button--secondary button--small" type="button" data-listings-reload>Atualizar catálogo</button>
+</header>
+<div class="role-required" data-renter-role-required hidden><strong>Ative o papel de arrendatário para continuar.</strong><p>A preferência serve a personalização; cada pedido real continua sujeito às regras e RPCs da base de dados.</p><a class="button button--secondary button--small" href="#perfil-seguranca">Rever perfil</a></div>
+<div class="pilot-listings-grid" data-pilot-listings></div>
+<div class="empty-state" data-pilot-listings-empty hidden><div class="empty-state__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 9h22v17H5zM9 9V5h14v4M5 16h22"></path></svg></div><h3>Sem anúncios disponíveis neste momento</h3><p>Os anúncios próprios nunca aparecem aqui. Volte a tentar quando outro participante publicar equipamento.</p></div>
+<p class="form-message" role="status" aria-live="polite" data-listings-status></p>
 </section>
 
 <section id="perfil-seguranca" class="profile-security-grid" aria-labelledby="profile-section-title" data-real-only hidden>
@@ -407,8 +555,8 @@
 <small id="profileEmailHelp">O email pertence à autenticação e não é guardado no perfil público.</small>
 </div>
 <div class="form-field">
-<label for="profilePhone">Telefone <span>Opcional</span></label>
-<input id="profilePhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" data-profile-phone>
+<label for="profilePhone">Telefone <span>Obrigatório para operações</span></label>
+<input id="profilePhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required data-profile-phone>
 </div>
 <div class="form-field">
 <label for="profileCity">Cidade</label>
@@ -550,6 +698,183 @@
 </section>
 </div>
 </section>
+
+<section id="real-operation-center" class="operation-center operation-center--real" aria-labelledby="real-operation-center-title" tabindex="-1" data-real-operation-center data-real-only data-marketplace-controlled hidden>
+<header class="operation-center__header">
+<div>
+<span class="real-data-tag">OPERAÇÃO REAL · PILOTO</span>
+<p class="operation-id" data-real-detail-reference>Operação</p>
+<h2 id="real-operation-center-title" data-real-detail-equipment></h2>
+</div>
+<div class="operation-center__header-actions">
+<span class="status status--new" data-real-detail-status></span>
+<button class="icon-button" type="button" aria-label="Fechar centro da operação" data-real-operation-close>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+</button>
+</div>
+</header>
+<section class="timeline-section" aria-labelledby="real-timeline-title">
+<div class="timeline-section__heading"><h3 id="real-timeline-title">Progresso operacional</h3><span data-real-terminal-state></span></div>
+<ol class="operation-timeline operation-timeline--pilot" data-real-timeline>
+<li><span>1</span><strong>Pedido</strong><small>Por iniciar</small></li>
+<li><span>2</span><strong>Confirmação</strong><small>Por iniciar</small></li>
+<li><span>3</span><strong>Utilização</strong><small>Por iniciar</small></li>
+<li><span>4</span><strong>Conclusão</strong><small>Por iniciar</small></li>
+</ol>
+</section>
+<div class="operation-center__grid">
+<section class="next-action-panel" aria-labelledby="real-next-action-title">
+<span class="card-kicker">AÇÕES DISPONÍVEIS</span>
+<h3 id="real-next-action-title" data-real-detail-action-title>Consultar operação</h3>
+<p data-real-detail-action-copy>As ações dependem do seu papel e do estado atual.</p>
+<div class="rental-response-field" data-real-owner-response hidden>
+<label for="ownerResponseMessage">Mensagem opcional ao arrendatário</label>
+<textarea id="ownerResponseMessage" rows="3" maxlength="1000" data-owner-response-message></textarea>
+</div>
+<div class="button-row" data-real-detail-actions></div>
+<p class="form-message" role="status" aria-live="polite" data-real-operation-message></p>
+</section>
+<section class="detail-panel" aria-labelledby="real-essential-title">
+<h3 id="real-essential-title">Informação essencial</h3>
+<dl class="detail-list">
+<div><dt>Papel</dt><dd data-real-detail-role></dd></div>
+<div><dt>Datas</dt><dd data-real-detail-dates></dd></div>
+<div><dt>Local</dt><dd data-real-detail-location></dd></div>
+<div><dt>Contraparte</dt><dd data-real-detail-counterparty></dd></div>
+<div><dt>Total calculado</dt><dd data-real-detail-total></dd></div>
+<div><dt>Caução indicativa</dt><dd data-real-detail-deposit></dd></div>
+</dl>
+</section>
+<section class="detail-panel protection-panel" aria-labelledby="pilot-limits-title">
+<h3 id="pilot-limits-title">Limites deste piloto</h3>
+<ul class="pilot-limit-list">
+<li><span aria-hidden="true">—</span><div><strong>Pagamento</strong><small>Não processado neste piloto</small></div></li>
+<li><span aria-hidden="true">—</span><div><strong>Caução</strong><small>Não bloqueada neste piloto</small></div></li>
+<li><span aria-hidden="true">—</span><div><strong>Contrato</strong><small>Ainda sem validade jurídica</small></div></li>
+<li><span aria-hidden="true">—</span><div><strong>Seguro</strong><small>Ainda não ativado</small></div></li>
+</ul>
+</section>
+<section class="detail-panel rental-contact-panel" aria-labelledby="real-contact-title" data-real-contact hidden>
+<h3 id="real-contact-title">Contacto após confirmação</h3>
+<p class="rental-contact-panel__name" data-real-contact-name></p>
+<a class="rental-contact-panel__phone" href="#" data-real-contact-phone></a>
+<small>Este contacto é disponibilizado apenas após a confirmação, para combinar localização, manuseamento e suporte durante a operação.</small>
+</section>
+<section class="detail-panel communication-panel" aria-labelledby="real-communication-title">
+<h3 id="real-communication-title">Mensagens da operação</h3>
+<div class="operation-messages">
+<div><strong>Pedido</strong><p data-real-request-message>Sem mensagem.</p></div>
+<div><strong>Resposta do proprietário</strong><p data-real-response-message>Ainda sem resposta.</p></div>
+</div>
+<div class="rental-chat">
+<div class="rental-chat__heading">
+<div><strong>Conversa privada</strong><small>Visível apenas para os dois participantes.</small></div>
+<button class="text-button" type="button" data-chat-refresh>Atualizar</button>
+</div>
+<div class="rental-chat__history" role="log" aria-live="polite" aria-label="Histórico da conversa" data-chat-history>
+<p class="rental-chat__empty">Ainda não existem mensagens.</p>
+</div>
+<form class="rental-chat__form" data-chat-form>
+<label for="rentalChatMessage">Nova mensagem</label>
+<textarea id="rentalChatMessage" rows="3" maxlength="1000" required data-chat-message placeholder="Escreva sem partilhar contactos pessoais."></textarea>
+<div class="rental-chat__actions">
+<small>Máximo de 1000 caracteres. O histórico é imutável.</small>
+<button class="button button--primary button--small" type="submit">Enviar</button>
+</div>
+</form>
+<p class="inline-status rental-chat__status" role="status" aria-live="polite" data-chat-status></p>
+</div>
+</section>
+</div>
+<section class="condition-evidence" aria-labelledby="condition-evidence-title" data-condition-evidence>
+<div class="condition-evidence__heading">
+<div>
+<span class="card-kicker">EVIDÊNCIA BILATERAL</span>
+<h3 id="condition-evidence-title">Estado do equipamento</h3>
+</div>
+<p>As fotografias são evidência de apoio e não substituem uma perícia. Pagamento, caução, contrato e seguro continuam sem processamento neste piloto.</p>
+</div>
+<section class="photo-dossier" aria-labelledby="photo-dossier-title" data-photo-dossier>
+<header class="photo-dossier__heading">
+<div>
+<span class="card-kicker">REGISTO INTERNO DA OPERAÇÃO</span>
+<h4 id="photo-dossier-title">Comparação antes e depois</h4>
+</div>
+<p>Visível apenas aos dois participantes autenticados da <strong data-photo-dossier-reference>operação atual</strong>. Serve para acompanhamento e eventual resolução de conflitos; os ficheiros privados usam acesso temporário.</p>
+</header>
+<div class="photo-dossier__matrix" role="table" aria-label="Comparação fotográfica por participante e fase">
+<div class="photo-dossier__row photo-dossier__row--head" role="row">
+<span aria-hidden="true"></span>
+<strong role="columnheader">Antes da utilização <small>Recolha</small></strong>
+<strong role="columnheader">Depois da utilização <small>Devolução</small></strong>
+</div>
+<div class="photo-dossier__row" role="row">
+<strong class="photo-dossier__participant" role="rowheader">Proprietário</strong>
+<article class="photo-dossier__cell" role="cell" data-photo-dossier-cell="owner-handover"></article>
+<article class="photo-dossier__cell" role="cell" data-photo-dossier-cell="owner-return"></article>
+</div>
+<div class="photo-dossier__row" role="row">
+<strong class="photo-dossier__participant" role="rowheader">Arrendatário</strong>
+<article class="photo-dossier__cell" role="cell" data-photo-dossier-cell="renter-handover"></article>
+<article class="photo-dossier__cell" role="cell" data-photo-dossier-cell="renter-return"></article>
+</div>
+</div>
+</section>
+<div class="condition-evidence__grid">
+<article class="condition-card" data-condition-card="handover">
+<header class="condition-card__header">
+<div><span class="condition-card__phase">RECOLHA</span><h4>Estado inicial</h4></div>
+<span class="condition-progress" data-condition-progress="handover">0/2 confirmações</span>
+</header>
+<p class="condition-card__copy">Proprietário e arrendatário registam separadamente o estado no momento da recolha.</p>
+<div class="condition-report-list" data-condition-reports="handover"></div>
+<form class="condition-form" data-condition-form="handover">
+<div class="condition-upload">
+<label for="handoverPhotos">Fotografias <span>obrigatórias</span></label>
+<input id="handoverPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple required data-condition-files="handover">
+<small>1 a 5 ficheiros JPEG, PNG ou WebP, até 5 MB cada.</small>
+<div class="condition-file-preview" data-condition-preview="handover" hidden></div>
+</div>
+<label class="condition-note" for="handoverNote">Nota opcional
+<textarea id="handoverNote" rows="3" maxlength="1000" data-condition-note="handover" placeholder="Registe marcas, acessórios entregues ou observações úteis."></textarea>
+</label>
+<label class="confirmation-choice condition-confirmation">
+<input type="checkbox" required data-condition-confirm="handover">
+<span>Confirmo que estas fotografias representam o estado observado por mim na recolha.</span>
+</label>
+<button class="button button--primary button--wide" type="submit">Confirmar estado inicial</button>
+<p class="form-message" role="status" aria-live="polite" data-condition-status="handover"></p>
+</form>
+</article>
+<article class="condition-card" data-condition-card="return" hidden>
+<header class="condition-card__header">
+<div><span class="condition-card__phase">DEVOLUÇÃO</span><h4>Estado final</h4></div>
+<span class="condition-progress" data-condition-progress="return">0/2 confirmações</span>
+</header>
+<p class="condition-card__copy">Cada participante confirma o estado final depois da devolução do equipamento.</p>
+<div class="condition-report-list" data-condition-reports="return"></div>
+<form class="condition-form" data-condition-form="return">
+<div class="condition-upload">
+<label for="returnPhotos">Fotografias <span>obrigatórias</span></label>
+<input id="returnPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple required data-condition-files="return">
+<small>1 a 5 ficheiros JPEG, PNG ou WebP, até 5 MB cada.</small>
+<div class="condition-file-preview" data-condition-preview="return" hidden></div>
+</div>
+<label class="condition-note" for="returnNote">Nota opcional
+<textarea id="returnNote" rows="3" maxlength="1000" data-condition-note="return" placeholder="Registe o estado final ou diferenças observadas."></textarea>
+</label>
+<label class="confirmation-choice condition-confirmation">
+<input type="checkbox" required data-condition-confirm="return">
+<span>Confirmo que estas fotografias representam o estado observado por mim na devolução.</span>
+</label>
+<button class="button button--primary button--wide" type="submit">Confirmar estado final</button>
+<p class="form-message" role="status" aria-live="polite" data-condition-status="return"></p>
+</form>
+</article>
+</div>
+<p class="inline-status" role="status" aria-live="polite" data-condition-system-status></p>
+</section>
+</section>
 </main>
 </div>
 
@@ -560,5 +885,6 @@
 </div>
 
 <script type="module" src="js/account.js"></script>
+<script type="module" src="js/marketplace.js?v=20260824-photo-dossier"></script>
 </body>
 </html>

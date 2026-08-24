@@ -175,7 +175,7 @@ It is the authority for visual identity and layout direction, not for the scope 
 
 The personal area is called “Minha CleanShare”. One account can act as both equipment owner and renter; these are roles within the same profile, not separate account types.
 
-The main navigation covers the overview, operations, owned equipment, favourites and requests, messages, payments, documents, profile and security, and help. The experience is organised around operations, pending actions and a clear explanation of who must do what next.
+The main navigation covers the overview, operations, owned equipment, exploration and rental requests, messages, payments, documents, profile and security, and help. The experience is organised around operations, pending actions and a clear explanation of who must do what next.
 
 The normal route, `/area-utilizador.html`, is the real personal area. It requires a Supabase session, reads the authenticated user's own profile and must never fall back to fictitious content after a session or profile error. The route `/area-utilizador.html?demo=1` is the explicit demonstration mode and preserves labelled example operations, values and interactions.
 
@@ -184,6 +184,20 @@ CMD remains the future identity-verification requirement for operating on CleanS
 Owner and renter preferences may be stored in `auth.user_metadata` to personalise the interface. They are not authorization claims and must never replace database-backed permissions or RLS in future operational flows. The same limitation applies to notification preferences.
 
 The interface must not imply that payments, deposits, contracts, insurance or other legal and financial actions have been executed when the real integrations are not connected. User autonomy is limited to safe interface previews and supported profile updates; consequential actions require the future verification, transaction and database services.
+
+MVP 3 enables the first real pilot operation between two distinct authenticated accounts: one account publishes an eligible equipment listing and another account requests it. The pilot records and exposes only the operational request, owner response and status transitions supported by the database. It does not process payments, block deposits, create a legally valid contract, activate insurance or require completed CMD while the temporary pilot exception is enabled.
+
+Rental creation, price and deposit snapshots, inclusive-day totals, conflict checks and status transitions are authoritative RPC responsibilities. Clients must never insert rentals directly or provide trusted totals. The participant listing may expose the counterpart's display name because both users already share an operation. Telephone is disclosed only after confirmation and only while the operation is confirmed, in progress, completed or disputed; email and full address remain private.
+
+Participants may use the private operation chat from the requested state and throughout supported operational states. Messages are trimmed, limited to 1000 characters, immutable and visible only to the owner and renter of that rental. Chat must never be used to expose participant contacts before the database permits the dedicated post-confirmation contact field.
+
+Handover and return use bilateral condition reports. Each participant uploads their own private photographic evidence and explicitly confirms only their own observation. The database moves a confirmed rental to `in_progress` only after two handover confirmations, and moves it to `completed` only after two return confirmations. Evidence files use participant-scoped private paths and short-lived signed URLs. Confirmed reports and messages are audit records; deleting a rental with those records is deliberately blocked rather than cascaded.
+
+Photographs are supporting evidence, not an expert inspection. This workflow does not change the pilot limits: payment is not processed, deposit is not blocked, contract has no legal validity, insurance is not activated and CMD is not mandatory while the explicit pilot exception is enabled.
+
+The before/after photographic dossier is an internal operation record visible only to the two authenticated rental participants. It must never appear in listings, catalog pages, public profiles or the landing page. Photographs support operational follow-up and potential conflict analysis, but do not decide a disagreement. A future CleanShare support/backoffice flow must intervene when participants disagree; dispute actions, states, promises and resolution automation are outside the current MVP.
+
+Role preferences in user metadata continue to personalise which owner and renter tools are shown. They do not authorize publication, requests or transitions: database ownership checks, authenticated identity, RLS and security-definer RPC validation remain authoritative. Demo mode remains isolated at `?demo=1` and must not call or resemble the real pilot workflow.
 
 ---
 

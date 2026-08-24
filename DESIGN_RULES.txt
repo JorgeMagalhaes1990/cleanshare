@@ -67,6 +67,19 @@ Creating, removing or materially restructuring sections is allowed only when the
 - Show the pilot exception prominently and in plain language while it is enabled. Use labels such as “Acesso piloto” or “Piloto autorizado”; never present pilot access as verified identity or change the displayed CMD status.
 - Keep the pilot exception controlled by one clearly named, reversible configuration so it can be disabled before public launch.
 - Treat owner/renter and notification values in user metadata as interface preferences only. Do not design them as authorization, entitlement or verification signals; future authorization must come from database rules and RLS.
+- In MVP 3, keep real owner equipment, pilot exploration and participant operations inside the same “Minha CleanShare” experience. Use progressive disclosure for the equipment form and clear empty, loading, retry and unavailable-database states.
+- Describe the pilot limits beside every real operation: no processed payment, no blocked deposit, no legally valid contract and no active insurance. Do not mark any of these stages as complete in the real timeline.
+- Keep CMD's temporary pilot exception visible and separate from verification state. A real operation may proceed during the pilot only through the central reversible exception; never label that access as verified identity.
+- Treat RPC results and database ownership checks as authoritative for prices, totals, conflicts and transitions. Interface role preferences may reveal relevant tools but must never be represented as authorization.
+- Do not reveal private counterpart contacts in listings or pending requests. Before a request, show no owner identity. After a request, show the participant display name; show telephone only when the authoritative operation response permits it after confirmation. Never show counterpart email or full address.
+- Keep operation chat private, readable and clearly associated with its author and time. Provide manual refresh and accessible send feedback; do not imply that message content is editable or public.
+- Present handover and return as two separate bilateral evidence cards. Show progress as text (`0/2`, `1/2`, `2/2`), require an explicit confirmation and at least one photograph, and make a participant's submitted report visibly final.
+- Use private condition photographs only through short-lived signed URLs. Never derive a public URL for operational evidence or expose raw storage paths in visible UI.
+- State that photographic evidence supports the operation but does not replace expert inspection. Bilateral evidence must not imply that payment, deposit, contract or insurance integrations are active.
+- Keep the before/after dossier strictly inside the authenticated operation centre. Never reproduce it in a listing, catalog, public profile or landing page.
+- Label the dossier as an internal operation record and explain that evidence supports follow-up and potential conflict analysis without deciding the outcome.
+- Treat CleanShare intervention in disagreements as a future support/backoffice capability. Until that workflow is explicitly implemented, show no dispute button, state, SLA or automated-resolution promise.
+- Preserve the complete `?demo=1` prototype independently from real data. Real operational failures or an unapplied migration must not break profile access or reveal demonstration records.
 
 ---
 

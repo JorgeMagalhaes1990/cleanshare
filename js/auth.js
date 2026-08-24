@@ -1,7 +1,4 @@
-import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
-
-const SUPABASE_CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const PLACEHOLDER_KEY = "__SUPABASE_PUBLISHABLE_KEY__";
+import { getSupabaseClient, isSupabaseConfigured } from "./supabase-client.js";
 const queryParameters = new URLSearchParams(window.location.search);
 const requestedAuthMode = ["login", "register"].includes(queryParameters.get("auth"))
     ? queryParameters.get("auth")
@@ -25,11 +22,7 @@ const sessionLabels = document.querySelectorAll("[data-session-label]");
 const logoutButtons = document.querySelectorAll("[data-auth-logout]");
 const submitButtons = document.querySelectorAll("[data-auth-submit]");
 
-const configurationReady = Boolean(
-    SUPABASE_URL
-    && SUPABASE_PUBLISHABLE_KEY
-    && SUPABASE_PUBLISHABLE_KEY !== PLACEHOLDER_KEY
-);
+const configurationReady = isSupabaseConfigured;
 
 let supabase = null;
 let lastTrigger = null;
@@ -174,14 +167,7 @@ async function initializeSupabase() {
     }
 
     try {
-        const { createClient } = await import(SUPABASE_CDN);
-        supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-            auth: {
-                persistSession: true,
-                autoRefreshToken: true,
-                detectSessionInUrl: true
-            }
-        });
+        supabase = await getSupabaseClient();
 
         const { data, error } = await supabase.auth.getSession();
         if (error) throw error;

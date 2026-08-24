@@ -67,3 +67,16 @@ As decisões de produto, conteúdo e implementação devem seguir, por ordem:
 4. A `valuation_matrix` e as migrações em `supabase/migrations/`, incluindo `20260820000000_reorient_catalog.sql` e `20260821000000_expand_events_leisure.sql`.
 
 O Blueprint define a orientação estratégica; o contexto e as regras mantêm a implementação coerente; a matriz e as migrações formalizam o catálogo e os critérios no modelo de dados.
+
+## MVP 3 — operação piloto
+
+O MVP 3 acrescenta publicação de equipamentos, exploração de anúncios e o primeiro pedido real entre duas contas distintas. Esta fase não processa pagamentos, não bloqueia cauções, não cria contratos com validade jurídica, não ativa seguro e mantém a exceção temporária de CMD durante o piloto.
+
+Antes de testar o fluxo real com duas contas, aplique as migrações por esta ordem no Supabase SQL Editor:
+
+1. `supabase/migrations/20260824000000_pilot_rental_workflow.sql` — RPCs autoritativas de aluguer/anúncios e bucket `equipment-images`.
+2. `supabase/migrations/20260824010000_rental_chat_condition_flow.sql` — chat privado dos participantes, telefone apenas após confirmação, evidência bilateral de recolha/devolução e bucket privado `rental-condition-photos`.
+
+A segunda migração mantém mensagens e evidência confirmada imutáveis, usa URLs assinadas de curta duração para fotografias privadas e só avança `confirmed → in_progress → completed` depois de ambos os participantes confirmarem a fase respetiva. Email e morada continuam privados; o telefone só é devolvido em estados confirmados ou operacionais posteriores. Sem as migrações, a área pessoal mantém o acesso ao perfil e apresenta um aviso honesto de preparação da base de dados.
+
+O dossier fotográfico antes/depois é um registo interno da operação, acessível apenas aos dois participantes autenticados. As fotografias apoiam o acompanhamento e uma eventual análise, mas não decidem por si só qualquer divergência. A intervenção interna da CleanShare em desacordos fica prevista para uma fase futura de suporte/backoffice; este MVP não disponibiliza botão, estado ou fluxo funcional de disputa.

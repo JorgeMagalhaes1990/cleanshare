@@ -1,7 +1,4 @@
-import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./supabase-config.js";
-
-const SUPABASE_CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const PLACEHOLDER_KEY = "__SUPABASE_PUBLISHABLE_KEY__";
+import { getSupabaseClient, isSupabaseConfigured } from "./supabase-client.js";
 const PILOT_MODE_ALLOWS_UNVERIFIED_CMD = true;
 const DEMO_MODE = new URLSearchParams(window.location.search).get("demo") === "1";
 const DEFAULT_DEMO_MESSAGE = "Funcionalidade disponível quando a operação estiver ligada aos dados reais.";
@@ -198,6 +195,22 @@ function getAccessState(profile = currentProfile) {
     return { allowed: false, label: "CMD obrigatória", copy: "Conclua a autenticação CMD antes de realizar operações." };
 }
 
+function dispatchAccountState() {
+    if (!currentUser) return;
+    window.dispatchEvent(new CustomEvent("cleanshare:account-ready", {
+        detail: {
+            userId: currentUser.id,
+            roles: [...currentRoles],
+            readiness: getReadiness(),
+            canOperate: canOperate(),
+            profileDefaults: {
+                city: String(currentProfile?.city || "").trim(),
+                postalCode: String(currentProfile?.postal_code || "").trim()
+            }
+        }
+    }));
+}
+
 function showToast(message = DEFAULT_DEMO_MESSAGE) {
     if (!toast || !toastMessage) return;
     window.clearTimeout(toastTimer);
@@ -302,6 +315,7 @@ function filterRealByRole(role) {
     if (role !== "all" && !currentRoles.includes(role)) return;
     setRoleFilterState(role);
     updateFinance(realFinanceByRole[role] || realFinanceByRole.all);
+    window.dispatchEvent(new CustomEvent("cleanshare:role-filter", { detail: { role } }));
 }
 
 function filterByRole(role) {
@@ -462,7 +476,7 @@ function updateRoleButtons() {
 
 function applyRealState() {
     showUserControls(getRealDisplayName(), false);
-    document.querySelectorAll("[data-real-only]").forEach((element) => { element.hidden = false; });
+    document.querySelectorAll("[data-real-only]:not([data-marketplace-controlled])").forEach((element) => { element.hidden = false; });
     setText("[data-finance-badge]", "DADOS REAIS ATUAIS");
     fillProfileForm();
     updateRoleButtons();
@@ -472,6 +486,7 @@ function applyRealState() {
     filterRealByRole("all");
     setHidden(pilotNotice, !PILOT_MODE_ALLOWS_UNVERIFIED_CMD);
     showAccessState("app");
+    dispatchAccountState();
 }
 
 async function fetchRealState() {
@@ -517,16 +532,12 @@ async function initializeRealMode() {
     setHidden(pilotNotice, true);
     setHidden(userControls, true);
     showAccessState("loading");
-    const configurationReady = Boolean(SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY && SUPABASE_PUBLISHABLE_KEY !== PLACEHOLDER_KEY);
-    if (!configurationReady) {
+    if (!isSupabaseConfigured) {
         showAccessState("error", "A área pessoal ainda não está ligada ao serviço de autenticação. Tente novamente mais tarde.");
         return;
     }
     try {
-        const { createClient } = await import(SUPABASE_CDN);
-        supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-            auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false }
-        });
+        supabase = await getSupabaseClient();
         const { data, error } = await supabase.auth.getSession();
         if (error) throw error;
         if (!data.session?.user) {
