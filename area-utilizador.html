@@ -507,7 +507,7 @@
 <div class="form-field"><label for="equipmentMinimumDays">Mínimo de dias</label><input id="equipmentMinimumDays" name="minimum_days" type="number" min="1" max="90" step="1" value="1" inputmode="numeric" required></div>
 <div class="form-field"><label for="equipmentMaximumDays">Máximo de dias</label><input id="equipmentMaximumDays" name="maximum_days" type="number" min="1" max="90" step="1" value="7" inputmode="numeric" required></div>
 <div class="form-field"><label for="equipmentCity">Cidade</label><input id="equipmentCity" name="city" type="text" maxlength="80" autocomplete="address-level2" required></div>
-<div class="form-field"><label for="equipmentPostalCode">Código postal</label><input id="equipmentPostalCode" name="postal_code" type="text" pattern="[0-9]{4}-[0-9]{3}" placeholder="1234-567" autocomplete="postal-code" required></div>
+<div class="form-field"><label for="equipmentPostalCode">Código postal</label><input id="equipmentPostalCode" name="postal_code" type="text" inputmode="numeric" maxlength="7" pattern="[0-9]{7}" placeholder="1234567" autocomplete="postal-code" aria-describedby="equipmentPostalCodeHelp" required><small id="equipmentPostalCodeHelp">Introduza os 7 algarismos, sem hífen.</small></div>
 <div class="form-field form-field--wide"><label for="equipmentDescription">Descrição</label><textarea id="equipmentDescription" name="description" rows="4" maxlength="1200" required placeholder="Estado, acessórios incluídos e instruções essenciais de utilização."></textarea></div>
 </div>
 <label class="confirmation-choice"><input type="checkbox" name="ownership_confirmed" required><span>Confirmo que sou proprietário do equipamento, que os dados são verdadeiros e que posso disponibilizá-lo nas condições indicadas.</span></label>
@@ -564,8 +564,8 @@
 </div>
 <div class="form-field">
 <label for="profilePostalCode">Código postal</label>
-<input id="profilePostalCode" name="postal_code" type="text" autocomplete="postal-code" inputmode="numeric" placeholder="1234-567" pattern="[0-9]{4}-[0-9]{3}" aria-describedby="postalCodeHelp" data-profile-postal-code>
-<small id="postalCodeHelp">Formato português: 1234-567.</small>
+<input id="profilePostalCode" name="postal_code" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="7" placeholder="1234567" pattern="[0-9]{7}" aria-describedby="postalCodeHelp" data-profile-postal-code>
+<small id="postalCodeHelp">Introduza os 7 algarismos, sem hífen.</small>
 </div>
 </div>
 

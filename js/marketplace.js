@@ -60,6 +60,7 @@ const conditionEvidence = document.querySelector("[data-condition-evidence]");
 const conditionSystemStatus = document.querySelector("[data-condition-system-status]");
 const conditionForms = [...document.querySelectorAll("[data-condition-form]")];
 const conditionFileInputs = [...document.querySelectorAll("[data-condition-files]")];
+const equipmentPostalCodeInput = document.querySelector("#equipmentPostalCode");
 
 let supabase = null;
 let currentUser = null;
@@ -77,6 +78,10 @@ let rentalMessages = [];
 let conditionReports = [];
 let conditionProgressByRental = new Map();
 const conditionPreviewUrls = new Map();
+
+function normalizePostalCode(value) {
+    return String(value || "").replace(/\D/g, "").slice(0, 7);
+}
 
 function setHidden(element, hidden) {
     if (element) element.hidden = hidden;
@@ -802,7 +807,7 @@ async function saveEquipment(event) {
             minimum_days: minimumDays,
             maximum_days: maximumDays,
             city: String(formData.get("city")).trim(),
-            postal_code: String(formData.get("postal_code")).trim(),
+            postal_code: normalizePostalCode(formData.get("postal_code")),
             description: String(formData.get("description")).trim(),
             status: mode === "publish" ? "active" : "draft"
         };
@@ -1503,9 +1508,10 @@ async function loadMarketplace() {
     if (!supabase || !currentUser || !accountState) return;
     renderRoleAccess();
     const city = document.querySelector("#equipmentCity");
-    const postalCode = document.querySelector("#equipmentPostalCode");
     if (city && !city.value) city.value = accountState.profileDefaults?.city || "";
-    if (postalCode && !postalCode.value) postalCode.value = accountState.profileDefaults?.postalCode || "";
+    if (equipmentPostalCodeInput && !equipmentPostalCodeInput.value) {
+        equipmentPostalCodeInput.value = normalizePostalCode(accountState.profileDefaults?.postalCode);
+    }
     await Promise.all([loadOwnEquipment(), loadOperationalData()]);
 }
 
@@ -1528,7 +1534,7 @@ async function buildFallbackAccountState(user) {
         roles,
         readiness,
         canOperate: true,
-        profileDefaults: { city: profile?.city || "", postalCode: profile?.postal_code || "" }
+        profileDefaults: { city: profile?.city || "", postalCode: normalizePostalCode(profile?.postal_code) }
     };
 }
 
@@ -1569,6 +1575,9 @@ window.addEventListener("cleanshare:role-filter", (event) => {
 equipmentFormToggle?.addEventListener("click", () => setEquipmentFormOpen(equipmentFormPanel.hidden));
 equipmentFormClose?.addEventListener("click", () => setEquipmentFormOpen(false));
 equipmentForm?.addEventListener("submit", saveEquipment);
+equipmentPostalCodeInput?.addEventListener("input", () => {
+    equipmentPostalCodeInput.value = normalizePostalCode(equipmentPostalCodeInput.value);
+});
 equipmentImageInput?.addEventListener("change", updateImagePreview);
 equipmentImageRemove?.addEventListener("click", () => resetImagePreview());
 equipmentReload?.addEventListener("click", loadOwnEquipment);

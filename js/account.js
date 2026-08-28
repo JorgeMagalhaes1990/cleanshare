@@ -40,6 +40,7 @@ const passwordResetButton = document.querySelector("[data-password-reset]");
 const profileRetryButton = document.querySelector("[data-profile-retry]");
 const profileNavigation = document.querySelector("[data-profile-nav]");
 const skipLink = document.querySelector(".skip-link");
+const profilePostalCodeInput = document.querySelector("[data-profile-postal-code]");
 
 let supabase = null;
 let currentUser = null;
@@ -48,6 +49,10 @@ let currentRoles = [];
 let currentNotifications = { ...DEFAULT_NOTIFICATIONS };
 let toastTimer = null;
 let lastOperationTrigger = null;
+
+function normalizePostalCode(value) {
+    return String(value || "").replace(/\D/g, "").slice(0, 7);
+}
 
 const financeByRole = {
     all: {
@@ -205,7 +210,7 @@ function dispatchAccountState() {
             canOperate: canOperate(),
             profileDefaults: {
                 city: String(currentProfile?.city || "").trim(),
-                postalCode: String(currentProfile?.postal_code || "").trim()
+                postalCode: normalizePostalCode(currentProfile?.postal_code)
             }
         }
     }));
@@ -450,7 +455,7 @@ function fillProfileForm() {
         "[data-profile-email]": currentUser?.email || "",
         "[data-profile-phone]": currentProfile?.phone || "",
         "[data-profile-city]": currentProfile?.city || "",
-        "[data-profile-postal-code]": currentProfile?.postal_code || ""
+        "[data-profile-postal-code]": normalizePostalCode(currentProfile?.postal_code)
     };
     Object.entries(fields).forEach(([selector, value]) => {
         const field = document.querySelector(selector);
@@ -579,7 +584,7 @@ function getFormState() {
             full_name: String(formData.get("full_name") || "").trim(),
             phone: String(formData.get("phone") || "").trim() || null,
             city: String(formData.get("city") || "").trim() || null,
-            postal_code: String(formData.get("postal_code") || "").trim() || null
+            postal_code: normalizePostalCode(formData.get("postal_code")) || null
         },
         roles: normalizeRoles(formData.getAll("roles")),
         notifications: {
@@ -592,8 +597,8 @@ function getFormState() {
 
 function validateProfileForm(state) {
     if (!profileForm.reportValidity()) return false;
-    if (state.profile.postal_code && !/^\d{4}-\d{3}$/.test(state.profile.postal_code)) {
-        setProfileMessage("Use o formato de código postal 1234-567.", "error");
+    if (state.profile.postal_code && !/^\d{7}$/.test(state.profile.postal_code)) {
+        setProfileMessage("Introduza os 7 algarismos do código postal, sem hífen.", "error");
         document.querySelector("[data-profile-postal-code]")?.focus();
         return false;
     }
@@ -709,6 +714,9 @@ profileNavigation?.addEventListener("click", (event) => {
 });
 
 profileForm?.addEventListener("submit", saveProfile);
+profilePostalCodeInput?.addEventListener("input", () => {
+    profilePostalCodeInput.value = normalizePostalCode(profilePostalCodeInput.value);
+});
 passwordResetButton?.addEventListener("click", requestPasswordReset);
 profileRetryButton?.addEventListener("click", initializeRealMode);
 realLogout?.addEventListener("click", logoutRealSession);
