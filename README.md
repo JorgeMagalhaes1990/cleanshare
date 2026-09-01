@@ -77,7 +77,14 @@ Antes de testar o fluxo real com duas contas, aplique as migrações por esta or
 1. `supabase/migrations/20260824000000_pilot_rental_workflow.sql` — RPCs autoritativas de aluguer/anúncios e bucket `equipment-images`.
 2. `supabase/migrations/20260824010000_rental_chat_condition_flow.sql` — chat privado dos participantes, telefone apenas após confirmação, evidência bilateral de recolha/devolução e bucket privado `rental-condition-photos`.
 3. `supabase/migrations/20260901000000_return_confirmation_deadline.sql` — prazo máximo de 24 horas após a primeira confirmação da devolução e conclusão automática quando falta a resposta da contraparte.
+4. `supabase/migrations/20260901010000_operational_email_outbox.sql` — fila transacional idempotente e eventos essenciais de email, inicialmente desativados até o fornecedor e o domínio estarem validados.
 
 A segunda migração mantém mensagens e evidência confirmada imutáveis e usa URLs assinadas de curta duração para fotografias privadas. A terceira conserva a confirmação bilateral imediata, mas limita a espera na devolução: a primeira confirmação inicia 24 horas e, sem a segunda, a operação é concluída automaticamente quando um participante atualiza a área pessoal. No piloto este fecho não movimenta dinheiro; a integração futura de pagamentos e cauções deverá consumir o evento de conclusão. Email e morada continuam privados; o telefone só é devolvido em estados confirmados ou operacionais posteriores. Sem as migrações, a área pessoal mantém o acesso ao perfil e apresenta um aviso honesto de preparação da base de dados.
 
 O dossier fotográfico antes/depois é um registo interno da operação, acessível apenas aos dois participantes autenticados. As fotografias apoiam o acompanhamento e uma eventual análise, mas não decidem por si só qualquer divergência. A intervenção interna da CleanShare em desacordos fica prevista para uma fase futura de suporte/backoffice; este MVP não disponibiliza botão, estado ou fluxo funcional de disputa.
+
+## Emails operacionais
+
+A CleanShare usa uma fila própria na base de dados e a Edge Function `supabase/functions/send-operational-email`. Só são previstos emails quando o destinatário precisa de agir ou quando a operação termina. Não existem notificações por mensagem de chat, fotografia ou simples consulta.
+
+Resend é o fornecedor inicial recomendado; Amazon SES em `eu-west-1` está suportado pelo mesmo adaptador para uma futura exigência regional. A escolha é controlada por `EMAIL_PROVIDER`, e os modelos, a deduplicação e as tentativas permanecem independentes do fornecedor. Consulte o README da função para a ordem segura de ativação. Nunca ative a fila antes de verificar o domínio de envio, configurar os segredos, criar o webhook, preparar as novas tentativas e concluir um teste controlado com as duas contas piloto.

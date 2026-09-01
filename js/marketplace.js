@@ -1,5 +1,6 @@
 import { getSupabaseClient, isSupabaseConfigured } from "./supabase-client.js";
 const DEMO_MODE = new URLSearchParams(window.location.search).get("demo") === "1";
+const REQUESTED_OPERATION_ID = new URLSearchParams(window.location.search).get("operation");
 const IMAGE_BUCKET = "equipment-images";
 const CONDITION_IMAGE_BUCKET = "rental-condition-photos";
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
@@ -81,6 +82,7 @@ let conditionProgressByRental = new Map();
 const conditionPreviewUrls = new Map();
 let returnDeadlineDisplayTimer = null;
 let returnDeadlineFinalizeTimer = null;
+let requestedOperationHandled = false;
 
 function normalizePostalCode(value) {
     return String(value || "").replace(/\D/g, "").slice(0, 7);
@@ -1610,6 +1612,12 @@ async function loadOperationalData() {
     renderOperations();
     renderListings();
     renderRoleAccess();
+    if (!requestedOperationHandled && REQUESTED_OPERATION_ID) {
+        requestedOperationHandled = true;
+        if (rentals.some((rental) => rental.rental_id === REQUESTED_OPERATION_ID)) {
+            openRealOperation(REQUESTED_OPERATION_ID);
+        }
+    }
 }
 
 async function loadMarketplace() {
