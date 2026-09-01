@@ -4,6 +4,7 @@ const IMAGE_BUCKET = "equipment-images";
 const CONDITION_IMAGE_BUCKET = "rental-condition-photos";
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 const MAX_CONDITION_PHOTOS = 5;
+const RETURN_CONFIRMATION_WINDOW_MS = 24 * 60 * 60 * 1000;
 const IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const ALLOWED_ROLES = ["owner", "renter"];
 const ACTIVE_RENTAL_STATUSES = ["requested", "confirmed", "in_progress"];
@@ -78,6 +79,8 @@ let rentalMessages = [];
 let conditionReports = [];
 let conditionProgressByRental = new Map();
 const conditionPreviewUrls = new Map();
+let returnDeadlineDisplayTimer = null;
+let returnDeadlineFinalizeTimer = null;
 
 function normalizePostalCode(value) {
     return String(value || "").replace(/\D/g, "").slice(0, 7);
@@ -134,6 +137,54 @@ function formatDateTime(value) {
         hour: "2-digit",
         minute: "2-digit"
     }).format(date);
+}
+
+function returnConfirmationDeadline(reports) {
+    const firstReturnReport = (reports || [])
+        .filter((report) => report.phase === "return" && report.confirmed_at)
+        .sort((a, b) => new Date(a.confirmed_at) - new Date(b.confirmed_at))[0];
+    if (!firstReturnReport) return null;
+    const startedAt = new Date(firstReturnReport.confirmed_at);
+    if (Number.isNaN(startedAt.getTime())) return null;
+    return new Date(startedAt.getTime() + RETURN_CONFIRMATION_WINDOW_MS);
+}
+
+function formatDeadlineRemaining(deadline) {
+    if (!deadline) return "";
+    const remainingMinutes = Math.max(0, Math.ceil((deadline.getTime() - Date.now()) / 60000));
+    if (remainingMinutes <= 0) return "Prazo esgotado";
+    const hours = Math.floor(remainingMinutes / 60);
+    const minutes = remainingMinutes % 60;
+    if (!hours) return `${minutes} min restantes`;
+    return `${hours} h ${minutes} min restantes`;
+}
+
+function updateReturnDeadlinePanel(rental, reports) {
+    const panel = document.querySelector("[data-return-deadline]");
+    const status = document.querySelector("[data-return-deadline-status]");
+    const copy = document.querySelector("[data-return-deadline-copy]");
+    if (!panel || !status || !copy) return;
+    const returnReports = (reports || []).filter((report) => report.phase === "return");
+    const deadline = returnConfirmationDeadline(returnReports);
+    const expired = Boolean(deadline && deadline.getTime() <= Date.now() && returnReports.length < 2);
+    panel.dataset.expired = String(expired);
+    if (!deadline) {
+        status.textContent = "Até 24 horas após a primeira confirmação";
+        copy.textContent = "Confirme idealmente no momento da devolução. O prazo começa quando uma das partes regista o estado final.";
+        return;
+    }
+    if (returnReports.length >= 2) {
+        status.textContent = "Confirmação bilateral concluída";
+        copy.textContent = `As duas partes confirmaram antes do limite de ${formatDateTime(deadline.toISOString())}.`;
+        return;
+    }
+    if (rental?.status === "completed" || expired) {
+        status.textContent = "Prazo de 24 horas concluído";
+        copy.textContent = "A operação foi ou está a ser concluída automaticamente porque não foi recebida a segunda confirmação dentro do prazo.";
+        return;
+    }
+    status.textContent = `${formatDeadlineRemaining(deadline)} · até ${formatDateTime(deadline.toISOString())}`;
+    copy.textContent = "A outra parte deve confirmar até à hora indicada. Sem resposta, a operação é concluída automaticamente.";
 }
 
 function dateInputToday() {
@@ -234,6 +285,7 @@ function friendlyOperationError(error) {
         MESSAGE_LENGTH_INVALID: "A mensagem deve ter entre 1 e 1000 caracteres.",
         CONDITION_PHASE_NOT_AVAILABLE: "Esta fase ainda não está disponível para confirmação.",
         CONDITION_REPORT_ALREADY_CONFIRMED: "Já confirmou esta fase; o relatório ficou preservado.",
+        RETURN_CONFIRMATION_DEADLINE_EXPIRED: "O prazo de 24 horas terminou e a operação está a ser concluída automaticamente.",
         PHOTO_COUNT_INVALID: "Selecione entre 1 e 5 fotografias.",
         CONDITION_PHOTO_PATH_INVALID: "Uma fotografia não foi validada pela base de dados.",
         NOTE_TOO_LONG: "A nota não pode exceder 1000 caracteres."
@@ -377,12 +429,14 @@ function summarizeConditionProgress(rental, reports) {
     if (!phase) return null;
     const phaseReports = (reports || []).filter((report) => report.phase === phase.key);
     const participantIds = new Set(phaseReports.map((report) => report.user_id).filter(Boolean));
+    const deadline = phase.key === "return" ? returnConfirmationDeadline(phaseReports) : null;
     return {
         phase: phase.key,
         phaseLabel: phase.label,
         location: phase.location,
         count: Math.min(participantIds.size, 2),
-        ownConfirmed: participantIds.has(currentUser?.id)
+        ownConfirmed: participantIds.has(currentUser?.id),
+        deadlineAt: deadline?.toISOString() || null
     };
 }
 
@@ -408,13 +462,27 @@ function conditionProgressPresentation(rental) {
             message: "2/2 confirmações · A atualizar o estado da operação."
         };
     }
+    const deadline = progress.deadlineAt ? new Date(progress.deadlineAt) : null;
+    const deadlineExpired = Boolean(deadline && deadline.getTime() <= Date.now());
+    if (progress.phase === "return" && deadlineExpired) {
+        return {
+            available: true,
+            phaseLabel: progress.phaseLabel,
+            title: "Prazo de devolução concluído",
+            countLabel: `${progress.count}/2 confirmações`,
+            message: `${progress.count}/2 confirmações · A concluir automaticamente`
+        };
+    }
+    const deadlineCopy = progress.phase === "return" && deadline
+        ? ` · ${formatDeadlineRemaining(deadline)}`
+        : "";
     if (progress.ownConfirmed) {
         return {
             available: true,
             phaseLabel: progress.phaseLabel,
             title: `Aguardar confirmação na ${progress.location}`,
             countLabel: `${progress.count}/2 confirmações`,
-            message: `${progress.count}/2 confirmações · Aguarda a contraparte`
+            message: `${progress.count}/2 confirmações · Aguarda a contraparte${deadlineCopy}`
         };
     }
     return {
@@ -422,7 +490,7 @@ function conditionProgressPresentation(rental) {
         phaseLabel: progress.phaseLabel,
         title: `Confirmar estado na ${progress.location}`,
         countLabel: `${progress.count}/2 confirmações`,
-        message: `${progress.count}/2 confirmações · Falta a sua confirmação`
+        message: `${progress.count}/2 confirmações · Falta a sua confirmação${deadlineCopy}`
     };
 }
 
@@ -442,6 +510,35 @@ async function loadConditionProgress(activeRentals) {
         if (progress) nextProgress.set(rentalId, progress);
     });
     conditionProgressByRental = nextProgress;
+}
+
+function refreshReturnDeadlineDisplays() {
+    renderPendingActions();
+    renderNextOperation();
+    const selectedRental = rentals.find((rental) => rental.rental_id === selectedRentalId);
+    if (selectedRental) updateReturnDeadlinePanel(selectedRental, conditionReports);
+}
+
+function scheduleReturnDeadlineUpdates() {
+    window.clearInterval(returnDeadlineDisplayTimer);
+    window.clearTimeout(returnDeadlineFinalizeTimer);
+    returnDeadlineDisplayTimer = null;
+    returnDeadlineFinalizeTimer = null;
+    const deadlines = [...conditionProgressByRental.values()]
+        .filter((progress) => progress.phase === "return" && progress.count < 2 && progress.deadlineAt)
+        .map((progress) => new Date(progress.deadlineAt))
+        .filter((deadline) => !Number.isNaN(deadline.getTime()));
+    if (!deadlines.length) return;
+    returnDeadlineDisplayTimer = window.setInterval(refreshReturnDeadlineDisplays, 60000);
+    const earliestDeadline = Math.min(...deadlines.map((deadline) => deadline.getTime()));
+    const delay = Math.max(0, earliestDeadline - Date.now() + 250);
+    returnDeadlineFinalizeTimer = window.setTimeout(async () => {
+        const openRentalId = selectedRentalId;
+        await loadOperationalData();
+        if (openRentalId && rentals.some((rental) => rental.rental_id === openRentalId)) {
+            openRealOperation(openRentalId);
+        }
+    }, Math.min(delay, 2147483647));
 }
 
 function renderPendingActions() {
@@ -1212,6 +1309,7 @@ function renderConditionReports(rental, signedUrls = new Map()) {
     setHidden(conditionEvidence, !visible);
     if (!visible) return;
     renderPhotoDossier(rental, signedUrls);
+    updateReturnDeadlinePanel(rental, conditionReports);
     ["handover", "return"].forEach((phase) => {
         const card = document.querySelector(`[data-condition-card="${phase}"]`);
         const phaseVisible = phase === "handover" || ["in_progress", "completed", "disputed"].includes(rental.status);
@@ -1257,8 +1355,10 @@ function renderConditionReports(rental, signedUrls = new Map()) {
         });
         const form = document.querySelector(`[data-condition-form="${phase}"]`);
         const ownReport = reports.some((report) => report.user_id === currentUser?.id);
+        const returnDeadline = phase === "return" ? returnConfirmationDeadline(reports) : null;
+        const returnDeadlineExpired = Boolean(returnDeadline && returnDeadline.getTime() <= Date.now());
         const phaseOpen = (phase === "handover" && rental.status === "confirmed")
-            || (phase === "return" && rental.status === "in_progress");
+            || (phase === "return" && rental.status === "in_progress" && !returnDeadlineExpired);
         form.dataset.submitted = String(ownReport);
         setHidden(form, !phaseOpen || ownReport);
         if (ownReport) {
@@ -1468,6 +1568,7 @@ async function loadOperationalData() {
     if (!supabase || !currentUser) return;
     setMessage(operationsStatus, "A carregar operações…");
     setMessage(listingsStatus, "A carregar anúncios…");
+    const finalizationResult = await supabase.rpc("finalize_expired_rental_returns");
     const [rentalsResult, listingsResult] = await Promise.all([
         supabase.rpc("list_my_rentals"),
         supabase.rpc("list_active_pilot_listings")
@@ -1496,8 +1597,15 @@ async function loadOperationalData() {
     rentals = rentalsResult.data || [];
     listings = listingsResult.data || [];
     await loadConditionProgress(rentals);
+    scheduleReturnDeadlineUpdates();
     setHidden(systemMessage, true);
-    setMessage(operationsStatus);
+    setMessage(
+        operationsStatus,
+        finalizationResult.error && !isRpcUnavailable(finalizationResult.error)
+            ? "As operações foram carregadas, mas não foi possível verificar automaticamente os prazos de devolução."
+            : "",
+        "warning"
+    );
     setMessage(listingsStatus);
     renderOperations();
     renderListings();
