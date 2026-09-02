@@ -14,7 +14,6 @@ type RenderedEmail = { subject: string; text: string; html: string };
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
-const DISPATCH_SECRET = Deno.env.get("EMAIL_DISPATCH_SECRET") || "";
 const EMAIL_PROVIDER = (Deno.env.get("EMAIL_PROVIDER") || "resend").toLowerCase();
 const EMAIL_FROM = Deno.env.get("EMAIL_FROM") || "CleanShare <operacoes@cleanshare.pt>";
 const EMAIL_REPLY_TO = Deno.env.get("EMAIL_REPLY_TO") || "";
@@ -204,11 +203,12 @@ async function markFailed(outboxId: string, error: unknown): Promise<void> {
 }
 
 Deno.serve(async (request) => {
+  const dispatchSecret = Deno.env.get("EMAIL_DISPATCH_SECRET") || "";
   if (request.method !== "POST") return new Response("Method not allowed", { status: 405 });
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !DISPATCH_SECRET) {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !dispatchSecret) {
     return Response.json({ error: "EMAIL_DISPATCH_NOT_CONFIGURED" }, { status: 503 });
   }
-  if (request.headers.get("x-cleanshare-dispatch-secret") !== DISPATCH_SECRET) {
+  if (request.headers.get("x-cleanshare-dispatch-secret") !== dispatchSecret) {
     return Response.json({ error: "UNAUTHORIZED" }, { status: 401 });
   }
 
