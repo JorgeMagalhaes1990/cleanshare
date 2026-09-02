@@ -54,6 +54,20 @@ Creating, removing or materially restructuring sections is allowed only when the
 
 ---
 
+## Operational UX Reference
+
+- Use Yescapa as the approved reference for the structure of a trusted peer-to-peer rental journey, adapted to equipment.
+- Reuse product patterns, not protected expression: do not copy Yescapa's visual identity, page composition, text, images, code or legal wording.
+- Keep owner and renter interfaces as role-specific views of the same operation, with matching status, next action, responsible participant and deadline.
+- Prefer a guided transaction timeline over disconnected administrative screens: request, conversation, acceptance, payment/deposit, contract, collection condition report, use, return condition report, completion and review.
+- Keep free-form chat separate from structured decisions and evidence. An agreement in chat never substitutes for a required confirmation, checklist, contract or photographic record.
+- Reveal personal contact details only when the operation reaches the approved coordination stage; keep earlier communication inside the platform.
+- Make blocking requirements explicit before the user acts, including missing verification, documentation, payment, deposit, evidence or counterparty confirmation.
+- Build reusable shared components and a common state model, while allowing category-specific checklists, evidence, safety notices, deposits, insurance and incident rules.
+- Treat payment, insurance, contract and legal wording shown in the interface as unavailable or provisional until the corresponding real service and Portuguese requirements are validated.
+
+---
+
 ## Personal Area UI
 
 - Call the experience “Minha CleanShare” and keep one account for both owner and renter roles.

@@ -103,6 +103,42 @@ That phase requires its own eligibility, risk, logistics, inspection, support an
 
 ---
 
+## Approved Operating Benchmark: Yescapa
+
+Yescapa is the primary operating-model reference for CleanShare. This is an approved strategic decision: use a proven peer-to-peer rental architecture and adapt it to equipment. It is not permission to copy Yescapa's branding, interface, wording, code, legal terms or insurance arrangements.
+
+The CleanShare product should follow the same underlying transaction logic:
+
+- Curated listing and validation of the owner, equipment and required documents.
+- Search, request and private pre-confirmation conversation between the participants.
+- Owner acceptance followed by protected payment and deposit handling.
+- A contract generated from the accepted reservation and its authoritative snapshots.
+- Coordinated collection with identity/document checks, bilateral inventory and photographic evidence.
+- A visible operational period with role-specific actions, support information and controlled contact disclosure.
+- Coordinated return with a second bilateral inventory, before/after comparison and a strict response deadline.
+- Authoritative completion, owner payout and renter deposit release when the return is accepted or the supported deadline expires without a dispute.
+- Mutual reviews after completion and platform mediation when the evidence or participants disagree.
+
+The service fee must be presented and designed as payment for the trusted operational layer, not merely for publishing a listing. It must finance the variable costs of payments, deposits, identity/document checks, insurance where applicable, support, fraud handling and incident resolution while preserving positive contribution margin.
+
+CleanShare must not implement one undifferentiated risk model across the catalog. The shared rental state machine remains common, while each equipment category or risk class configures eligibility, deposit policy, insurance requirements, inventory fields, required photographs, exclusions, deadlines, mounting or usage instructions and incident rules.
+
+Product and development implications:
+
+- Owner and renter journeys are parallel views of the same authoritative operation.
+- Every dashboard state identifies the next action, the responsible participant and the applicable deadline.
+- Chat supports agreement and clarification but never replaces structured confirmations, contracts or evidence.
+- Contact details are disclosed only at the operational point where direct coordination is necessary and permitted.
+- Handover and return records are completed by both participants and become immutable audit evidence after confirmation.
+- Payment, deposit, contract, insurance, reviews and dispute handling belong to one end-to-end product flow, even when introduced over several MVPs.
+- A material departure from this benchmark must be justified by equipment characteristics, Portuguese law, provider constraints or measured pilot evidence.
+
+Yescapa remains an external benchmark, not legal authority. Its current flow, fees and coverage may vary by market and over time. Before production, CleanShare must independently validate Portuguese consumer, contract, payment, insurance, tax, privacy and platform-liability requirements with appropriate specialists and regulated providers.
+
+Primary reference pages reviewed in September 2026: https://www.yescapa.pt/, https://www.yescapa.pt/how-yescapa-works, https://www.yescapa.pt/rental-contract, https://www.yescapa.pt/todos-nossos-seguros/, https://www.yescapa.pt/todas-nossas-assistencias/ and https://www.yescapa.pt/ajuda/funcionamento-do-site/a-que-correspondem-os-custos-de-servico/.
+
+---
+
 ## Main Value Proposition
 
 The biggest challenge is not the rental itself. The biggest challenge is making both parties feel safe throughout the transaction.

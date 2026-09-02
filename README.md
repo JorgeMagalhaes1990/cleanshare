@@ -52,6 +52,18 @@ A CleanShare não pretende competir com marketplaces generalistas pelo volume de
 
 A viabilidade desta proteção deve ser demonstrada no piloto. A comissão e as restantes receitas por transação têm de cobrir os custos variáveis de pagamentos, seguro, suporte, fraude, incidentes e resolução de conflitos, deixando margem de contribuição positiva. Se isso não acontecer, devem ser ajustados o preço, as categorias elegíveis ou o nível de serviço antes da expansão.
 
+## Referência operacional aprovada — Yescapa
+
+A Yescapa é a principal referência de modelo operacional para o desenvolvimento da CleanShare. A decisão é aproveitar uma arquitetura de confiança já validada num marketplace P2P de aluguer e adaptá-la ao segmento de equipamentos, sem copiar a identidade visual, os textos, o código ou as condições jurídicas da Yescapa.
+
+O percurso de referência é: anúncio curado e documentação validada; pesquisa e pedido; conversa privada; aceitação pelo proprietário; pagamento e caução protegidos; contrato associado à reserva; recolha com inventário e evidência bilateral; utilização; devolução com nova verificação; libertação financeira; avaliações mútuas; e mediação quando existe desacordo.
+
+A CleanShare deve manter este núcleo comum e parametrizar por categoria os critérios de elegibilidade, valor e forma da caução, cobertura de seguro, checklist, fotografias exigidas, exclusões, prazos e regras de incidente. A experiência de proprietário e arrendatário deve ser paralela, mostrar sempre a próxima ação e impedir avanços sem as confirmações necessárias.
+
+Qualquer divergência futura em relação a esta referência deve resultar de características próprias do equipamento, legislação portuguesa, requisitos dos fornecedores ou evidência obtida nos testes. Seguros, pagamentos, contratos, fiscalidade e níveis de serviço requerem validação própria antes da produção.
+
+Referências: [Como funciona a Yescapa](https://www.yescapa.pt/how-yescapa-works), [contrato de aluguer](https://www.yescapa.pt/rental-contract), [seguros](https://www.yescapa.pt/todos-nossos-seguros/) e [custos de serviço](https://www.yescapa.pt/ajuda/funcionamento-do-site/a-que-correspondem-os-custos-de-servico/).
+
 ## Confiança e segurança
 
 A CleanShare deve tornar a transação clara e segura para ambas as partes. A experiência assenta em identidade verificada, contratos, pagamentos e cauções protegidos, seguro quando aplicável e confirmação da entrega e devolução.
@@ -67,7 +79,7 @@ A CleanShare deve tornar a transação clara e segura para ambas as partes. A ex
 
 As decisões de produto, conteúdo e implementação devem seguir, por ordem:
 
-1. `CleanShare_Blueprint_v1.6.docx`, o Blueprint oficial mais recente.
+1. `CleanShare_Blueprint_v1.7.docx`, o Blueprint oficial mais recente.
 2. `PROJECT_CONTEXT.txt`.
 3. `DESIGN_RULES.txt` para regras visuais e de conteúdo público.
 4. A `valuation_matrix` e as migrações em `supabase/migrations/`, incluindo `20260820000000_reorient_catalog.sql` e `20260821000000_expand_events_leisure.sql`.
