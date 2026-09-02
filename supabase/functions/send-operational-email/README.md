@@ -35,3 +35,28 @@ Edge Function environment. Never expose any of these secrets in browser code.
 
 Do not enable queueing before the provider, domain, function, webhook and retry
 schedule have all been validated.
+
+## Pilot checkpoint — 2 September 2026
+
+The production-shaped delivery path is already prepared and has been validated
+without enabling general notifications:
+
+- Resend is configured as the initial provider.
+- The Edge Function, INSERT webhook and one-minute retry schedule are active.
+- The webhook and scheduler authenticate with the same private dispatch secret.
+- A controlled message to the Resend account owner was accepted and reported as
+  `delivered` by the provider.
+- Global queueing remains disabled in `private.operational_email_settings`.
+- `CleanShare <onboarding@resend.dev>` is only a temporary sandbox sender and
+  must not be used for the two-account pilot or production.
+
+No credential or secret value is stored in this repository.
+
+When the product name and domain are final, resume from this checkpoint:
+
+1. Create a dedicated sending subdomain, such as `updates.example.pt`.
+2. Verify SPF and DKIM in Resend and publish a DMARC policy.
+3. Replace `EMAIL_FROM` with the verified production sender and configure an
+   optional monitored `EMAIL_REPLY_TO`.
+4. Send controlled messages to both pilot accounts and confirm delivery.
+5. Enable queueing only after the two-recipient test succeeds.
