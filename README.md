@@ -46,6 +46,12 @@ Os particulares constituem a oferta inicial da CleanShare. A plataforma começa 
 
 O segmento B2B e o equipamento industrial são uma expansão futura. Essa fase terá regras próprias de elegibilidade, risco, operação e suporte, e não deve ser apresentada como parte da oferta inicial.
 
+## Tese estratégica
+
+A CleanShare não pretende competir com marketplaces generalistas pelo volume de anúncios. A sua vantagem defensável é assumir e tornar segura toda a operação de aluguer: autenticação, contrato, pagamento e caução, evidência antes e depois, acompanhamento das etapas e resolução de conflitos.
+
+A viabilidade desta proteção deve ser demonstrada no piloto. A comissão e as restantes receitas por transação têm de cobrir os custos variáveis de pagamentos, seguro, suporte, fraude, incidentes e resolução de conflitos, deixando margem de contribuição positiva. Se isso não acontecer, devem ser ajustados o preço, as categorias elegíveis ou o nível de serviço antes da expansão.
+
 ## Confiança e segurança
 
 A CleanShare deve tornar a transação clara e segura para ambas as partes. A experiência assenta em identidade verificada, contratos, pagamentos e cauções protegidos, seguro quando aplicável e confirmação da entrega e devolução.
@@ -61,7 +67,7 @@ A CleanShare deve tornar a transação clara e segura para ambas as partes. A ex
 
 As decisões de produto, conteúdo e implementação devem seguir, por ordem:
 
-1. `CleanShare_Blueprint_v1.5.docx`, o Blueprint oficial mais recente.
+1. `CleanShare_Blueprint_v1.6.docx`, o Blueprint oficial mais recente.
 2. `PROJECT_CONTEXT.txt`.
 3. `DESIGN_RULES.txt` para regras visuais e de conteúdo público.
 4. A `valuation_matrix` e as migrações em `supabase/migrations/`, incluindo `20260820000000_reorient_catalog.sql` e `20260821000000_expand_events_leisure.sql`.

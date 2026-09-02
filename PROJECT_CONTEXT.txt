@@ -16,6 +16,18 @@ At the same time, give other people safe, convenient access to equipment without
 
 ---
 
+## Strategic Thesis and Defensible Advantage
+
+CleanShare must not compete with broad classifieds or resale marketplaces on listing volume alone. Its central strategic advantage is the trusted operational layer that makes an equipment rental safe from beginning to end: user authentication, contract formation, payment and deposit handling, before-and-after condition evidence, workflow tracking and conflict resolution.
+
+The defensible asset is the accumulated operational knowledge, rules, evidence model and decision history required to protect both parties. A catalog of listings by itself is easy to reproduce. Product development must keep the user experience simple while the platform manages the necessary complexity internally.
+
+The strategic direction is approved, but its economics remain a hypothesis that the pilot must validate. Revenue per transaction must cover payment and insurance costs, support time, fraud and damage exposure, incident handling and the average cost of resolving conflicts, while leaving a positive contribution margin. If the protection layer cannot be financed, CleanShare must adjust commission, eligible categories or service level before expanding.
+
+Pilot measurements must therefore include average commission, variable payment and insurance cost, support time per transaction, incident and dispute rate, average resolution cost and contribution margin after protection costs.
+
+---
+
 ## Marketplace Focus
 
 CleanShare is generalist but curated. It should not try to list every possible object.
