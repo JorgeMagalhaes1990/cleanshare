@@ -1,5 +1,25 @@
 # CleanShare - Project Context
 
+## Latest Approved Direction and Insurance Dossier
+
+Checkpoint: 2026-09-16.
+
+The chosen brand is Outzila. The repository and current prototype retain the historical CleanShare name, while the insurance dossier uses the previous OutShare name. These refer to the same project. Preserve the dossier's current name and wording until a document revision is requested.
+
+The approved launch scope is now a single coherent segment: premium outdoor and leisure equipment owned by private individuals. Each listing represents one identifiable principal item, with acquisition or replacement value above EUR 500, transport compatible with a passenger car, and condition that can be documented at collection and return. Multi-item camping, ski and snowboard sets are excluded from the initial insured catalog.
+
+The latest reference is OutShare_Dossier_Produto_Segurador_v0.8.docx. Its searchable companion, OutShare_Dossier_Produto_Segurador_v0.8.md, mirrors the Word content and tables. Read this dossier before making decisions about launch equipment, the intended operational process, insurance requirements or financial projections. For these subjects, its later approved decisions supersede conflicting generalist-catalog and EUR 300 guidance in the legacy Blueprint and the sections below.
+
+Obtaining suitable insurance is a prerequisite for the intended real operating model. The requested protection combines accidental damage, third-party theft or robbery, total loss, and express non-restitution or unlawful appropriation by the renter. A generic theft guarantee must not be treated as proof of non-restitution coverage. Transport, loading, unloading, approved installation and use, selected breakdown scenarios, liability, deductibles and limits require express insurer agreement. No coverage described in the dossier is currently an active policy.
+
+The financial model is a negotiation and planning hypothesis: 20% rental commission; insurance premium averaging 10% of rental value; 10% of that premium paid by the insurer to the platform as distribution remuneration, subject to a legally validated authorized distribution structure; and premium funding split 70% renter / 30% platform through the owner commission. Base and pessimistic scenarios, AI-assisted operating costs and all limitations are detailed in the dossier. Do not represent these assumptions as supplier quotations, established demand, guaranteed profit or agreed insurance pricing.
+
+The product ambition remains a protected end-to-end P2P rental, informed by Yescapa and Roofwander and adapted to equipment. Verification, contracts, protected payments and deposits, private chat, bilateral photographic evidence, time-bound return confirmation and incident handling form one operational layer. The actual pilot limitations described below remain in force until real integrations are implemented and validated.
+
+This checkpoint records the approved vision; it does not migrate the existing four-category interface, valuation matrix or database. Only implement those changes when explicitly requested. The legacy sections below remain useful technical and historical context, not the current launch-catalog authority.
+
+---
+
 ## What is CleanShare?
 
 CleanShare is a curated, generalist peer-to-peer marketplace for renting high-value equipment that is only needed occasionally.

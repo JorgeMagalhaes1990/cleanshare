@@ -1,5 +1,17 @@
 # CleanShare
 
+## Orientação aprovada mais recente
+
+A marca escolhida é **Outzila**. O repositório e o protótipo ainda conservam o nome CleanShare; o dossier segurador usa a designação anterior OutShare. Estes nomes históricos não representam três projetos diferentes.
+
+O lançamento aprovado passou a estar concentrado em **equipamentos individuais premium de lazer outdoor**, com valor de aquisição ou substituição **superior a 500 €**. Conjuntos de vários bens não integram o catálogo inicial.
+
+A referência mais recente para esta orientação, o processo operacional, o seguro pretendido e os pressupostos económicos é o [OutShare — Dossier de Produto Segurador v0.8](OutShare_Dossier_Produto_Segurador_v0.8.docx). A [versão textual pesquisável](OutShare_Dossier_Produto_Segurador_v0.8.md) reproduz o conteúdo do Word, incluindo tabelas e pressupostos, para facilitar a leitura por ferramentas e assistentes.
+
+As secções generalistas abaixo e o Blueprint v1.7 descrevem a fase anterior e a implementação existente. Em caso de conflito sobre a visão e o catálogo de lançamento, prevalecem as decisões posteriores registadas no dossier. Esta precedência documental não altera o código, a matriz nem a base de dados; a adaptação desses componentes continua a exigir um pedido de implementação.
+
+O dossier é uma proposta para negociação com seguradoras, não uma apólice ou cobertura ativa. As projeções são hipóteses, não resultados garantidos nem tarifas aprovadas.
+
 CleanShare é um marketplace P2P curado para aluguer de equipamentos de valor elevado e uso ocasional em Portugal. A plataforma não está limitada a equipamentos de limpeza: liga proprietários particulares a pessoas que precisam de equipamento específico por períodos curtos, com uma operação simples e protegida.
 
 ## Catálogo inicial
