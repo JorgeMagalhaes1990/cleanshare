@@ -1,20 +1,21 @@
-# CleanShare AI Workflow
+# OutZila AI Workflow
 
 ## Central Source Order
 
 When sources differ, use this precedence:
 
-1. The latest `CleanShare_Blueprint_v*.docx`.
+1. `OutZila_Blueprint_v1.8.md`, together with `OutZila_Identidade_Autenticacao.md` for identity and signing.
 2. `PROJECT_CONTEXT.txt`.
 3. `DESIGN_RULES.txt`.
-4. The `valuation_matrix` and files in `supabase/migrations/`.
+4. `OutZila_Dossier_Produto_Segurador_v0.9.md` for insurance and financial assumptions.
+5. The `valuation_matrix` and files in `supabase/migrations/` for implemented behavior, not for overriding later approved strategy.
 
 Use `reference/mockup.png` as the visual authority, not as the authority for catalog scope.
 
 ## Implementation Workflow
 
 1. Read `AI_WORKFLOW.txt`.
-2. Read the latest CleanShare Blueprint.
+2. Read the current OutZila Blueprint and identity decision. Historical CleanShare/OutShare documents are not current authority. New Word versions await visual validation; use the current Markdown versions.
 3. Read `PROJECT_CONTEXT.txt`.
 4. Read `DESIGN_RULES.txt`.
 5. Review the relevant valuation matrix and migrations when catalog, eligibility or product positioning is involved.
@@ -36,7 +37,11 @@ Whenever marketplace positioning, categories, eligibility or product scope chang
 - The `valuation_matrix` and current migrations.
 - Public landing-page content.
 
-Do not implement a positioning change while these sources contradict one another. Resolve or explicitly document the discrepancy first.
+Resolve or explicitly document any difference between approved strategy and the existing implementation. A documentation-only task must not change HTML, CSS, JavaScript, migrations, matrix files, secrets, DNS, cloud settings or deploy behavior. Do not claim planned Signicat, signatures, payments, deposits or insurance are active.
+
+## Identity Consistency Check
+
+Supabase accounts/login/sessions and Signicat civil identity/signing are separate responsibilities. Support national eID/EUDI Wallet when available and document plus selfie/liveness, NFC when applicable. Never require wallet or CMD as the only launch route. Do not treat email confirmation, user_metadata or pilot access as civil verification. Keep only strictly necessary verified attributes; no default identity-document or biometric retention except documented legal necessity. Bind both verified identities and electronic signatures to each contract and exportable audit trail. Preserve the full identity -> contract -> payment -> bilateral handover -> bilateral return chain. Europe-first is an architecture requirement, not a claim that every provider already processes all data in Europe.
 
 ## Approval Rule
 

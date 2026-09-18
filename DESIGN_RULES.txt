@@ -1,8 +1,8 @@
-# CleanShare Design Rules
+# OutZila Design Rules
 
 ## Objective
 
-The objective is to preserve and extend the established CleanShare visual system.
+The objective is to preserve and extend the established OutZila visual system.
 
 The primary visual reference is:
 
@@ -26,16 +26,16 @@ The mockup is the authority for visual identity, typography, colour, spacing, co
 
 ## Content Rules
 
-- Never present CleanShare as exclusive to cleaning equipment.
-- Present CleanShare as a generalist but curated P2P marketplace for high-value, occasional-use equipment.
-- Use the four approved initial categories: Projetos em casa, Limpeza profunda, Jardim e terreno, and Eventos e lazer.
-- Use only the products approved for those categories in `PROJECT_CONTEXT.txt` and the latest Blueprint.
-- The approved Eventos e lazer products are Projetores, Colunas de som potentes, Tendas grandes, Kits de campismo com sacos-cama, Suportes de bicicletas para automóvel, Malas de tejadilho, Barras de tejadilho, and Tendas de tejadilho.
+- Never present OutZila as exclusive to cleaning equipment.
+- Present OutZila as a curated P2P marketplace for individual premium outdoor and leisure equipment above EUR 500.
+- The four-category generalist interface is historical implementation, not the approved launch vision. Do not migrate it without an explicit implementation request.
+- Use only the products approved for the outdoor launch segment in `PROJECT_CONTEXT.txt` and the latest Blueprint.
+- Use the current outdoor product families in OutZila_Blueprint_v1.8.md and Dossier v0.9. Exclude multi-item camping, ski and snowboard sets.
 - Treat private individuals as the initial source of supply.
-- Treat B2B and industrial equipment as a future phase with its own rules, not as part of the initial public offer.
-- Never present CleanShare as a vehicle-rental marketplace. Automotive products are removable accessories normally stored in homes or garages and rented without a vehicle.
+- Treat B2B and industrial equipment as outside the approved launch offer; any expansion needs an explicit new decision and risk assessment.
+- Never present OutZila as a vehicle-rental marketplace. Automotive products are removable accessories normally stored in homes or garages and rented without a vehicle.
 - Show automotive accessories detached from vehicles in domestic storage or garage contexts. Do not show vehicles in catalog or hero imagery when communicating this offer.
-- Keep public safety wording concise: compatibility, load limits and secure mounting must be validated before use. Sleeping bags must be hygienically prepared between rentals.
+- Keep public safety wording concise: compatibility, load limits and secure mounting must be validated before use. Hygienic preparation is required for any approved camping product; this does not approve additional products outside the catalog.
 - When content and a visual reference disagree about catalog scope, follow the latest Blueprint and `PROJECT_CONTEXT.txt` for content while preserving the reference's visual language.
 
 ---
@@ -59,7 +59,7 @@ Creating, removing or materially restructuring sections is allowed only when the
 - Use Yescapa as the approved reference for the structure of a trusted peer-to-peer rental journey, adapted to equipment.
 - Reuse product patterns, not protected expression: do not copy Yescapa's visual identity, page composition, text, images, code or legal wording.
 - Keep owner and renter interfaces as role-specific views of the same operation, with matching status, next action, responsible participant and deadline.
-- Prefer a guided transaction timeline over disconnected administrative screens: request, conversation, acceptance, payment/deposit, contract, collection condition report, use, return condition report, completion and review.
+- Prefer a guided transaction timeline over disconnected administrative screens: verified identity, request, conversation, acceptance, bilaterally signed contract, payment/deposit, collection condition report, use, return condition report, completion and review. Preserve the identity -> contract -> payment -> bilateral handover -> bilateral return evidence chain.
 - Keep free-form chat separate from structured decisions and evidence. An agreement in chat never substitutes for a required confirmation, checklist, contract or photographic record.
 - Reveal personal contact details only when the operation reaches the approved coordination stage; keep earlier communication inside the platform.
 - Make blocking requirements explicit before the user acts, including missing verification, documentation, payment, deposit, evidence or counterparty confirmation.
@@ -70,20 +70,20 @@ Creating, removing or materially restructuring sections is allowed only when the
 
 ## Personal Area UI
 
-- Call the experience “Minha CleanShare” and keep one account for both owner and renter roles.
+- Call the experience “Minha OutZila” and keep one account for both owner and renter roles.
 - Organise the interface around operations, pending actions and the next required step rather than a dense administrative dashboard.
-- Reuse the CleanShare visual system: Inter, generous white space, restrained green surfaces, discreet borders, rounded corners and strong text contrast.
+- Reuse the OutZila visual system: Inter, generous white space, restrained green surfaces, discreet borders, rounded corners and strong text contrast.
 - Keep navigation compact, accessible and responsive. On small screens, navigation may scroll horizontally inside its own region but must never cause page-level horizontal overflow.
 - Communicate state with text as well as colour, preserve visible keyboard focus and provide accessible live feedback for interface actions.
 - Clearly label demonstration data, example values and unavailable integrations. Never make demo interactions look like real payments, deposits, contracts, insurance or identity-verification events.
 - Keep financial, legal and identity actions non-consequential until their approved services and real data are connected.
 - Treat `/area-utilizador.html` as the authenticated real-data experience and `?demo=1` as the only demonstration route. A loading, session or profile error in the real route must never reveal demo content.
-- Show the pilot exception prominently and in plain language while it is enabled. Use labels such as “Acesso piloto” or “Piloto autorizado”; never present pilot access as verified identity or change the displayed CMD status.
+- Show the pilot exception prominently and in plain language while it is enabled. Use labels such as “Acesso piloto” or “Piloto autorizado”; never present pilot access as verified civil identity or fabricate a successful provider result.
 - Keep the pilot exception controlled by one clearly named, reversible configuration so it can be disabled before public launch.
 - Treat owner/renter and notification values in user metadata as interface preferences only. Do not design them as authorization, entitlement or verification signals; future authorization must come from database rules and RLS.
-- In MVP 3, keep real owner equipment, pilot exploration and participant operations inside the same “Minha CleanShare” experience. Use progressive disclosure for the equipment form and clear empty, loading, retry and unavailable-database states.
+- In MVP 3, keep real owner equipment, pilot exploration and participant operations inside the same “Minha OutZila” experience. Use progressive disclosure for the equipment form and clear empty, loading, retry and unavailable-database states.
 - Describe the pilot limits beside every real operation: no processed payment, no blocked deposit, no legally valid contract and no active insurance. Do not mark any of these stages as complete in the real timeline.
-- Keep CMD's temporary pilot exception visible and separate from verification state. A real operation may proceed during the pilot only through the central reversible exception; never label that access as verified identity.
+- Keep the temporary pilot exception visible and separate from verification state. Signicat is the preferred civil identity/signing provider, distinct from Supabase login. Future onboarding must offer national eID/EUDI Wallet when available and ID document plus selfie/liveness, with NFC where applicable, without mandatory wallet or CMD-only access. No functional verification UI change is authorized by a documentation update.
 - Treat RPC results and database ownership checks as authoritative for prices, totals, conflicts and transitions. Interface role preferences may reveal relevant tools but must never be represented as authorization.
 - Do not reveal private counterpart contacts in listings or pending requests. Before a request, show no owner identity. After a request, show the participant display name; show telephone only when the authoritative operation response permits it after confirmation. Never show counterpart email or full address.
 - Keep operation chat private, readable and clearly associated with its author and time. Provide manual refresh and accessible send feedback; do not imply that message content is editable or public.
@@ -92,7 +92,7 @@ Creating, removing or materially restructuring sections is allowed only when the
 - State that photographic evidence supports the operation but does not replace expert inspection. Bilateral evidence must not imply that payment, deposit, contract or insurance integrations are active.
 - Keep the before/after dossier strictly inside the authenticated operation centre. Never reproduce it in a listing, catalog, public profile or landing page.
 - Label the dossier as an internal operation record and explain that evidence supports follow-up and potential conflict analysis without deciding the outcome.
-- Treat CleanShare intervention in disagreements as a future support/backoffice capability. Until that workflow is explicitly implemented, show no dispute button, state, SLA or automated-resolution promise.
+- Treat OutZila intervention in disagreements as a future support/backoffice capability. Until that workflow is explicitly implemented, show no dispute button, state, SLA or automated-resolution promise.
 - Preserve the complete `?demo=1` prototype independently from real data. Real operational failures or an unapplied migration must not break profile access or reveal demonstration records.
 
 ---
@@ -104,3 +104,9 @@ Compare visual implementation against `reference/mockup.png` before and after ch
 Also verify that public category content remains consistent with the latest Blueprint, `PROJECT_CONTEXT.txt` and the current valuation matrix/migrations.
 
 The goal is visual fidelity combined with current, strategically accurate content.
+
+## Identity and Signing UX Requirements
+
+Each rental must preserve the contract version, two verified identities, bilateral electronic signatures and an exportable audit trail with controlled access. Do not publish signing evidence or imply that a simple acceptance is a signature.
+
+Read OutZila_Identidade_Autenticacao.md before designing verification or signing. Explain which attributes are requested and why. Do not ask for identity documents or biometrics in ordinary profile fields, chat, support forms or email. Show verification and signing states separately from login; failed or incomplete verification must not appear successful. A contract must display the two verified parties, version and real bilateral signing status; an accepted rental or condition checklist is not an electronic signature. Show the evidence chain and next responsible participant without exposing civil identifiers, documents or biometrics publicly. Follow the Europe-first architecture requirement; future EUDI Wallet adoption should preserve the same operation and contract model. Do not claim qualified signatures or European-only processing without validated configuration.

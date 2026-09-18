@@ -1,122 +1,54 @@
-# CleanShare
+# OutZila
 
-## Orientação aprovada mais recente
+Marketplace P2P para aluguer protegido de equipamentos individuais premium de lazer outdoor. CleanShare e OutShare são nomes históricos do mesmo projeto; o nome do repositório e o protótipo ainda não foram migrados.
 
-A marca escolhida é **Outzila**. O repositório e o protótipo ainda conservam o nome CleanShare; o dossier segurador usa a designação anterior OutShare. Estes nomes históricos não representam três projetos diferentes.
+## Documentação central atual
 
-O lançamento aprovado passou a estar concentrado em **equipamentos individuais premium de lazer outdoor**, com valor de aquisição ou substituição **superior a 500 €**. Conjuntos de vários bens não integram o catálogo inicial.
+- [Blueprint estratégico e técnico v1.8](OutZila_Blueprint_v1.8.md).
+- [Decisão de identidade e autenticação](OutZila_Identidade_Autenticacao.md).
+- [Dossier de Produto Segurador v0.9](OutZila_Dossier_Produto_Segurador_v0.9.md).
+- [Contexto do projeto](PROJECT_CONTEXT.txt), [fluxo de trabalho](AI_WORKFLOW.txt), [instruções Codex](AGENTS.md) e [regras visuais](DESIGN_RULES.txt).
+- [Briefing para o futuro contrato de aluguer](OutZila_Brief_Contrato_Aluguer.md), sujeito a revisão jurídica antes de utilização.
 
-A referência mais recente para esta orientação, o processo operacional, o seguro pretendido e os pressupostos económicos é o [OutShare — Dossier de Produto Segurador v0.8](OutShare_Dossier_Produto_Segurador_v0.8.docx). A [versão textual pesquisável](OutShare_Dossier_Produto_Segurador_v0.8.md) reproduz o conteúdo do Word, incluindo tabelas e pressupostos, para facilitar a leitura por ferramentas e assistentes.
+Estas versões substituem a orientação anterior CMD-only, catálogo generalista e limiar de 300 euros. Os ficheiros CleanShare/OutShare anteriores são conservados como histórico. A matriz e as migrações existentes descrevem o estado implementado, não substituem decisões estratégicas posteriores.
 
-As secções generalistas abaixo e o Blueprint v1.7 descrevem a fase anterior e a implementação existente. Em caso de conflito sobre a visão e o catálogo de lançamento, prevalecem as decisões posteriores registadas no dossier. Esta precedência documental não altera o código, a matriz nem a base de dados; a adaptação desses componentes continua a exigir um pedido de implementação.
+As versões Markdown acima são a referência documental atual. Os Word anteriores não incluem a decisão de identidade de 17 de setembro de 2026; a publicação de novas versões Word fica pendente de validação visual.
 
-O dossier é uma proposta para negociação com seguradoras, não uma apólice ou cobertura ativa. As projeções são hipóteses, não resultados garantidos nem tarifas aprovadas.
+## Identidade e confiança
 
-CleanShare é um marketplace P2P curado para aluguer de equipamentos de valor elevado e uso ocasional em Portugal. A plataforma não está limitada a equipamentos de limpeza: liga proprietários particulares a pessoas que precisam de equipamento específico por períodos curtos, com uma operação simples e protegida.
+Supabase continua responsável pelas contas, login e sessões. Signicat é a solução preferencial para verificação civil e assinatura eletrónica. O onboarding deverá suportar eID nacional/EUDI Wallet quando disponível e documento com selfie/liveness e NFC quando aplicável. Wallet não é obrigatória no lançamento; login e email confirmado não comprovam identidade civil.
 
-## Catálogo inicial
+A OutZila guarda apenas atributos verificados necessários à operação e contratos e prova mínima do resultado, evitando documentos de identidade e biometria salvo necessidade jurídica documentada. Os contratos devem ligar as identidades verificadas de ambas as partes, as duas assinaturas eletrónicas e um audit trail exportável ao aluguer. Preservar a cadeia identidade verificada → contrato → pagamento → entrega bilateral documentada → devolução bilateral documentada. Arquitetura Europe-first, com regiões e tratamento a validar e preparação para futura EUDI Wallet.
 
-### Projetos em casa
+## Catálogo e modelo segurador
 
-- Berbequins e aparafusadoras profissionais
-- Lixadoras
-- Serras tico-tico e circulares
-- Escadas extensíveis e articuladas
+Equipamento principal individual, aquisição ou substituição superior a 500 euros, uso ocasional, transportável e inspecionável. Famílias: transporte/mobilidade outdoor, campismo/abrigo, desportos aquáticos e energia/autonomia. São subfamílias do único segmento outdoor, não o antigo lançamento generalista de quatro categorias. Produtos e critérios detalhados no Blueprint e Dossier. Não aceitar kits de vários bens; veículos não estão incluídos.
 
-### Limpeza profunda
+Seguro adequado é condição do modelo real pretendido. Solicitar dano acidental, furto/roubo por terceiros, perda total e não restituição/apropriação pelo locatário expressamente coberta. O dossier não é apólice ativa. Economia: hipóteses de comissão de aluguer de 20%, prémio médio de 10% do aluguer, comissão seguradora de 10% do prémio e financiamento do prémio 70% arrendatário/30% plataforma. Custos Signicat requerem proposta e recálculo, não tarifas inventadas.
 
-- Lavadoras de alta pressão
-- Extratoras de estofos e alcatifas
-- Máquinas de limpeza a vapor
+## Execução e demonstração
 
-### Jardim e terreno
+Aplicação estática HTML, CSS e JavaScript vanilla com Supabase. Não é necessário instalar dependências para servir o projeto localmente. Usar um servidor HTTP na raiz, por exemplo `python -m http.server 8000`, e abrir `http://127.0.0.1:8000/`.
 
-- Roçadoras
-- Corta-relvas
-- Motoenxadas
+Demo externo: [demo.outzila.com](https://demo.outzila.com/), alojado no projeto Vercel existente. O build `node scripts/build-static.mjs` publica apenas a aplicação estática em `dist/`; documentos centrais, contexto, migrações e segredos não são conteúdo do site. Domínio principal e email profissional continuam geridos na Hostinger. Deploy comercial e planos pagos requerem avaliação e autorização próprias.
 
-### Eventos e lazer
+## Estado implementado e limites do piloto
 
-- Projetores
-- Colunas de som potentes
-- Tendas grandes
-- Kits de campismo com sacos-cama
-- Suportes de bicicletas para automóvel
-- Malas de tejadilho
-- Barras de tejadilho
-- Tendas de tejadilho
+A rota `area-utilizador.html` usa sessão Supabase e dados reais. `?demo=1` é demonstração isolada. O piloto inclui perfil, anúncios, pedido entre duas contas, resposta do proprietário, chat privado e fotografias/checklists bilaterais. O backend decide valores, conflitos, permissões e transições através de RLS/RPCs; user_metadata só personaliza a interface.
 
-## Acessórios automóveis removíveis
+Ainda não há integração Signicat, assinatura contratual jurídica, pagamento real, caução bloqueada ou seguro ativo. A exceção reversível de acesso piloto não comprova identidade civil. A migração destas capacidades exige tarefa de implementação separada.
 
-A CleanShare não aluga veículos. Os acessórios automóveis do catálogo são equipamentos removíveis de lazer, normalmente guardados em casas ou garagens e alugados separadamente do automóvel.
+Migrações operacionais existentes, por ordem:
 
-Antes da utilização, devem ser verificadas a compatibilidade com o veículo, os limites de carga aplicáveis e a montagem segura de acordo com as instruções do fabricante. Os kits de campismo com sacos-cama exigem também higienização verificada entre utilizações.
+1. `supabase/migrations/20260824000000_pilot_rental_workflow.sql`.
+2. `supabase/migrations/20260824010000_rental_chat_condition_flow.sql`.
+3. `supabase/migrations/20260901000000_return_confirmation_deadline.sql`.
+4. `supabase/migrations/20260901010000_operational_email_outbox.sql`.
 
-## Orientação de mercado
+Entrega e devolução exigem confirmação individual e evidência privada de cada participante. A primeira confirmação da devolução inicia o máximo de 24 horas; no piloto a conclusão sem segunda resposta é desencadeada numa atualização autenticada, sem movimentar dinheiro. Não existe ainda fecho autónomo nem fluxo funcional de disputa/backoffice. O dossier antes/depois permanece interno à operação, não público. Telefone só é divulgado nos estados autorizados; email e morada continuam privados.
 
-Os particulares constituem a oferta inicial da CleanShare. A plataforma começa com um catálogo focado e curado, privilegiando equipamento de aquisição relevante, utilização ocasional, transporte simples, inspeção verificável e risco baixo ou moderado.
+## Emails e segredos
 
-O segmento B2B e o equipamento industrial são uma expansão futura. Essa fase terá regras próprias de elegibilidade, risco, operação e suporte, e não deve ser apresentada como parte da oferta inicial.
+Em 17 de setembro de 2026, `updates.outzila.com` foi verificado no Resend e SMTP Auth do Supabase foi configurado com remetente `OutZila <notificacoes@updates.outzila.com>`. O teste de envio e receção foi adiado pelo utilizador; não o considerar concluído. A chave dedicada está no campo protegido do Supabase, não no código ou GitHub. Este SMTP não ativa a fila de emails de aluguer.
 
-## Tese estratégica
-
-A CleanShare não pretende competir com marketplaces generalistas pelo volume de anúncios. A sua vantagem defensável é assumir e tornar segura toda a operação de aluguer: autenticação, contrato, pagamento e caução, evidência antes e depois, acompanhamento das etapas e resolução de conflitos.
-
-A viabilidade desta proteção deve ser demonstrada no piloto. A comissão e as restantes receitas por transação têm de cobrir os custos variáveis de pagamentos, seguro, suporte, fraude, incidentes e resolução de conflitos, deixando margem de contribuição positiva. Se isso não acontecer, devem ser ajustados o preço, as categorias elegíveis ou o nível de serviço antes da expansão.
-
-## Referência operacional aprovada — Yescapa
-
-A Yescapa é a principal referência de modelo operacional para o desenvolvimento da CleanShare. A decisão é aproveitar uma arquitetura de confiança já validada num marketplace P2P de aluguer e adaptá-la ao segmento de equipamentos, sem copiar a identidade visual, os textos, o código ou as condições jurídicas da Yescapa.
-
-O percurso de referência é: anúncio curado e documentação validada; pesquisa e pedido; conversa privada; aceitação pelo proprietário; pagamento e caução protegidos; contrato associado à reserva; recolha com inventário e evidência bilateral; utilização; devolução com nova verificação; libertação financeira; avaliações mútuas; e mediação quando existe desacordo.
-
-A CleanShare deve manter este núcleo comum e parametrizar por categoria os critérios de elegibilidade, valor e forma da caução, cobertura de seguro, checklist, fotografias exigidas, exclusões, prazos e regras de incidente. A experiência de proprietário e arrendatário deve ser paralela, mostrar sempre a próxima ação e impedir avanços sem as confirmações necessárias.
-
-Qualquer divergência futura em relação a esta referência deve resultar de características próprias do equipamento, legislação portuguesa, requisitos dos fornecedores ou evidência obtida nos testes. Seguros, pagamentos, contratos, fiscalidade e níveis de serviço requerem validação própria antes da produção.
-
-Referências: [Como funciona a Yescapa](https://www.yescapa.pt/how-yescapa-works), [contrato de aluguer](https://www.yescapa.pt/rental-contract), [seguros](https://www.yescapa.pt/todos-nossos-seguros/) e [custos de serviço](https://www.yescapa.pt/ajuda/funcionamento-do-site/a-que-correspondem-os-custos-de-servico/).
-
-## Confiança e segurança
-
-A CleanShare deve tornar a transação clara e segura para ambas as partes. A experiência assenta em identidade verificada, contratos, pagamentos e cauções protegidos, seguro quando aplicável e confirmação da entrega e devolução.
-
-## Stack
-
-- HTML
-- CSS
-- JavaScript vanilla
-- Supabase para autenticação e dados
-
-## Fontes centrais
-
-As decisões de produto, conteúdo e implementação devem seguir, por ordem:
-
-1. `CleanShare_Blueprint_v1.7.docx`, o Blueprint oficial mais recente.
-2. `PROJECT_CONTEXT.txt`.
-3. `DESIGN_RULES.txt` para regras visuais e de conteúdo público.
-4. A `valuation_matrix` e as migrações em `supabase/migrations/`, incluindo `20260820000000_reorient_catalog.sql` e `20260821000000_expand_events_leisure.sql`.
-
-O Blueprint define a orientação estratégica; o contexto e as regras mantêm a implementação coerente; a matriz e as migrações formalizam o catálogo e os critérios no modelo de dados.
-
-## MVP 3 — operação piloto
-
-O MVP 3 acrescenta publicação de equipamentos, exploração de anúncios e o primeiro pedido real entre duas contas distintas. Esta fase não processa pagamentos, não bloqueia cauções, não cria contratos com validade jurídica, não ativa seguro e mantém a exceção temporária de CMD durante o piloto.
-
-Antes de testar o fluxo real com duas contas, aplique as migrações por esta ordem no Supabase SQL Editor:
-
-1. `supabase/migrations/20260824000000_pilot_rental_workflow.sql` — RPCs autoritativas de aluguer/anúncios e bucket `equipment-images`.
-2. `supabase/migrations/20260824010000_rental_chat_condition_flow.sql` — chat privado dos participantes, telefone apenas após confirmação, evidência bilateral de recolha/devolução e bucket privado `rental-condition-photos`.
-3. `supabase/migrations/20260901000000_return_confirmation_deadline.sql` — prazo máximo de 24 horas após a primeira confirmação da devolução e conclusão automática quando falta a resposta da contraparte.
-4. `supabase/migrations/20260901010000_operational_email_outbox.sql` — fila transacional idempotente e eventos essenciais de email, inicialmente desativados até o fornecedor e o domínio estarem validados.
-
-A segunda migração mantém mensagens e evidência confirmada imutáveis e usa URLs assinadas de curta duração para fotografias privadas. A terceira conserva a confirmação bilateral imediata, mas limita a espera na devolução: a primeira confirmação inicia 24 horas e, sem a segunda, a operação é concluída automaticamente quando um participante atualiza a área pessoal. No piloto este fecho não movimenta dinheiro; a integração futura de pagamentos e cauções deverá consumir o evento de conclusão. Email e morada continuam privados; o telefone só é devolvido em estados confirmados ou operacionais posteriores. Sem as migrações, a área pessoal mantém o acesso ao perfil e apresenta um aviso honesto de preparação da base de dados.
-
-O dossier fotográfico antes/depois é um registo interno da operação, acessível apenas aos dois participantes autenticados. As fotografias apoiam o acompanhamento e uma eventual análise, mas não decidem por si só qualquer divergência. A intervenção interna da CleanShare em desacordos fica prevista para uma fase futura de suporte/backoffice; este MVP não disponibiliza botão, estado ou fluxo funcional de disputa.
-
-## Emails operacionais
-
-A CleanShare usa uma fila própria na base de dados e a Edge Function `supabase/functions/send-operational-email`. Só são previstos emails quando o destinatário precisa de agir ou quando a operação termina. Não existem notificações por mensagem de chat, fotografia ou simples consulta.
-
-Resend é o fornecedor inicial recomendado; Amazon SES em `eu-west-1` está suportado pelo mesmo adaptador para uma futura exigência regional. A escolha é controlada por `EMAIL_PROVIDER`, e os modelos, a deduplicação e as tentativas permanecem independentes do fornecedor. Consulte o README da função para a ordem segura de ativação. Nunca ative a fila antes de verificar o domínio de envio, configurar os segredos, criar o webhook, preparar as novas tentativas e concluir um teste controlado com as duas contas piloto.
-
-Checkpoint de 2 de setembro de 2026: a Edge Function, o webhook de inserção e o agendamento de novas tentativas estão configurados no Supabase, e um envio técnico controlado foi confirmado como entregue pelo Resend. A fila geral permanece desativada. O remetente `onboarding@resend.dev` é apenas temporário e limitado ao titular da conta; quando o nome e o domínio forem definitivos, falta autenticar um subdomínio de envio, substituir o remetente, testar com as duas contas piloto e só depois ativar a fila. Os valores secretos permanecem exclusivamente no Supabase e nunca são guardados no repositório.
+Notificações operacionais usam outbox idempotente e [Edge Function](supabase/functions/send-operational-email/README.md). O checkpoint de 2 de setembro confirmou envio sandbox apenas ao titular Resend; a fila global continua desativada. Remetente operacional e teste de duas contas continuam pendentes. Nunca ativar a fila ou alterar segredos sem tarefa e autorização próprias. Resend é o fornecedor inicial; o adaptador Amazon SES é alternativa futura, não prova de processamento integral europeu.
