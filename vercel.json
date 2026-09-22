@@ -3,5 +3,16 @@
   "framework": null,
   "installCommand": "",
   "buildCommand": "node scripts/build-static.mjs",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/hi/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
 }

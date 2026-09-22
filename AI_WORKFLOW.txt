@@ -8,7 +8,7 @@ Before work that affects strategy, product, design, legal terms, insurance, iden
 2. `docs/strategy/OutZila_Blueprint_v2.0.md`
 3. the specialist document relevant to the task in `docs/strategy`, `docs/insurance` or `docs/legal`
 
-For any commercial or external-facing material, use `docs/presentations/Hi_Im_OutZila_v1.0.md` and the current business plan. Do not copy figures from legacy CleanShare or OutShare files.
+For any commercial or external-facing material, use `docs/presentations/Hi_Im_OutZila_v0.5.html` and the current business plan. This is the current institutional web presentation, published at `https://outzila.com/hi` with noindex. Future edits must build on this version and be versioned in `docs/presentations/`. Do not copy figures from legacy CleanShare or OutShare files.
 
 ## Authority rules
 

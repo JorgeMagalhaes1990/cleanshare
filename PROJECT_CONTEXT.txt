@@ -13,7 +13,7 @@ The repository is the source of truth for current strategy. Read these documents
 3. `docs/insurance/OutZila_Dossier_Produto_Segurador_v1.0.md`
 4. `docs/legal/OutZila_Brief_Contrato_Aluguer_v1.0.md`
 5. `docs/strategy/OutZila_Identidade_Autenticacao_v1.0.md`
-6. `docs/presentations/Hi_Im_OutZila_v1.0.md`
+6. `docs/presentations/Hi_Im_OutZila_v0.5.html` — current institutional web presentation, published at `https://outzila.com/hi` with noindex.
 
 Previous `OutZila_Blueprint_v1.8`, `OutZila_Dossier_Produto_Segurador_v0.9`, CleanShare and OutShare documents are legacy. Do not use their former insurance cost-sharing or financial assumptions.
 
