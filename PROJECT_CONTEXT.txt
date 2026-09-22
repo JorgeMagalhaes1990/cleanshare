@@ -1,255 +1,48 @@
 # OutZila Project Context
 
-## Latest Approved Direction and Insurance Dossier
+## Authority
 
-Checkpoint: 2026-09-17.
+Checkpoint: 2026-09-22.
 
-The current brand is OutZila. Historical CleanShare and OutShare files describe the same project. Current authority is OutZila_Blueprint_v1.8.md, OutZila_Identidade_Autenticacao.md, and OutZila_Dossier_Produto_Segurador_v0.9.md. Previous Word versions are historical, not current authority; new Word versions await visual validation. This task changes documentation only.
+OutZila is the current brand and the only current brand authority. CleanShare and OutShare are historical names for the same project. They remain useful as implementation and decision history, but must never override current OutZila documentation when there is a conflict.
 
-The approved launch scope is now a single coherent segment: premium outdoor and leisure equipment owned by private individuals. Each listing represents one identifiable principal item, with acquisition or replacement value above EUR 500, transport compatible with a passenger car, and condition that can be documented at collection and return. Multi-item camping, ski and snowboard sets are excluded from the initial insured catalog.
+The repository is the source of truth for current strategy. Read these documents before making strategic, product, legal, insurance, identity or presentation decisions:
 
-Read the current Blueprint and identity decision before identity, contract or architecture work; read Dossier v0.9 for launch equipment, insurance and financial assumptions. Searchable Markdown companions make the same decisions accessible to Codex. The previous four-category catalog and EUR 300 threshold are historical; they must not override the outdoor launch scope above EUR 500.
+1. `docs/strategy/OutZila_Blueprint_v2.0.md`
+2. `docs/strategy/OutZila_Business_Plan_v1.0.md`
+3. `docs/insurance/OutZila_Dossier_Produto_Segurador_v1.0.md`
+4. `docs/legal/OutZila_Brief_Contrato_Aluguer_v1.0.md`
+5. `docs/strategy/OutZila_Identidade_Autenticacao_v1.0.md`
+6. `docs/presentations/Hi_Im_OutZila_v1.0.md`
 
-Obtaining suitable insurance is a prerequisite for the intended real operating model. The requested protection combines accidental damage, third-party theft or robbery, total loss, and express non-restitution or unlawful appropriation by the renter. A generic theft guarantee must not be treated as proof of non-restitution coverage. Transport, loading, unloading, approved installation and use, selected breakdown scenarios, liability, deductibles and limits require express insurer agreement. No coverage described in the dossier is currently an active policy.
+Previous `OutZila_Blueprint_v1.8`, `OutZila_Dossier_Produto_Segurador_v0.9`, CleanShare and OutShare documents are legacy. Do not use their former insurance cost-sharing or financial assumptions.
 
-The financial model is a negotiation and planning hypothesis: 20% rental commission; insurance premium averaging 10% of rental value; 10% of that premium paid by the insurer to the platform as distribution remuneration, subject to a legally validated authorized distribution structure; and premium funding split 70% renter / 30% platform through the owner commission. Base and pessimistic scenarios, AI-assisted operating costs and all limitations are detailed in the dossier. Do not represent these assumptions as supplier quotations, established demand, guaranteed profit or agreed insurance pricing.
+## Current proposition
 
-The product ambition remains a protected end-to-end P2P rental, informed by Yescapa and Roofwander and adapted to equipment. Verification, contracts, protected payments and deposits, private chat, bilateral photographic evidence, time-bound return confirmation and incident handling form one operational layer. The actual pilot limitations described below remain in force until real integrations are implemented and validated.
+OutZila is a protected peer-to-peer marketplace for individual premium outdoor and leisure equipment. The initial insured catalogue is limited to identifiable individual items with acquisition or replacement value above EUR 500, practical car-compatible transport and an inspectable condition at collection and return. The platform does not rent vehicles and does not accept multi-item camping, ski or snowboard sets as one insured item.
 
-This checkpoint records the approved vision; it does not migrate the existing interface, valuation matrix or database. Only implement those changes when explicitly requested. The operational sections below describe actual pilot constraints, not completed production integrations.
+The paid value is a trusted operation: verified identity, an electronically signed rental contract, validated payment and deposit, embedded insurance, private pre-confirmation chat, documented bilateral collection and return, timed return confirmation and incident handling.
 
----
+## Launch, pilot and expansion
 
-## Visão e proposta de valor
+Portugal is the controlled operational and insurance pilot. The Year 1 target of 1,500 operations relates only to Portugal in the first twelve months after launch. Portugal is not the geographic limit: the intended next priority markets are Spain, France, Germany and Italy. A potential insurance partner must be able to support, or provide a credible route to support, this European expansion.
 
-Permitir que particulares rentabilizem equipamento de lazer outdoor usado ocasionalmente e que outras pessoas lhe acedam por períodos curtos, sem comprar o bem. O diferencial é a proteção da operação completa: identidade, contrato, pagamento e caução, seguro, evidência bilateral e acompanhamento de incidentes.
+## Insurance
 
-A marca atual é OutZila. CleanShare e OutShare são nomes históricos do mesmo projeto. Os nomes do repositório e do protótipo não alteram a marca aprovada; a migração da interface não faz parte desta revisão documental.
+Embedded insurance is mandatory for each eligible rental from launch. The requested core cover comprises accidental damage, third-party theft or robbery, total loss, and non-return or unlawful appropriation by the renter. Non-return is a launch requirement. A generic theft clause does not demonstrate that non-return is covered.
 
-Yescapa é a referência operacional de aluguer protegido; Roofwander é uma referência do segmento outdoor. Adaptar padrões de confiança e operação sem copiar identidade visual, textos, imagens, código, contratos ou condições de seguro. As condições jurídicas e seguradoras exigem validação própria para Portugal.
+The renter pays 100% of the insurance premium. The working premium assumption of 10% of rental value is a modelling hypothesis, not an agreed tariff. A potential 10% OutZila distribution remuneration on the premium is also a hypothesis, subject to an insurer agreement and the applicable insurance-distribution and regulatory structure. OutZila does not fund 30% of the premium.
 
-## Catálogo de lançamento
+## Identity, signature and evidence
 
-Um anúncio corresponde a um equipamento principal identificável, com aquisição ou substituição superior a 500 euros, utilização ocasional, transporte compatível com automóvel ligeiro e condição verificável. Acessórios que pertencem ao produto devem ser discriminados. Não aceitar conjuntos de vários bens como um único objeto segurado.
+Supabase owns accounts, login and sessions. A specialised European identity and electronic-signature provider supports civil verification and signature; Signicat is preferred, subject to contract and implementation.
 
-Transporte e mobilidade outdoor: malas de tejadilho, caixas de carga para engate, plataformas de carga de tejadilho, sistemas de barras, suportes premium de bicicletas para engate, malas rígidas de transporte de bicicletas e atrelados multidesporto para bicicleta.
+Onboarding supports national eID or EUDI Wallet when available, plus an alternative universal path based on identity document, selfie/liveness and NFC when applicable. eID/EUDI is not mandatory at launch. Store only verified attributes necessary for the operation and contract. Avoid storing identity documents and biometric data unless a documented legal requirement demands it.
 
-Campismo e abrigo: tendas familiares insufláveis premium, tendas de tejadilho, tendas montadas no engate, toldos ou avançados identificáveis como um único produto e frigoríficos elétricos portáteis.
+The evidence chain for every rental is:
 
-Desportos aquáticos: kayaks insufláveis ou dobráveis e pranchas de stand up paddle premium.
+`verified identity -> signed contract -> validated payment -> documented collection -> documented return`
 
-Energia e autonomia: estações de energia e painéis solares portáteis que cumpram individualmente o valor mínimo e a identificação e inspeção exigidas.
+## Implementation boundary
 
-Kits completos de campismo, ski e snowboard ficam excluídos. A presença de uma família não aprova automaticamente todos os modelos. A validação final depende de propriedade, valor, estado, risco, logística e aceitação pela seguradora. Veículos não são alugados; a compatibilidade, carga e montagem dos acessórios removíveis devem ser confirmadas segundo o fabricante.
-
-O catálogo generalista de quatro categorias e o limiar de 300 euros pertencem à fase anterior. A matriz e as migrações existentes documentam a implementação antiga, não a visão aprovada atual; a sua atualização funcional exige tarefa própria.
-
-## Identidade e autenticação
-
-Supabase mantém contas, login e sessões. Login e confirmação de email não equivalem a identidade civil verificada. Signicat é a solução preferencial para identidade civil e assinatura eletrónica, sujeita a contratação, configuração e validação.
-
-O onboarding suportará eID nacional ou EUDI Wallet quando disponíveis, e documento de identificação com selfie/liveness e NFC quando aplicável. A eID/EUDI Wallet não será obrigatória no lançamento; a alternativa documental deverá permitir uma verificação adequada sem wallet. NFC depende do documento e dispositivo e não constitui requisito universal. Esta decisão substitui CMD obrigatória, sem alterar o piloto atual.
-
-A OutZila guardará apenas atributos verificados necessários à operação e contratos e prova mínima do resultado. Não guardar por defeito documentos de identidade, selfies, vídeos ou modelos biométricos. Toda a retenção excecional exige necessidade jurídica documentada e controlos de acesso e prazo. NIF e morada não serão apresentados como verificados se a fonte utilizada não os tiver comprovado.
-
-Os requisitos completos de minimização, integração, estados e validação constam de OutZila_Identidade_Autenticacao.md, que deve ser lido antes de desenvolver identidade, assinatura ou contratos.
-
-## Contratos e cadeia de evidência
-
-Cada aluguer deve manter a cadeia identidade verificada → contrato → pagamento → entrega bilateral documentada → devolução bilateral documentada.
-
-Gerar o contrato com os atributos civis necessários e verificados de ambas as partes e os dados estruturados do bem e reserva. Associar as duas identidades, verificações e assinaturas ao aluguer. Preservar versão, hash, documento assinado, método e resultado de assinatura e carimbos temporais num audit trail exportável. Alterações materiais exigem nova versão e novas assinaturas.
-
-O nível de assinatura simples, avançada ou qualificada será validado com advogado, seguradora e Signicat. Não assumir que verificação de identidade produz por si só uma assinatura qualificada ou garante validade jurídica de todo o contrato.
-
-Manter três camadas documentais ligadas: Termos da Plataforma OutZila, Contrato de Aluguer entre proprietário e arrendatário, e Condições de Seguro aplicáveis à operação. As fotografias/checklists de entrega e devolução são anexos de evidência associados à operação e acessíveis apenas por autorização.
-
-
----
-
-## Approved Operating Benchmark: Yescapa
-
-Yescapa is the primary operating-model reference for OutZila. This is an approved strategic decision: use a proven peer-to-peer rental architecture and adapt it to equipment. It is not permission to copy Yescapa's branding, interface, wording, code, legal terms or insurance arrangements.
-
-The OutZila product should follow the same underlying transaction logic:
-
-- Curated listing and validation of the owner, equipment and required documents.
-- Search, request and private pre-confirmation conversation between the participants.
-- Owner acceptance followed by a contract generated from the accepted reservation and its authoritative snapshots, bound to both verified identities and signed by both parties with an audit trail.
-- Protected payment and deposit handling linked to that signed contract before documented handover.
-- Coordinated collection with identity/document checks, bilateral inventory and photographic evidence.
-- A visible operational period with role-specific actions, support information and controlled contact disclosure.
-- Coordinated return with a second bilateral inventory, before/after comparison and a strict response deadline.
-- Authoritative completion, owner payout and renter deposit release when the return is accepted or the supported deadline expires without a dispute.
-- Mutual reviews after completion and platform mediation when the evidence or participants disagree.
-
-The service fee must be presented and designed as payment for the trusted operational layer, not merely for publishing a listing. It must finance the variable costs of payments, deposits, identity/document checks, insurance where applicable, support, fraud handling and incident resolution while preserving positive contribution margin.
-
-OutZila must not implement one undifferentiated risk model across the catalog. The shared rental state machine remains common, while each equipment category or risk class configures eligibility, deposit policy, insurance requirements, inventory fields, required photographs, exclusions, deadlines, mounting or usage instructions and incident rules.
-
-Product and development implications:
-
-- Owner and renter journeys are parallel views of the same authoritative operation.
-- Every dashboard state identifies the next action, the responsible participant and the applicable deadline.
-- Chat supports agreement and clarification but never replaces structured confirmations, contracts or evidence.
-- Contact details are disclosed only at the operational point where direct coordination is necessary and permitted.
-- Handover and return records are completed by both participants and become immutable audit evidence after confirmation.
-- Payment, deposit, contract, insurance, reviews and dispute handling belong to one end-to-end product flow, even when introduced over several MVPs.
-- A material departure from this benchmark must be justified by equipment characteristics, Portuguese law, provider constraints or measured pilot evidence.
-
-Yescapa remains an external benchmark, not legal authority. Its current flow, fees and coverage may vary by market and over time. Before production, OutZila must independently validate Portuguese consumer, contract, payment, insurance, tax, privacy and platform-liability requirements with appropriate specialists and regulated providers.
-
-Primary reference pages reviewed in September 2026: https://www.yescapa.pt/, https://www.yescapa.pt/how-yescapa-works, https://www.yescapa.pt/rental-contract, https://www.yescapa.pt/todos-nossos-seguros/, https://www.yescapa.pt/todas-nossas-assistencias/ and https://www.yescapa.pt/ajuda/funcionamento-do-site/a-que-correspondem-os-custos-de-servico/.
-
----
-
-## Main Value Proposition
-
-The biggest challenge is not the rental itself. The biggest challenge is making both parties feel safe throughout the transaction.
-
-OutZila sells confidence.
-
-Everything on the website should reinforce:
-
-- Security.
-- Trust.
-- Simplicity.
-- Professionalism.
-
----
-
-## Pillars
-
-### Security
-
-Owners must feel that their equipment and payments are protected, and renters must understand the terms of the operation.
-
-Examples:
-
-- Security deposits.
-- Identity verification.
-- Digital contracts.
-- Insurance when applicable.
-- Secure payments.
-- Confirmed handover and return.
-
-### Trust
-
-Every interaction must increase trust. Avoid anything that looks cheap, amateur or exaggerated. The experience should feel premium and credible.
-
-### Simplicity
-
-The platform must look easy to use. Core actions should require as few steps as possible, while safety conditions remain clear.
-
----
-
-## Landing Page Goal
-
-The landing page has three connected goals:
-
-1. Recruit private equipment owners for the initial supply.
-2. Explain how OutZila intermediates and protects an operation from request to return and payment.
-3. Validate demand and supply for the approved initial categories.
-
-The landing page is not limited to completing a rental. Every section should help visitors understand the value of joining the marketplace and the safeguards around each transaction.
-
----
-
-## Tone of Voice
-
-Professional.
-
-Simple.
-
-Modern.
-
-Friendly.
-
-Confident.
-
-Never exaggerated.
-
-Never flashy.
-
----
-
-## Design
-
-The visual reference is stored in:
-
-`reference/mockup.png`
-
-It is the authority for visual identity and layout direction, not for the scope of the catalog. Preserve the established design unless an explicit approved request changes it.
-
----
-
-## User Area
-
-The personal area is called “Minha OutZila”. One account can act as both equipment owner and renter; these are roles within the same profile, not separate account types.
-
-The main navigation covers the overview, operations, owned equipment, exploration and rental requests, messages, payments, documents, profile and security, and help. The experience is organised around operations, pending actions and a clear explanation of who must do what next.
-
-The normal route, `/area-utilizador.html`, is the real personal area. It requires a Supabase session, reads the authenticated user's own profile and must never fall back to fictitious content after a session or profile error. The route `/area-utilizador.html?demo=1` is the explicit demonstration mode and preserves labelled example operations, values and interactions.
-
-Supabase continues to own accounts, login and sessions. Signicat is preferred for civil identity verification and electronic signing. Support national eID/EUDI Wallet when available, and ID document plus selfie/liveness with NFC where applicable. Neither EUDI Wallet nor CMD is an exclusive or mandatory launch method. The old CMD-only strategy is superseded. During the controlled pilot, reversible pilot access remains separate from civil verification; never turn it into a verified identity claim or change verification_status to simulate a real result. Read OutZila_Identidade_Autenticacao.md for minimisation, bilateral electronic signatures, audit trail, evidence chain, Europe-first integration and production criteria. Signicat is not yet contracted or implemented by this documentation update.
-
-Owner and renter preferences may be stored in `auth.user_metadata` to personalise the interface. They are not authorization claims and must never replace database-backed permissions or RLS in future operational flows. The same limitation applies to notification preferences.
-
-The interface must not imply that payments, deposits, signed legal contracts, insurance or other legal and financial actions have been executed when the real integrations are not connected. Supported pilot publication, requests, chat and condition reports remain operational under database controls. Production legal and financial actions require the future verification, signing, transaction and insurance services.
-
-MVP 3 enables the first real pilot operation between two distinct authenticated accounts: one account publishes an eligible equipment listing and another account requests it. The pilot records and exposes only the operational request, owner response and status transitions supported by the database. It does not process payments, block deposits, create a legally valid contract, activate insurance or require completed civil identity verification while the temporary pilot exception is enabled.
-
-Rental creation, price and deposit snapshots, inclusive-day totals, conflict checks and status transitions are authoritative RPC responsibilities. Clients must never insert rentals directly or provide trusted totals. The participant listing may expose the counterpart's display name because both users already share an operation. Telephone is disclosed only after confirmation and only while the operation is confirmed, in progress, completed or disputed; email and full address remain private.
-
-Participants may use the private operation chat from the requested state and throughout supported operational states. Messages are trimmed, limited to 1000 characters, immutable and visible only to the owner and renter of that rental. Chat must never be used to expose participant contacts before the database permits the dedicated post-confirmation contact field.
-
-Handover and return use bilateral condition reports. Each participant uploads their own private photographic evidence and explicitly confirms only their own observation. The database moves a confirmed rental to `in_progress` only after two handover confirmations. Return should be confirmed immediately by both participants; the first return report starts a maximum 24-hour window for the counterparty. Two return confirmations complete the rental immediately. If the second confirmation is still absent when that window expires, an authenticated participant refresh triggers authoritative automatic completion. Evidence files use participant-scoped private paths and short-lived signed URLs. Confirmed reports and messages are audit records; deleting a rental with those records is deliberately blocked rather than cascaded.
-
-Automatic completion is an operational pilot rule, not a financial claim. During the pilot it changes only the rental state. In production, the payment and deposit services must consume that authoritative completion event so that the owner payment and renter deposit are released without avoidable delay, except when a supported dispute has suspended completion.
-
-Essential operational email notifications use a provider-neutral transactional outbox. The database, not browser code, decides which events create notifications and enforces a permanent unique event key so retries cannot queue duplicates. The supported events are: new request to the owner; accepted, rejected or cancelled request to the waiting party; first handover confirmation to the participant who must still act; first return confirmation with the 24-hour deadline to the participant who must still act; and completion to both participants. Chat messages, photo uploads and routine progress changes do not generate email.
-
-Email payloads stored in the outbox contain only recipient user ID, rental ID, equipment title, dates, role and deadline when required. Email addresses are resolved from Supabase Auth only inside a trusted Edge Function. Messages must remain short, exclude contact details, addresses, photographs and documents, and link back to the authenticated user area. Delivery attempts, provider IDs and terminal failures are auditable; credentials must remain in Edge Function secrets.
-
-Resend is the initial transactional provider because it integrates directly with Supabase Edge Functions, supports authenticated sending domains, delivery events and provider-side idempotency. The dispatcher also includes an Amazon SES adapter for a future EU-region requirement. Templates, event selection, retry state and business idempotency remain owned by OutZila, so changing providers does not require rebuilding the operational flow. Queueing remains disabled until the sending subdomain, SPF, DKIM, DMARC, provider credentials, webhook, retry schedule and two-account test have all been validated.
-
-Operational email checkpoint (2026-09-02): the Resend provider credentials, Edge Function, authenticated INSERT webhook and one-minute retry schedule are configured in the Supabase project. A controlled sandbox message to the provider account owner was accepted by the Edge Function and reported as delivered by Resend. Global outbox queueing remains disabled. The temporary `onboarding@resend.dev` sender is not suitable for the two-account pilot or production. Once the product name and domain are final, authenticate a dedicated sending subdomain, replace `EMAIL_FROM`, optionally set a monitored `EMAIL_REPLY_TO`, test delivery to both pilot accounts, and only then enable queueing. No provider or dispatch secret may be committed to the repository.
-
-Photographs are supporting evidence, not an expert inspection. This workflow does not change the pilot limits: payment is not processed, deposit is not blocked, contract has no legal validity, insurance is not activated and civil identity verification is not mandatory in the explicitly authorized pilot while the explicit pilot exception is enabled.
-
-The before/after photographic dossier is an internal operation record visible only to the two authenticated rental participants. It must never appear in listings, catalog pages, public profiles or the landing page. Photographs support operational follow-up and potential conflict analysis, but do not decide a disagreement. A future OutZila support/backoffice flow must intervene when participants disagree; dispute actions, states, promises and resolution automation are outside the current MVP.
-
-Role preferences in user metadata continue to personalise which owner and renter tools are shown. They do not authorize publication, requests or transitions: database ownership checks, authenticated identity, RLS and security-definer RPC validation remain authoritative. Demo mode remains isolated at `?demo=1` and must not call or resemble the real pilot workflow.
-
----
-
-## Technical Stack
-
-Use:
-
-- HTML.
-- CSS.
-- Vanilla JavaScript.
-- Supabase for authentication and data.
-
-Do not introduce Bootstrap, Tailwind or React unless explicitly requested and approved.
-
----
-
-## Development Rules
-
-Only modify the requested scope. Preserve the existing visual identity and all unrelated functionality.
-
-When positioning or catalog scope changes, verify consistency across the latest Blueprint, this file, `DESIGN_RULES.txt`, the valuation matrix, database migrations and public landing-page content.
-
----
-
-## Future Vision
-
-OutZila should become Portugal's trusted peer-to-peer marketplace for individual premium outdoor and leisure equipment that people need occasionally but do not need to own.
-
-Expansion outside the outdoor launch segment is not an approved launch requirement. Any wider catalog or professional operating model needs a new explicit decision and risk assessment, while retaining the same standards of trust, safety, simplicity and professional quality.
-
-## Current Authentication Email Checkpoint 2026-09-17
-
-Demo externo publicado em https://demo.outzila.com/ com HTTPS; domínio principal e email Hostinger preservados. Supabase mantém os redirects autorizados para localhost, URL Vercel existente e demo. Em 17 de setembro de 2026, updates.outzila.com ficou verificado no Resend e SMTP Auth foi configurado com remetente OutZila; o teste de envio/receção foi adiado pelo utilizador. A fila de emails operacionais de aluguer continua desativada, separada dos emails de autenticação.
+The existing application remains a pilot. Do not represent unimplemented payment, deposit, insurer, identity or signature integrations as live. This documentation update does not authorise code, database, provider, domain or infrastructure changes.

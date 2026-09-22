@@ -1,11 +1,19 @@
 # OutZila project instructions
 
-Read AI_WORKFLOW.txt, PROJECT_CONTEXT.txt, OutZila_Blueprint_v1.8.md and OutZila_Identidade_Autenticacao.md before product or identity work. Read OutZila_Dossier_Produto_Segurador_v0.9.md for insurance and financial assumptions, and DESIGN_RULES.txt for visual changes.
+The repository documents are the current authority for project decisions. Before any product, strategy, insurance, identity, contract or presentation work, read:
 
-OutZila is the current brand. CleanShare and OutShare filenames are historical and identify the same project. Current strategy is individual premium outdoor/leisure equipment above EUR 500, not the legacy four-category catalog or multi-item sets.
+1. `AI_WORKFLOW.txt`
+2. `PROJECT_CONTEXT.txt`
+3. `docs/strategy/OutZila_Blueprint_v2.0.md`
+4. `docs/strategy/OutZila_Business_Plan_v1.0.md`
+5. `docs/insurance/OutZila_Dossier_Produto_Segurador_v1.0.md`
+6. `docs/legal/OutZila_Brief_Contrato_Aluguer_v1.0.md`
+7. `docs/strategy/OutZila_Identidade_Autenticacao_v1.0.md`
 
-Supabase owns accounts, login and sessions. Signicat is preferred for civil identity verification and electronic signing. Onboarding must support national eID/EUDI Wallet when available and ID document plus selfie/liveness, with NFC where applicable. Do not require eID/EUDI Wallet or CMD as the exclusive launch method. Do not confuse a session, confirmed email or pilot access with verified civil identity.
+OutZila is the current brand. CleanShare and OutShare are legacy names and must not override the current documents when there is a conflict. Legacy material is retained in `docs/legacy/` and in repository history.
 
-Store only strictly necessary verified attributes and minimal verification evidence. No default retention of identity documents or biometric data in OutZila, except documented legal necessity with access and retention controls. Contracts must bind both verified identities, bilateral electronic signatures and an exportable audit trail to the rental. Preserve the chain verified identity -> contract -> payment -> documented bilateral handover -> documented bilateral return. Design Europe-first with future EUDI adoption; validate actual regional processing and provider capabilities.
+The current launch proposition is a protected P2P marketplace for identifiable, individual premium outdoor and leisure equipment above EUR 500. It is not a vehicle-rental marketplace and does not accept multi-item camping, ski or snowboard sets as an insured item.
 
-Documented production requirements are not implemented integrations. Never claim active Signicat, legal contracts, payments, blocked deposits, insurance or operational email delivery without evidence. Documentation-only requests do not authorize code, migrations, infrastructure, provider accounts, secrets, DNS, public deployment, commit or push. Preserve user changes and historical versions.
+Supabase owns accounts, login and sessions. Signicat is the preferred specialised European provider for civil identity verification and electronic signature, subject to contract and implementation. Do not present any provider, payment, deposit, insurance or signature integration as active without evidence.
+
+Documentation-only work does not authorise functional code changes, infrastructure, provider accounts, secrets, DNS, public deployment, commit or push unless the user explicitly asks for them. Preserve user changes and historical versions.

@@ -30,7 +30,7 @@ The mockup is the authority for visual identity, typography, colour, spacing, co
 - Present OutZila as a curated P2P marketplace for individual premium outdoor and leisure equipment above EUR 500.
 - The four-category generalist interface is historical implementation, not the approved launch vision. Do not migrate it without an explicit implementation request.
 - Use only the products approved for the outdoor launch segment in `PROJECT_CONTEXT.txt` and the latest Blueprint.
-- Use the current outdoor product families in OutZila_Blueprint_v1.8.md and Dossier v0.9. Exclude multi-item camping, ski and snowboard sets.
+- Use the current outdoor product families in `docs/strategy/OutZila_Blueprint_v2.0.md` and `docs/insurance/OutZila_Dossier_Produto_Segurador_v1.0.md`. Exclude multi-item camping, ski and snowboard sets.
 - Treat private individuals as the initial source of supply.
 - Treat B2B and industrial equipment as outside the approved launch offer; any expansion needs an explicit new decision and risk assessment.
 - Never present OutZila as a vehicle-rental marketplace. Automotive products are removable accessories normally stored in homes or garages and rented without a vehicle.
@@ -101,7 +101,7 @@ Creating, removing or materially restructuring sections is allowed only when the
 
 Compare visual implementation against `reference/mockup.png` before and after changes.
 
-Also verify that public category content remains consistent with the latest Blueprint, `PROJECT_CONTEXT.txt` and the current valuation matrix/migrations.
+Also verify that public category content remains consistent with `docs/strategy/OutZila_Blueprint_v2.0.md`, `PROJECT_CONTEXT.txt` and the current valuation matrix/migrations.
 
 The goal is visual fidelity combined with current, strategically accurate content.
 
@@ -109,4 +109,4 @@ The goal is visual fidelity combined with current, strategically accurate conten
 
 Each rental must preserve the contract version, two verified identities, bilateral electronic signatures and an exportable audit trail with controlled access. Do not publish signing evidence or imply that a simple acceptance is a signature.
 
-Read OutZila_Identidade_Autenticacao.md before designing verification or signing. Explain which attributes are requested and why. Do not ask for identity documents or biometrics in ordinary profile fields, chat, support forms or email. Show verification and signing states separately from login; failed or incomplete verification must not appear successful. A contract must display the two verified parties, version and real bilateral signing status; an accepted rental or condition checklist is not an electronic signature. Show the evidence chain and next responsible participant without exposing civil identifiers, documents or biometrics publicly. Follow the Europe-first architecture requirement; future EUDI Wallet adoption should preserve the same operation and contract model. Do not claim qualified signatures or European-only processing without validated configuration.
+Read `docs/strategy/OutZila_Identidade_Autenticacao_v1.0.md` before designing verification or signing. Explain which attributes are requested and why. Do not ask for identity documents or biometrics in ordinary profile fields, chat, support forms or email. Show verification and signing states separately from login; failed or incomplete verification must not appear successful. A contract must display the two verified parties, version and real bilateral signing status; an accepted rental or condition checklist is not an electronic signature. Show the evidence chain and next responsible participant without exposing civil identifiers, documents or biometrics publicly. Follow the Europe-first architecture requirement; future EUDI Wallet adoption should preserve the same operation and contract model. Do not claim qualified signatures or European-only processing without validated configuration.

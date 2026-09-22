@@ -1,50 +1,33 @@
 # OutZila AI Workflow
 
-## Central Source Order
+## Required reading order
 
-When sources differ, use this precedence:
+Before work that affects strategy, product, design, legal terms, insurance, identity, payment, evidence, operational email or presentations, read:
 
-1. `OutZila_Blueprint_v1.8.md`, together with `OutZila_Identidade_Autenticacao.md` for identity and signing.
-2. `PROJECT_CONTEXT.txt`.
-3. `DESIGN_RULES.txt`.
-4. `OutZila_Dossier_Produto_Segurador_v0.9.md` for insurance and financial assumptions.
-5. The `valuation_matrix` and files in `supabase/migrations/` for implemented behavior, not for overriding later approved strategy.
+1. `PROJECT_CONTEXT.txt`
+2. `docs/strategy/OutZila_Blueprint_v2.0.md`
+3. the specialist document relevant to the task in `docs/strategy`, `docs/insurance` or `docs/legal`
 
-Use `reference/mockup.png` as the visual authority, not as the authority for catalog scope.
+For any commercial or external-facing material, use `docs/presentations/Hi_Im_OutZila_v1.0.md` and the current business plan. Do not copy figures from legacy CleanShare or OutShare files.
 
-## Implementation Workflow
+## Authority rules
 
-1. Read `AI_WORKFLOW.txt`.
-2. Read the current OutZila Blueprint and identity decision. Historical CleanShare/OutShare documents are not current authority. New Word versions await visual validation; use the current Markdown versions.
-3. Read `PROJECT_CONTEXT.txt`.
-4. Read `DESIGN_RULES.txt`.
-5. Review the relevant valuation matrix and migrations when catalog, eligibility or product positioning is involved.
-6. Compare the requested visual scope with `reference/mockup.png` and the current implementation.
-7. Analyse the request and identify affected files, content and dependencies.
-8. Produce an implementation plan.
-9. Wait for explicit user approval before implementation.
-10. Implement only the approved scope.
-11. Review responsive behaviour, accessibility and existing functionality.
-12. Report modified files, relevant selectors and validation results.
+- OutZila is the approved brand.
+- CleanShare and OutShare content is legacy where it conflicts with current OutZila documents.
+- The official launch scope is individual premium outdoor and leisure equipment, normally above EUR 500. Multi-item sets are excluded.
+- Portugal is the controlled pilot only. The intended expansion path is Spain, France, Germany and Italy.
+- Insurance is embedded and mandatory for eligible rentals at launch. Non-return or unlawful appropriation is a launch requirement.
+- The renter pays the full premium. Do not reintroduce a 70/30 renter/platform split or any 30% OutZila insurance contribution.
+- Treat a 10% premium rate and a 10% insurer-paid distribution remuneration as planning hypotheses until written agreements and regulatory validation exist.
+- Supabase is for accounts, login and sessions. Signicat is the preferred future civil-identity and signature provider, subject to contracting.
 
-## Positioning Consistency Check
+## Production truthfulness
 
-Whenever marketplace positioning, categories, eligibility or product scope changes, verify consistency between:
+Do not present a pilot or planned integration as a completed legal, financial or insurance operation. The current application must be described accurately as an authenticated operational pilot until real provider integrations and required validation exist.
 
-- The latest Blueprint.
-- `PROJECT_CONTEXT.txt`.
-- `DESIGN_RULES.txt`.
-- The `valuation_matrix` and current migrations.
-- Public landing-page content.
+## Change discipline
 
-Resolve or explicitly document any difference between approved strategy and the existing implementation. A documentation-only task must not change HTML, CSS, JavaScript, migrations, matrix files, secrets, DNS, cloud settings or deploy behavior. Do not claim planned Signicat, signatures, payments, deposits or insurance are active.
-
-## Identity Consistency Check
-
-Supabase accounts/login/sessions and Signicat civil identity/signing are separate responsibilities. Support national eID/EUDI Wallet when available and document plus selfie/liveness, NFC when applicable. Never require wallet or CMD as the only launch route. Do not treat email confirmation, user_metadata or pilot access as civil verification. Keep only strictly necessary verified attributes; no default identity-document or biometric retention except documented legal necessity. Bind both verified identities and electronic signatures to each contract and exportable audit trail. Preserve the full identity -> contract -> payment -> bilateral handover -> bilateral return chain. Europe-first is an architecture requirement, not a claim that every provider already processes all data in Europe.
-
-## Approval Rule
-
-Never begin implementation before explicit approval.
-
-Preserve visual fidelity and unrelated functionality. Creating, removing or materially restructuring sections requires an explicit approved request.
+- Keep strategy and implementation separate.
+- Update the canonical Markdown documents before creating derivative Word files, presentations or external outreach.
+- Preserve legacy material for historical reference, but label it clearly and do not let it determine future requirements.
+- Do not alter functional code unless the user explicitly requests it.
